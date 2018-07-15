@@ -8,7 +8,6 @@ const moment = require('moment');
 const sql = require('sqlite');
 sql.open('./scores.sqlite');
 sql.open('./guildsettings.sqlite');
-//sql.open('./serverimages.sqlite');
 
 exports.talkedRecently = new Set();
 

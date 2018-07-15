@@ -13,9 +13,7 @@
   "author": "Numen#3815",
   "license": "MIT",
   "dependencies": {
-    "broken-link-checker": "^0.7.8",
     "chalk": "^2.4.1",
-    "check-broken-links": "^2.0.3",
     "discord.js": "^11.3.2",
     "fs": "0.0.1-security",
     "moment": "^2.22.2",

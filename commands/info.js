@@ -17,7 +17,7 @@ exports.run = async (client, message) => {
     .addField('Library:', 'Discord.js', true)
     .addField('Engine:', 'Node.js', true)
     .addField('Github:', 'https://github.com/icw-Numen/ivy-bot')
-    .addField('Ivy icons/images:', 'https://sta.sh/21qy8xqbpkxm')
+    .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
     .setFooter(`Bot and images made with care by ${package.author}`);
   return message.channel.send({embed});
 };

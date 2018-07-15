@@ -1,4 +1,5 @@
 .env
+*.env
 *.com
 *.class
 *.dll

@@ -1,0 +1,31 @@
+{
+  "name": "ivy",
+  "version": "0.0.1",
+  "description": "your personal extra thicc maid~",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icw-Numen/ivy-bot"
+  },
+  "author": "Numen#3815",
+  "license": "MIT",
+  "dependencies": {
+    "broken-link-checker": "^0.7.8",
+    "chalk": "^2.4.1",
+    "check-broken-links": "^2.0.3",
+    "discord.js": "^11.3.2",
+    "fs": "0.0.1-security",
+    "moment": "^2.22.2",
+    "ms": "^2.1.1",
+    "node-gyp": "^3.7.0",
+    "npm": "^6.1.0",
+    "opusscript": "0.0.6",
+    "rebuild": "^0.1.2",
+    "sqlite": "^2.9.2",
+    "ytdl-core": "^0.20.4",
+    "ytdl-getinfo": "^1.0.6"
+  }
+}

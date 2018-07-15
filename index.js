@@ -1,24 +1,10 @@
-//COPY ALL NECESSARY CODE
-
-
-
 // DEPENDENCIES
 
-// to install Discord.js, type in cmd "npm i discord.js --save"
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
-//const settings = require('./settings.json');
-
-// to install chalk, type in cmd "npm i chalk --save".
-// basically, chalk lets you recolor stuff in console to
-// differenciate debug from warnings to errors.
 const chalk = require('chalk');
-
 const fs = require('fs');
-
 const moment = require('moment');
-
 const sql = require('sqlite');
 sql.open('./scores.sqlite');
 sql.open('./guildsettings.sqlite');

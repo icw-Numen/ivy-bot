@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
             .setColor(0xF18E8E)
             .setTitle('Victory~')
             .setThumbnail(reactions.wink1)
-            .setDescription(`Huzzah! 🎉  |  ${player} has loaded **${bullets}** and pulled the trigger **${pulls}** times without getting shot!`);
+            .setDescription(`Huzzah! 🎉  |  ${player} has loaded **${bullets}** bullet(s) and pulled the trigger **${pulls}** time(s) without getting shot!`);
           message.channel.send({embed});
 
           if (!(args.join(' ').includes('safe') && args.join(' ').includes('Safe')) && message.guild.member(message.author).kickable) {

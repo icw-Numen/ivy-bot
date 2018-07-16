@@ -1,4 +1,4 @@
-const main = require('../app.js')
+const main = require('../app.js');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 

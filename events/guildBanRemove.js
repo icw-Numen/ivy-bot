@@ -1,7 +1,28 @@
 const Discord = require('discord.js');
+const main = require('../app.js');
 
 // when someone gets unhammered
 module.exports = (guild, user) => {
+  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      unbanned(row, guild, user);
+    } else {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+        if (error) return console.log(err);
+        unbanned(row, guild, user);
+        return;
+      });
+    }
+  });
+};
+
+
+// Helper method
+function unbanned(row, guild, user) {
+  const channel = guild.channels.find('name', row['welcome']);
+  if (!channel) return;
   guild.defaultChannel.send(`${user.tag} was just unbanned!`);
 
   const embed = new Discord.RichEmbed()
@@ -10,4 +31,4 @@ module.exports = (guild, user) => {
     .setDescription(`**Action**: Unban\n**Target:** ${user.tag}\n**Moderator:** ${guild.client.unbanAuth.tag}\n**Reason:** ${guild.client.unbanReason}`);
 
   return guild.channels.get(guild.channels.find('name', 'bot-mod-logs').id).send({embed});
-};
+}

@@ -23,8 +23,8 @@ function welcome(row, member) {
   const guild = member.guild;
   const bot = guild.member(guild.client.user);
   const channel = guild.channels.find('name', row['welcome']);
+  if (!channel) return;
   const role = guild.roles.find('name', row['autorole']);
   if (role && bot.hasPermission('MANAGE_ROLES')) member.addRole(role).catch(console.error);
-  if (!channel) return;
   channel.send(`Hello~ Welcome to **${guild.name}**, ${member.user.username}!`);
 }

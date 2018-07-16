@@ -1,20 +1,26 @@
-
+const main = require('../app.js');
 
 module.exports = member => {
-  const server = member.guild;
-
-  sql.get(`SELECT * FROM channels WHERE guildId ="${server.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
+  const guild = member.guild;
+  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      memRem(row, member, guild);
     } else {
-      const channel = server.channels.find('name', row.goodbye);
-      if (!channel) return;
-      channel.send(`Goodbye, ${member.user.username}...`);
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+        if (error) return console.log(err);
+        memRem(row, member, guild);
+        return;
+      });
     }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS channels (guildId TEXT, welcome TEXT, goodbye TEXT, modlog TEXT, autorole TEXT, muted TEXT)').then(() => {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-    });
   });
 };
+
+
+// Helper method
+function memRem(row, member, guild) {
+  const channel = guild.channels.find('name', row['goodbye']);
+  if (!channel) return;
+  channel.send(`Goodbye, ${member.user.username}...`);
+}

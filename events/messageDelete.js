@@ -1,29 +1,36 @@
 const {RichEmbed} = require('discord.js');
-
+const main = require('../app.js');
 
 module.exports = (message) => {
   if (message.author.bot) return;
-  const server = message.guild;
   const client = message.client;
 
-  sql.get(`SELECT * FROM channels WHERE guildId ="${server.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
+  const guild = message.guild;
+  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      msgDel(row, message, guild, client);
     } else {
-      const modlog = server.channels.find('name', row.modlog);
-      if (!modlog) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+        if (error) return console.log(err);
+        msgDel(row, message, guild, client);
         return;
-      }
-      const embed = new RichEmbed()
-        .setColor(0xF18E8E)
-        .setTimestamp()
-        .setDescription(`**Action:** Message delete\n**User:** ${message.author.tag} (User ID: ${message.author.id})\n**Deleted message:**\n${message.content}`);
-      return client.channels.get(modlog.id).send({embed});
+      });
     }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS channels (guildId TEXT, welcome TEXT, goodbye TEXT, modlog TEXT, autorole TEXT, muted TEXT)').then(() => {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-    });
   });
 };
+
+
+// Helper method
+function msgDel(row, message, guild, client) {
+  const modlog = guild.channels.find('name', row['modlog']);
+  if (!modlog) {
+    return;
+  }
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setTimestamp()
+    .setDescription(`**Action:** Message delete\n**User:** ${message.author.tag} (User ID: ${message.author.id})\n**Deleted message:**\n${message.content}`);
+  return client.channels.get(modlog.id).send({embed});
+}

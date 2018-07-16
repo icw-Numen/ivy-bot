@@ -9,7 +9,7 @@ exports.scores;
 exports.guildsettings;
 
 const mongodb = require('mongodb');
-const uri = process.env.MONGODB_URI2;
+const uri = process.env.MONGODB_URI;
 // const seedData = [
 //   {
 //     userId: '',

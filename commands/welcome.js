@@ -35,7 +35,7 @@ function setWelcome (row, message, args, guild) {
     message.channel.send({embed});
   } else
   if (args.length === 0) {
-    main.guildsettings.update({ guildId: guild.id }, { $set: { welcome: '' } }).catch(error => console.log(error));        
+    main.guildsettings.update({ guildId: guild.id }, { $set: { welcome: '' } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Welcome channel set~')
@@ -44,6 +44,7 @@ function setWelcome (row, message, args, guild) {
     message.channel.send({embed});
   }
 }
+
 
 // Command metadata
 exports.conf = {

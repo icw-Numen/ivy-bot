@@ -23,7 +23,6 @@ exports.run = async (client, message) => {
 
 // Helper method
 function runDailies(row, message) {
-  console.log(moment().format('L'));
   const user = message.author;
   if (row['claimed'] === moment().format('L')) {
     return message.channel.send(`You have already claimed your dailies today, ${user.username}`).catch(console.error);
@@ -53,7 +52,7 @@ exports.conf = {
 
 exports.help = {
   name: 'dailies',
-  description: 'Gives you $100. You can claim it again the next day. Dailies reset at midnight in your timezone',
+  description: 'Gives you $100. You can claim it again the next day as soon as the date changes',
   usage: 'dailies',
   type: 'level/credits system'
 };

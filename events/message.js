@@ -118,9 +118,10 @@ function checkLevel(message) {
 function lvUp(row, message) {
   const expNextLv = row['level'] * 5 + 10;
   const curLv = row['level'];
+  const bonus = row['level'] + 10;
 
   if (row['exp'] >= expNextLv) {
-    main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (row['level'] + 1) } }).catch(error => console.log(error));
-    message.channel.send(`**Level up!** ${message.author.username} is now **lv.${curLv + 1}**! Yay 🎉`);
+    main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (row['level'] + 1), credits: (row['credits'] + (row['level'] + 10)) } }).catch(error => console.log(error));
+    message.channel.send(`**Level up!** ${message.author.username} is now **lv.${curLv + 1}**! 🎉 **\$${bonus}** has been added to your account as a bonus reward`);
   }
 }

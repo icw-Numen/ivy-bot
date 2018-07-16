@@ -9,7 +9,7 @@ exports.run = async (client, message) => {
     var row = res;
     var str;
     if (row) {
-      str = `${user.username}, you are currently at **lv.${row['level']}**`;
+      str = `${user.username}, you currently have **\$${row['credits']}** in your account`;
       getMoney(message, user, reactions.normal, str);
     } else {
       main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {

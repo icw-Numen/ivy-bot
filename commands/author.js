@@ -6,7 +6,7 @@ exports.run = async (client, message) => {
     .setColor(0xFF6666)
     .setTitle(`${package.author}'s Info`)
     .setThumbnail(`${client.users.find('tag', 'Numen#3815').avatarURL}`)
-    .setDescription('Just a generalist/hobbyist who happened to feel like making a bot for the sake of improving quality of life on Discord not only for himself, but also for all other users who happened to find this nice, totally not demonic maid\n\nHis dream is to continue pursuing what he feels right as a "one man army" and make this world a more exciting place\n\nFeel free to visit any of the links below; any form of support is deeply appreciated')
+    .setDescription('That\'s right, there\'s only one person working on this bot ᕙ༼ຈل͜ຈ༽ᕗ\n\nBio: Just a generalist/hobbyist who happened to feel like making a bot for the sake of improving quality of life on Discord not only for himself, but also for all other users who happened to find this nice, totally not demonic maid\n\nHis dream is to continue pursuing what he feels right as a "one man army" and make this world a more exciting place\n\nFeel free to visit any of the links below; any form of support is deeply appreciated')
     .addField('Discord tag:', 'Numen#3815')
     .addField('Discord server:', 'https://discord.gg/HVh7QcV')
     .addField('Github:', 'https://github.com/icw-Numen')

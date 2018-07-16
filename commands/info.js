@@ -12,10 +12,11 @@ exports.run = async (client, message) => {
     .setThumbnail(`${client.user.avatarURL}`)
     .setDescription(`${settings.description}\n\n (Psst! For command details, type \`${settings.prefix}help\` or \`${settings.prefix}help <commandname>\`. The prefix \`${settings.prefix2}\` is fine too if you prefer calling me by my name~ Pinging me with a command works just as fine)`)
     .addField('Prefix(es):', `\`${settings.prefix}\`,   \`${settings.prefix2}\`,   \`${settings.prefix3}\``, true)
-    .addField('Bot\'s Version:', `${package.version}`, true)
+    .addField('Bot\'s version:', `${package.version}`, true)
     .addField('Program language:', 'Javascript', true)
     .addField('Library:', 'Discord.js', true)
     .addField('Engine:', 'Node.js', true)
+    .addField('# of servers:', `${client.guilds.length}`, true)
     .addField('Github:', 'https://github.com/icw-Numen/ivy-bot')
     .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
     .setFooter(`Bot and images made with care by ${package.author}`);

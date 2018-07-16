@@ -1,6 +1,7 @@
 const main = require('../app.js');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
+const moment = require('moment');
 
 exports.run = async (client, message) => {
   const user = message.author;
@@ -23,8 +24,8 @@ exports.run = async (client, message) => {
         monies = row['credits'];
       }
 
-      str = `${user.username}, you are currently at **lv.${lv}**, and you have **${xp}/${expNextLv - xp} exp**. You have **\$${monies}** in your account`;
-      getStats(row, message, user, reactions.normal, str);
+      str = `${user.username}, these are your stats:`;
+      getStats(row, message, user, reactions.normal, str, lv, xp, monies);
     } else {
       main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
         if (error) return console.log(err);
@@ -38,12 +39,22 @@ exports.run = async (client, message) => {
 
 
 // Helper method
-function getStats(row, message, user, reaction, str) {
+function getStats(row, message, user, reaction, str, lv, xp, monies) {
+  let str2;
+  if (row['claimed'] === moment().format('L')) {
+    str2 = 'Unavailable';
+  } else {
+    str2 = 'Available';
+  }
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle(`${user.username}\'s Stats~`)
     .setThumbnail(reaction)
-    .setDescription(str);
+    .setDescription(str)
+    .addfield('Level:', `lv. ${lv}`, true)
+    .addfield('Exp:', `${xp} exp`, true)
+    .addfield('Balance:', `\$${monies}`, true)
+    .addfield('Dailies:', `${str2}`, true);
   message.channel.send({embed});
 }
 

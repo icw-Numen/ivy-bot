@@ -1,36 +1,50 @@
-
+const main = require('../app.js');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message) => {
   const user = message.user;
-  sql.get(`SELECT * FROM scores WHERE userId ="${user.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [user.id, 1, 0, 0, 0]).then(() => {
-        const embed = new RichEmbed()
-          .setColor(0xF18E8E)
-          .setTitle(`${user.username}\'s Bank Account~`)
-          .setThumbnail(reactions.smug)
-          .setDescription(`${user.username}, you currently have **\$0** in your account. Rip 💸`);
-        message.channel.send({embed});
+  main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      getMoney2(row, message);
+    } else {
+      main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+        if (error) return console.log(err);
+        getMoney1(row, message);
         return;
       });
     }
-    const embed = new RichEmbed()
-      .setColor(0xF18E8E)
-      .setTitle(`${user.username}\'s Bank Account~`)
-      .setThumbnail(reactions.normal)
-      .setDescription(`${user.username}, you currently have **\$${row.credits}** in your account`);
-    message.channel.send({embed});
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS scores (userId TEXT, exp INTEGER, level INTEGER, credits INTEGER, claimed INTEGER)').then(() => {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [user.id, 1, 0, 0, 0]);
-    });
   });
 };
 
 
+// Helper method
+function getMoney1(row, message) {
+  const user = message.author;
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setTitle(`${user.username}\'s Bank Account~`)
+    .setThumbnail(reactions.smug)
+    .setDescription(`${user.username}, you currently have **\$0** in your account. Rip 💸`);
+  message.channel.send({embed});
+  return;
+}
+
+// Helper method
+function getMoney2(row, message) {
+  const user = message.author;
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setTitle(`${user.username}\'s Bank Account~`)
+    .setThumbnail(reactions.normal)
+    .setDescription(`${user.username}, you currently have **\$${row['credits']}** in your account`);
+  message.channel.send({embed});
+}
+
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,

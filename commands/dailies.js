@@ -1,41 +1,48 @@
-
+const main = require('../app.js');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 const moment = require('moment');
 
 exports.run = async (client, message) => {
   const user = message.author;
-  sql.get(`SELECT * FROM scores WHERE userId ="${user.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [user.id, 1, 0, 0, 0]).then(() => {
-        message.channel.send(`Uwah! Something went wrong. Please try again, ${user.username}`).catch(console.error);
+  main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      runDailies(row, message);
+    } else {
+      main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+        if (error) return console.log(err);
+        runDailies(row, message);
         return;
       });
     }
-    if (row.claimed === moment().format('L')) {
-      return message.channel.send(`You have already claimed your dailies today, ${user.username}`).catch(console.error);
-    }
-
-    sql.run(`UPDATE scores SET claimed = ${moment().format('L')} WHERE userId = ${user.id}`);
-
-    const money = row.credits;
-    sql.run(`UPDATE scores SET credits = ${row.credits + 100} WHERE userId = ${user.id}`);
-
-    const embed = new RichEmbed()
-      .setColor(0xF18E8E)
-      .setTitle(`${user.username}\'s dailies~`)
-      .setThumbnail(reactions.closedeyes)
-      .setDescription(`${user.username}, **$100** has been added to your account! You now have **\$${money + 100}** 💰`);
-    message.channel.send({embed});
-  }).catch(() => {
-    // console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS scores (userId TEXT, exp INTEGER, level INTEGER, credits INTEGER, claimed INTEGER)').then(() => {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [user.id, 1, 0, 0, 0]);
-    });
   });
 };
 
 
+// Helper method
+function runDailies(row, message) {
+  const user = message.author;
+  if (row['claimed'] === moment().format('L')) {
+    return message.channel.send(`You have already claimed your dailies today, ${user.username}`).catch(console.error);
+  }
+
+  main.scores.update({ userId:user.id }, { $set: { claimed: moment().format('L') } }).catch(error => console.log(error));
+
+  const money = row['credits'];
+
+  main.scores.update({ userId:user.id }, { $set: { credits: (row['credits'] + 100) } }).catch(error => console.log(error));
+
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setTitle(`${user.username}\'s dailies~`)
+    .setThumbnail(reactions.closedeyes)
+    .setDescription(`${user.username}, **$100** has been added to your account! You now have **\$${money + 100}** 💰`);
+  message.channel.send({embed});
+}
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,

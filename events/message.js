@@ -49,23 +49,12 @@ module.exports = message => {
     var row = res;
     if (err) return console.log(err);
     if (row) {
-      expUp(row);
+      expUp(row, message);
     } else {
       main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
         if (error) return console.log(err);
-        expUp(row);
+        expUp(row, message);
       });
-    }
-
-    function expUp(row) {
-      if (!main.talkedRecently.has(message.author.id)) {
-        const time = '1 minute';
-        main.talkedRecently.add(message.author.id);
-        setTimeout(() => {
-          main.talkedRecently.delete(message.author.id);
-        }, ms(time));
-        main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
-      }
     }
   });
 
@@ -97,6 +86,18 @@ module.exports = message => {
   }
 };
 
+
+// Helper method
+function expUp(row, message) {
+  if (!main.talkedRecently.has(message.author.id)) {
+    const time = '1 minute';
+    main.talkedRecently.add(message.author.id);
+    setTimeout(() => {
+      main.talkedRecently.delete(message.author.id);
+    }, ms(time));
+    main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
+  }
+}
 
 // Helper method
 function checkLevel(message) {

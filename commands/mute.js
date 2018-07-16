@@ -12,8 +12,8 @@ exports.run = async (client, message, args) => {
 
   const guild = message.guild;
   main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
     if (row) {
       m00te(row, message, args, guild, client, user);
     } else {

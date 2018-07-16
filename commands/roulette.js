@@ -79,8 +79,8 @@ exports.run = async (client, message, args) => {
             });
 
             main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
-              var row = res;
               if (err) return console.log(err);
+              var row = res;
               if (row) {
                 rip(row, message, guild, client, user);
               } else {

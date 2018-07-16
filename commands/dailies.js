@@ -6,8 +6,8 @@ const moment = require('moment');
 exports.run = async (client, message) => {
   const user = message.author;
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
     if (row) {
       runDailies(row, message);
     } else {

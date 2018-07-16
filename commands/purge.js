@@ -1,19 +1,17 @@
-exports.run = async (client, message, args) => {
+exports.run = (client, message, args) => {
   const messageCount = parseInt(args.join(' '));
   const arg = args.join(' ');
   if (!arg.match(/bot/i) && args.length !== 0
   && !parseInt(args.join(' '))) return message.channel.send(`Please give me a valid input, ${message.author.username}`).catch(console.error);
 
   if (arg.match(/bot/i)) {
-    message.channel.fetchMessages({limit: messageCount}).then(messages => {
+    return message.channel.fetchMessages({limit: messageCount}).then(messages => {
       messages = messages.filter(message => message.author.bot);
       message.channel.bulkDelete(messages);
     });
-
-    return;
   }
 
-  message.channel.fetchMessages({limit: messageCount})
+  return message.channel.fetchMessages({limit: messageCount})
     .then(messages => {
       if (arg.match(/bot/i)) {
         messages = messages.filter(message => message.author.bot);

@@ -51,10 +51,10 @@ function getStats(row, message, user, reaction, str, lv, xp, monies) {
     .setTitle(`${user.username}\'s Stats~`)
     .setThumbnail(reaction)
     .setDescription(str)
-    .addfield('Level:', `lv. ${lv}`, true)
-    .addfield('Exp:', `${xp} exp`, true)
-    .addfield('Balance:', `\$${monies}`, true)
-    .addfield('Dailies:', `${str2}`, true);
+    .addField('Level:', `lv. ${lv}`, true)
+    .addField('Exp:', `${xp} exp`, true)
+    .addField('Balance:', `\$${monies}`, true)
+    .addField('Dailies:', `${str2}`, true);
   message.channel.send({embed});
 }
 

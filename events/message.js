@@ -129,8 +129,8 @@ function lvUp(row, message) {
       .setTitle('Level up!~')
       .setThumbnail(reactions.wink1)
       .setDescription(`${message.author.username} is now **lv. ${curLv + 1}**! 🎉\n\n**\$${bonus}** has been awarded as a bonus reward`)
-      .addfield('Level:', `lv. ${curLv + 1}`, true)
-      .addfield('Balance:', `\$${row['credits'] + row['level'] + 10}`, true);
+      .addField('Level:', `lv. ${curLv + 1}`, true)
+      .addField('Balance:', `\$${row['credits'] + row['level'] + 10}`, true);
     message.channel.send({embed});
   }
 }

@@ -60,8 +60,8 @@ function getServerStats(row, message, user, reaction, str) {
     .setThumbnail(reaction)
     .setDescription(str)
     .addField('Autorole:', `#${strA}`, true)
-    .addField('Welcome:', `#${strW}`, true)
-    .addField('Goodbye:', `#${strG}`, true)
+    .addField('Welcome channel:', `#${strW}`, true)
+    .addField('Goodbye channel:', `#${strG}`, true)
     .addField('Mod/Bot logs:', `#${strM}`, true);
   message.channel.send({embed});
 }

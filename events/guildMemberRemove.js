@@ -3,8 +3,8 @@ const main = require('../app.js');
 module.exports = member => {
   const guild = member.guild;
   main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
     if (row) {
       memRem(row, member, guild);
     } else {

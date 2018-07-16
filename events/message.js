@@ -48,8 +48,8 @@ module.exports = message => {
   }
 
   main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
     if (row) {
       expUp(row, message);
     } else {
@@ -103,8 +103,8 @@ function expUp(row, message) {
 // Helper method
 function checkLevel(message) {
   main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
     if (row) {
       lvUp(row, message);
     } else {

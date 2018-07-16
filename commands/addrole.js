@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
           .setColor(0xF18E8E)
           .setTitle('Role added~')
           .setThumbnail(reactions.wink)
-          .setDescription(`Role ${role.name} successfully added to you, ${message.author.username}~`);
+          .setDescription(`${message.author.username}, role **${role.name}** has been assigned to you sucessfully`);
         message.channel.send({embed});
       }
     }).catch(console.error);

@@ -7,8 +7,8 @@ module.exports = (oMessage, nMessage) => {
   const client = oMessage.client;
 
   main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
     if (row) {
       msgUpdt(row, oMessage, nMessage, guild, client);
     } else {

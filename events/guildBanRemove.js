@@ -4,8 +4,8 @@ const main = require('../app.js');
 // when someone gets unhammered
 module.exports = (guild, user) => {
   main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
     if (row) {
       unbanned(row, guild, user);
     } else {

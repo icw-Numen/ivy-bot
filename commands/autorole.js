@@ -1,40 +1,49 @@
 const {RichEmbed} = require('discord.js');
-
+const main = require('../app.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
   const role = message.guild.roles.find('name', `${args[0]}`);
   if (args.length > 1 || (args.length === 1 && !role)) return message.channel.send(`${message.author.username}, please enter a valid role`).catch(console.error);
 
-  sql.get(`SELECT * FROM channels WHERE guildId ="${message.guild.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [message.guild.id, '', '', '', '']).then(() => {
-        message.channel.send(`Uwah! Something went wrong. Please try again, ${message.author.username}`);
-      });
+  const guild = message.guild;
+  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      setAutorole(row, message, args);
     } else {
-      if (args.length === 1) {
-        sql.run(`UPDATE channels SET autorole = '${args[0]}' WHERE guildId = ${message.guild.id}`);
-        message.channel.send(`The default role was successfully set to **${args[0]}**, ${message.author.username}`);
-      } else
-      if (args.length === 0) {
-        sql.run(`UPDATE channels SET autorole = '' WHERE guildId = ${message.guild.id}`);
-
-        const embed = new RichEmbed()
-          .setColor(0xF18E8E)
-          .setTitle('Autorole set~')
-          .setThumbnail(reactions.wink)
-          .setDescription(`The default role was successfully reset to none, ${message.author.username}`);
-        message.channel.send({embed});
-      }
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+        if (error) return console.log(err);
+        setAutorole(row, message, args);
+        return;
+      });
     }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS channels (guildId TEXT, welcome TEXT, goodbye TEXT, modlog TEXT, autorole TEXT, muted TEXT)').then(() => {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [message.guild.id, '', '', '', '']);
-    });
   });
 };
 
+
+// Helper method
+function setAutorole(row, message, args) {
+  const guild = message.guild;
+  if (args.length === 1) {
+    main.guildsettings.update({ guildId: guild.id }, { $set: { autorole: (args[0]) } }).catch(error => console.log(error));
+    message.channel.send(`The default role was successfully set to **${args[0]}**, ${message.author.username}`);
+  } else
+  if (args.length === 0) {
+    main.guildsettings.update({ guildId: guild.id }, { $set: { autorole: '' } }).catch(error => console.log(error));   
+
+    const embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setTitle('Autorole set~')
+      .setThumbnail(reactions.wink)
+      .setDescription(`The default role was successfully reset to none, ${message.author.username}`);
+    message.channel.send({embed});
+  }
+}
+
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,

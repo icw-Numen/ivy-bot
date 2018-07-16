@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
       message.channel.bulkDelete(messages);
     });
 
-    //return new Promise(function(res) {console.log(res);});
+    return;
   }
 
   message.channel.fetchMessages({limit: messageCount})
@@ -20,8 +20,6 @@ exports.run = async (client, message, args) => {
       }
       message.channel.bulkDelete(messages);
     });
-
-  //return new Promise(function(res) {console.log(res);});
 };
 
 

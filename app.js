@@ -29,7 +29,7 @@ const uri = process.env.MONGODB_URI2;
 //   }
 // ];
 
-mongodb.MongoClient.connect(uri, { useNewUrlPaser: true}, function(err, client) {
+mongodb.MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
   if (err) throw err;
 
   const db = client.db('ivy-bot-db');

@@ -9,7 +9,7 @@ exports.run = async (client, message) => {
         .setColor(0xF18E8E)
         .setTitle('Server Invite~')
         .setThumbnail(reactions.normal)
-        .setDescription(`Here\'s this server's invitation link, ${message.author.username}:\n${invite.url}`);
+        .setDescription(`Here\'s this server's invitation link, ${message.author.username}:\n\n${invite.url}`);
       message.channel.send({embed}).catch(error => {return message.channel.send(`Oops, it seems I\'m unable to create an invite at the moment, ${user.username}`).catch(error);});
     });
 };

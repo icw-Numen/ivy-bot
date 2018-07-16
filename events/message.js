@@ -1,6 +1,8 @@
 const settings = require('../settings.json');
 const main = require('../app.js');
 const ms = require('ms');
+const {RichEmbed} = require('discord.js');
+const reactions = require('../reactions.json');
 
 // message event handler
 module.exports = message => {
@@ -122,6 +124,13 @@ function lvUp(row, message) {
 
   if (row['exp'] >= expNextLv) {
     main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (row['level'] + 1), credits: (row['credits'] + (row['level'] + 10)) } }).catch(error => console.log(error));
-    message.channel.send(`**Level up!** ${message.author.username} is now **lv.${curLv + 1}**! 🎉 **\$${bonus}** has been added to your account as a bonus reward`);
+    const embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setTitle('Level up!~')
+      .setThumbnail(reactions.wink1)
+      .setDescription(`${message.author.username} is now **lv. ${curLv + 1}**! 🎉\n\n**\$${bonus}** has been awarded as a bonus reward`)
+      .addfield('Level:', `lv. ${curLv + 1}`, true)
+      .addfield('Balance:', `\$${row['credits'] + row['level'] + 10}`, true);
+    message.channel.send({embed});
   }
 }

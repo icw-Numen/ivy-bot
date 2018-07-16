@@ -1,7 +1,7 @@
 const sql = require('sqlite');
-const ms = require('ms');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
+const moment = require('moment');
 
 exports.run = async (client, message) => {
   const user = message.author;
@@ -12,18 +12,15 @@ exports.run = async (client, message) => {
         return;
       });
     }
-    if (row.claimed === 1) {
+    if (row.claimed === moment().format('L')) {
       return message.channel.send(`You have already claimed your dailies today, ${user.username}`).catch(console.error);
     }
 
-    const time = '1 day';
+    sql.run(`UPDATE scores SET claimed = ${moment().format('L')} WHERE userId = ${user.id}`);
 
-    sql.run(`UPDATE scores SET claimed = 1 WHERE userId = ${user.id}`);
-    setTimeout(() => {
-      sql.run(`UPDATE scores SET claimed = 0 WHERE userId = ${user.id}`);
-    }, ms(time));
     const money = row.credits;
     sql.run(`UPDATE scores SET credits = ${row.credits + 100} WHERE userId = ${user.id}`);
+
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle(`${user.username}\'s dailies~`)

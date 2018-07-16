@@ -8,6 +8,39 @@ const moment = require('moment');
 const sql = require('sqlite');
 sql.open('./scores.sqlite');
 sql.open('./guildsettings.sqlite');
+exports.scores;
+exports.guildsettings;
+
+const mongodb = require('mongodb');
+const uri = process.env.MONGODB_URI2;
+// const seedData = [
+//   {
+//     userId: '',
+//     exp: '',
+//     level: '',
+//     credits: '',
+//     claimed: ''
+//   }
+// ];
+// const seedData2 = [
+//   {
+//     guildId: '',
+//     welcome: '',
+//     goodbye: '',
+//     modlog: '',
+//     autorole: ''
+//   }
+// ];
+
+mongodb.MongoClient.connect(uri, function(err, client) {
+  if (err) throw err;
+
+  const db = client.db('ivy-bot-db');
+
+  exports.scores = db.collection('scores');
+  exports.guildsettings = db.collection('guildsettings');
+});
+
 
 exports.talkedRecently = new Set();
 
@@ -16,6 +49,7 @@ exports.servers = {};
 
 //for game sessions (WIP)
 exports.serversR = {};
+
 
 require('./util/eventLoader')(client);
 
@@ -30,7 +64,7 @@ client.aliases = new Discord.Collection();
 fs.readdir('./commands/', (err, files) => {
   if (err) console.error(err);
   log(`Loading a total of ${files.length} commands.`);
-  files.forEach(f => {    
+  files.forEach(f => {
     const props = require(`./commands/${f}`);
     log(`Loading Command: ${props.help.name}. 👌`);
     client.commands.set(props.help.name, props);

@@ -1,5 +1,4 @@
 const settings = require('../settings.json');
-const sql = require('sqlite');
 const main = require('../app.js');
 const ms = require('ms');
 
@@ -46,34 +45,27 @@ module.exports = message => {
     if (message.channel.type === 'dm') return;
   }
 
-  sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]);
+  main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
+    if (err) return console.log(err);
+    if (res) {
+      expUp();
+    } else {
+      main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+        if (error) return console.log(err);
+        expUp();
+      });
     }
-    if (!main.talkedRecently.has(message.author.id)) {
-      const time = '1 minute';
-      main.talkedRecently.add(message.author.id);
-      setTimeout(() => {
-        main.talkedRecently.delete(message.author.id);
-      }, ms(time));
-      sql.run(`UPDATE scores SET exp = ${row.exp + 1} WHERE userId = ${message.author.id}`);
-    }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS scores (userId TEXT, exp INTEGER, level INTEGER, credits INTEGER, claimed INTEGER)').then(() => {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]);
-    });
-  });
 
-  sql.get(`SELECT * FROM channels WHERE guildId ="${message.guild.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [message.guild.id, '', '', '', '', '']);
+    function expUp() {
+      if (!main.talkedRecently.has(message.author.id)) {
+        const time = '1 minute';
+        main.talkedRecently.add(message.author.id);
+        setTimeout(() => {
+          main.talkedRecently.delete(message.author.id);
+        }, ms(time));
+        main.scores.update({ userId: message.author.id }, { $set: { exp: (res['exp'] + 1) } }).catch(error => console.log(error));
+      }
     }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS channels (guildId TEXT, welcome TEXT, goodbye TEXT, modlog TEXT, autorole TEXT, muted TEXT)').then(() => {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [message.guild.id, '', '', '', '', '']);
-    });
   });
 
   // if a message does not start with the bot prefix, the bot will ignore it
@@ -98,24 +90,32 @@ module.exports = message => {
   }
   if (cmd) {
     if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${message.author.username}`);
-    cmd.run(client, message, args, perms);
+    cmd.run(client, message, args, perms).then(checkLevel());
+  } else {
+    checkLevel();
   }
 
-  sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]);
-    }
-    const expNextLv = row.level * 5 + 10;
-    const curLv = row.level;
+  function checkLevel() {
+    main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
+      if (err) return console.log(err);
+      if (res) {
+        lvUp();
+      } else {
+        main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+          if (error) return console.log(err);
+          lvUp();
+        });
+      }
 
-    if (row.exp >= expNextLv) {
-      sql.run(`UPDATE scores SET exp = 0, level = ${row.level + 1} WHERE userId = ${message.author.id}`);
-      message.channel.send(`**Level up!** ${message.author.username} is now **lv.${curLv + 1}**! Yay 🎉`);
-    }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS scores (userId TEXT, exp INTEGER, level INTEGER, credits INTEGER, claimed INTEGER)').then(() => {
-      sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]);
+      function lvUp() {
+        const expNextLv = res['level'] * 5 + 10;
+        const curLv = res['level'];
+
+        if (res['exp'] >= expNextLv) {
+          main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (res['level'] + 1) } }).catch(error => console.log(error));
+          message.channel.send(`**Level up!** ${message.author.username} is now **lv.${curLv + 1}**! Yay 🎉`);
+        }
+      }
     });
-  });
+  }
 };

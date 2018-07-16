@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
 
   if ((args[1] && !parseInt(args[1]) && !args[0].match(/safe/i)) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 5 ||
   args.length > 3) {
-    return message.channel.send(`Please give me a valid number of pulls (1 ~ 5), ${player}`).catch(console.error);
+    return message.channel.send(`Please give me a valid number of trigger pulls (1 ~ 5), ${player}`).catch(console.error);
   }
 
   var fired = 0;
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
             .setColor(0xF18E8E)
             .setTitle('Victory~')
             .setThumbnail(reactions.wink1)
-            .setDescription(`Huzzah! 🎉  |  ${player} has pulled the trigger ${pulls} times without getting shot!`);
+            .setDescription(`Huzzah! 🎉  |  ${player} has loaded **${bullets}** and pulled the trigger **${pulls}** times without getting shot!`);
           message.channel.send({embed});
 
           if (!(args.join(' ').includes('safe') && args.join(' ').includes('Safe')) && message.guild.member(message.author).kickable) {
@@ -94,7 +94,7 @@ exports.run = async (client, message, args) => {
             const embed = new RichEmbed()
               .setColor(0xF18E8E)
               .setThumbnail(reactions.smug1)
-              .setDescription(`***\\*BANG!!\\**** 🔫  |\n\nOof! ${player} has fired the gun, but survived with no major injuries!`);
+              .setDescription(`***BANG!!*** 🔫  |\n\nOof! ${player} has fired the gun, but survived with no major injuries!`);
             message.channel.send({embed});
             return;
           }
@@ -127,14 +127,14 @@ function ripScore(row, message, user, player) {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setThumbnail(reactions.smug2)
-      .setDescription(`***\\*BANG!!\\**** 🔫  |\n\nOh no! ${player} got badly wounded and has to leave immediately!`);
+      .setDescription(`***BANG!!*** 🔫  |\n\nOh no! ${player} got badly wounded and has to leave immediately!`);
     message.channel.send({embed});
   } else {
     main.scores.update({ userId: user.id }, { $set: { credits: (row['credits'] - 10) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setThumbnail(reactions.smug2)
-      .setDescription(`***\\*BANG!!\\**** 🔫  |\n\nOh no! ${player} got badly wounded and lost **$10**!`);
+      .setDescription(`***BANG!!*** 🔫  |\n\nOh no! ${player} got badly wounded and lost **$10**!`);
     message.channel.send({embed});
   }
 }

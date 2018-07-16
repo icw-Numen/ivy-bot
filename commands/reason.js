@@ -51,7 +51,7 @@ async function setReason(row, message, args, guild, client, caseNumber, newReaso
       modlog.fetchMessage(caselog.id).then(logMsg => {
         const embed = logMsg.embeds[0];
         embedSan(embed);
-        embed.description = embed.description.replace(`No reason (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`, newReason);
+        embed.description = embed.description.replace(`No reason\n(use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`, newReason);
         logMsg.edit({embed});
       });
     });

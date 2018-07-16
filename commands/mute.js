@@ -52,7 +52,7 @@ function m00te(row, message, args, guild, client, user) {
     let str3;
     if (message.guild.member(user).roles.has(muterole.id)) {
       str2 = 'Unmute Successful~';
-      str3 = `**Action:** Unmute\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason} (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`;
+      str3 = `**Action:** Unmute\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}\n(use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`;
       if (modlog) {
         str = `**${user.username}** has been unmuted, ${message.author.username}. For more details, head over to #${modlog.name}`;
       } else {
@@ -64,7 +64,7 @@ function m00te(row, message, args, guild, client, user) {
       });
     } else {
       str2 = 'Mute Successful~';
-      str3 = `**Action:** Mute\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason} (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`;
+      str3 = `**Action:** Mute\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}\n(use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`;
       if (modlog) {
         str = `**${user.username}** has been muted, ${message.author.username}. For more details, head over to #${modlog.name}`;
       } else {

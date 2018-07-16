@@ -9,7 +9,8 @@ exports.run = (client, message, args) => {
       messages = messages.filter(message => message.author.bot);
       message.channel.bulkDelete(messages);
     });
-    return 1;
+
+    return new Promise(function(res) {console.log(res);});
   }
 
   message.channel.fetchMessages({limit: messageCount})
@@ -20,7 +21,9 @@ exports.run = (client, message, args) => {
       message.channel.bulkDelete(messages);
     });
 
-  return 1;
+
+  // this is to make that annoying error go away
+  return new Promise(function(res) {console.log(res);});
 };
 
 

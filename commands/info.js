@@ -22,7 +22,7 @@ exports.run = async (client, message) => {
     .addField('Three sizes:', 'B: [Christian manga], W: [Redacted],\nH: [Censored]', true)
     .addField('Github:', 'https://github.com/icw-Numen/ivy-bot')
     .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
-    .setFooter(`Bot and artwork/icons made with care by ${package.author}`);
+    .setFooter(`Bot and icons/art made with care by ${package.author}`);
   return message.channel.send({embed});
 };
 

@@ -10,24 +10,6 @@ exports.guildsettings;
 
 const mongodb = require('mongodb');
 const uri = process.env.MONGODB_URI;
-// const seedData = [
-//   {
-//     userId: '',
-//     exp: '',
-//     level: '',
-//     credits: '',
-//     claimed: ''
-//   }
-// ];
-// const seedData2 = [
-//   {
-//     guildId: '',
-//     welcome: '',
-//     goodbye: '',
-//     modlog: '',
-//     autorole: ''
-//   }
-// ];
 
 mongodb.MongoClient.connect(uri, { useNewUrlParser: true }, function(err, client) {
   if (err) throw err;

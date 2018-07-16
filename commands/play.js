@@ -3,12 +3,13 @@ const {playHelper} = require('../util/playHelper.js');
 const {getInfo} = require('ytdl-getinfo');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
+const settings = require('../settings.json');
 
 exports.run = async (client, message, args) => {
   const user = message.author;
 
   if (!message.member.voiceChannel) {
-    return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
+    return message.channel.send(`Please join a voice channel first and then add me with \`${settings.prefix}join\`, ${user.username}`).catch(console.error);
   }
 
   const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;

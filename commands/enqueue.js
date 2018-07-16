@@ -21,11 +21,6 @@ exports.run = async (client, message, args) => {
   }
 
   const server = main.servers[message.guild.id];
-
-  if (server.vc === '') {
-    return message.channel.send(`Please add me to a voice channel first, ${message.author.username}`).catch(console.error);
-  }
-
   if (args.length === 0) {
     return message.channel.send(`Please give me a link so I can add it to the queue, ${user.username}`).catch(console.error);
   }

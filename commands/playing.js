@@ -2,10 +2,11 @@ const main = require('../app.js');
 const {RichEmbed} = require('discord.js');
 const {getInfo} = require('ytdl-getinfo');
 const reactions = require('../reactions.json');
+const settings = require('../settings.json');
 
 exports.run = async (client, message) => {
   if (!message.member.voiceChannel) {
-    return message.channel.send(`Please join a voice channel first, ${message.author.username}`).catch(console.error);
+    return message.channel.send(`Please join a voice channel first and then add me with \`${settings.prefix}join\`, ${message.author.username}`).catch(console.error);
   }
 
   if (!main.servers[message.guild.id]) {

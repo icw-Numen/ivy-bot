@@ -3,7 +3,7 @@ const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message) => {
-  const user = message.user;
+  const user = message.author;
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
     var row = res;
     if (err) return console.log(err);

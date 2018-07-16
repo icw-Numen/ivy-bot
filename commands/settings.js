@@ -77,7 +77,7 @@ exports.conf = {
 
 exports.help = {
   name: 'settings',
-  description: 'Shows current server settings set by the bot',
+  description: 'Shows current server settings set by the bot.\n**Note that, in order to keep the database as small as possible, these settings will be deleted from the DB if Ivy gets kicked/banned from the respective server**',
   usage: 'settings',
   type: 'server'
 };

@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
   const messageCount = parseInt(args.join(' '));
   const arg = args.join(' ');
   if (!arg.match(/bot/i) && args.length !== 0
@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
       message.channel.bulkDelete(messages);
     });
 
-    return new Promise(function(res) {console.log(res);});
+    //return new Promise(function(res) {console.log(res);});
   }
 
   message.channel.fetchMessages({limit: messageCount})
@@ -21,9 +21,7 @@ exports.run = (client, message, args) => {
       message.channel.bulkDelete(messages);
     });
 
-
-  // this is to make that annoying error go away
-  return new Promise(function(res) {console.log(res);});
+  //return new Promise(function(res) {console.log(res);});
 };
 
 

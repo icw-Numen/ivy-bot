@@ -94,12 +94,12 @@ exports.run = async (client, message, args) => {
             const embed = new RichEmbed()
               .setColor(0xF18E8E)
               .setThumbnail(reactions.smug1)
-              .setDescription(`**_\*BANG!!\*_** 🔫  |\n\nOof! ${player} has fired the gun, but survived with no major injuries!`);
+              .setDescription(`**_\\*BANG!!\\*_** 🔫  |\n\nOof! ${player} has fired the gun, but survived with no major injuries!`);
             message.channel.send({embed});
             return;
           }
         } else if (fired === 0) {
-          message.channel.send('_\*click\*_ 🔫  |  ...');
+          message.channel.send('_\\*click\\*_ 🔫  |  ...');
         }
       }, 1000 * i);
     }(i));
@@ -127,14 +127,14 @@ function ripScore(row, message, user, player) {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setThumbnail(reactions.smug2)
-      .setDescription(`**_\*BANG\*_** 🔫  |\n\nOh no! ${player} got badly wounded and has to leave immediately!`);
+      .setDescription(`**_\\*BANG\\*_** 🔫  |\n\nOh no! ${player} got badly wounded and has to leave immediately!`);
     message.channel.send({embed});
   } else {
     main.scores.update({ userId: user.id }, { $set: { credits: (row['credits'] - 10) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setThumbnail(reactions.smug2)
-      .setDescription(`**_\*BANG\*_** 🔫  |\n\nOh no! ${player} got badly wounded and lost **$10**!`);
+      .setDescription(`**_\\*BANG\\*_** 🔫  |\n\nOh no! ${player} got badly wounded and lost **$10**!`);
     message.channel.send({embed});
   }
 }

@@ -58,7 +58,7 @@ function kek(row, message, args, guild, client, user) {
       embed = new RichEmbed()
         .setColor(0xF18E8E)
         .setTimestamp()
-        .setDescription(`**Action:** Kick\n**Target:** ${user.tag} (User ID: ${user.id})\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}\n(use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`)
+        .setDescription(`**Action:** Kick\n**Target:** ${user.tag} (User ID: ${user.id})\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}\n\n(Tip: Use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`)
         .setFooter(`Case ${num}`);
       return client.channels.get(modlog.id).send({embed});
     }

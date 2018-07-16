@@ -2,7 +2,7 @@ const {RichEmbed} = require('discord.js');
 const {caseNumber} = require('../util/caseNumber.js');
 const {parseUser} = require('../util/parseUser.js');
 const settings = require('../settings.json');
-
+const main = require('../app.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
@@ -10,70 +10,93 @@ exports.run = async (client, message, args) => {
   const user = message.mentions.users.first();
   if (!parseUser(message, user)) return;
 
-  const server = message.guild;
-
-  sql.get(`SELECT * FROM channels WHERE guildId ="${server.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-      message.channel.send(`Please set a log channel with "${settings.prefix}modlog <channel>" first, ${message.author.username}`).catch(console.error);
+  const guild = message.guild;
+  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      m00te(row, message, args, guild, client, user);
     } else {
-      const modlog = server.channels.find('name', row.modlog);
-
-      if (!modlog) return message.channel.send(`Please set a log channel with "${settings.prefix}modlog <channel>" first, ${message.author.username}`).catch(console.error);
-
-      caseNumber(client, modlog).then(num => {
-        if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES') || message.guild.member(client.user).permissions < user.permissions) {
-          return message.channel.send(`Oops, it seems I don\'t have the correct permissions, ${message.author.username}`).catch(console.error);
-        }
-
-        let muterole = message.guild.roles.find('name', 'Muted');
-        if (!muterole) muterole = message.guild.roles.find('name', 'muted');
-
-        if (!muterole) {
-          message.guild.createRole({name: 'Muted', color: [0, 0, 0], permissions: 0}).then(role => {
-            message.channel.send('I couldn\'t find a muted role, creating muted role...').catch(console.error);
-            muterole = role;
-          });
-        }
-
-        const reason = args.splice(1, args.length).join(' ') || `No reasons given (use ${settings.prefix}reason <case number> <reason> to set a reason for this action)`;
-
-        if (!user.bot) user.send(`You have been muted for: ${reason}`);
-
-        let embed = new RichEmbed()
-          .setColor(0xF18E8E)
-          .setTitle('Mute/Unmute Successful~')
-          .setThumbnail(reactions.smug2)
-          .setDescription(`${user.username} has been muted. For more details, head over to #${modlog.name}`);
-        message.channel.send({embed});
-
-        embed = new RichEmbed()
-          .setColor(0xF18E8E)
-          .setTimestamp()
-          .setDescription(`**Action:** Mute\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}`)
-          .setFooter(`Case ${num}`);
-
-        if (message.guild.member(user).roles.has(muterole.id)) {
-          message.guild.member(user).removeRole(muterole).then(() => {
-            if (!user.bot) user.send(`You have been unmuted for: ${reason}`);
-            client.channels.get(modlog.id).send({embed});
-          });
-        } else {
-          message.guild.member(user).addRole(muterole).then(() => {
-            if (!user.bot) user.send(`You have been muted for: ${reason}`);
-            client.channels.get(modlog.id).send({embed});
-          }).catch(console.error);
-        }
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+        if (error) return console.log(err);
+        m00te(row, message, args, guild, client, user);
+        return;
       });
     }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS channels (guildId TEXT, welcome TEXT, goodbye TEXT, modlog TEXT, autorole TEXT, muted TEXT)').then(() => {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-    });
   });
 };
 
+
+// Helper method
+function m00te(row, message, args, guild, client, user) {
+  const modlog = guild.channels.find('name', row['modlog']);
+
+  caseNumber(client, modlog).then(num => {
+    if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES') || message.guild.member(client.user).permissions < user.permissions) {
+      return message.channel.send(`Oops, it seems I don\'t have the correct permissions, ${message.author.username}`).catch(console.error);
+    }
+
+    let muterole = message.guild.roles.find('name', 'Muted');
+    if (!muterole) muterole = message.guild.roles.find('name', 'muted');
+
+    if (!muterole) {
+      message.guild.createRole({name: 'Muted', color: [0, 0, 0], permissions: 0}).then(role => {
+        message.channel.send('I couldn\'t find a muted role, creating muted role...').catch(console.error);
+        muterole = role;
+      });
+    }
+
+    const reason = args.splice(1, args.length).join(' ') || 'No reason';
+    let str;
+    let str2;
+    let str3;
+    if (message.guild.member(user).roles.has(muterole.id)) {
+      str2 = 'Unmute Successful~';
+      str3 = `**Action:** Unmute\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason} (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`;
+      if (modlog) {
+        str = `**${user.username}** has been unmuted, ${message.author.username}. For more details, head over to #${modlog.name}`;
+      } else {
+        str = `**${user.username}** has been unmuted, ${message.author.username}`;
+      }
+
+      message.guild.member(user).removeRole(muterole).then(() => {
+        if (!user.bot) user.send(`You have been unmuted for: ${reason}`);
+      });
+    } else {
+      str2 = 'Mute Successful~';
+      str3 = `**Action:** Mute\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason} (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`;
+      if (modlog) {
+        str = `**${user.username}** has been muted, ${message.author.username}. For more details, head over to #${modlog.name}`;
+      } else {
+        str = `**${user.username}** has been muted, ${message.author.username}`;
+      }
+
+      message.guild.member(user).addRole(muterole).then(() => {
+        if (!user.bot) user.send(`You have been muted for: ${reason}`);
+      });
+    }
+
+
+    let embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setTitle(str2)
+      .setThumbnail(reactions.smug2)
+      .setDescription(str);
+    message.channel.send({embed});
+
+    if (modlog) {
+      embed = new RichEmbed()
+        .setColor(0xF18E8E)
+        .setTimestamp()
+        .setDescription(str3)
+        .setFooter(`Case ${num}`);
+      client.channels.get(modlog.id).send({embed});
+    }
+  });
+}
+
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,

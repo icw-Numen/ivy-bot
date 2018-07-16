@@ -2,7 +2,7 @@ const {RichEmbed} = require('discord.js');
 const {caseNumber} = require('../util/caseNumber.js');
 const {parseUser} = require('../util/parseUser.js');
 const settings = require('../settings.json');
-
+const main = require('../app.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
@@ -10,50 +10,56 @@ exports.run = async (client, message, args) => {
   if (message.mentions.users.size < 1) return message.channel.send(`Please mention someone so I can warn them for you, ${message.author.username}`).catch(console.error);
   if (!parseUser(message, user)) return;
 
-  const server = message.guild;
-
-  sql.get(`SELECT * FROM channels WHERE guildId ="${server.id}"`).then(row => {
-    if (!row) {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-      message.channel.send(`Please set a log channel with "${settings.prefix}modlog <channel>" first, ${message.author.username}`).catch(console.error);
+  const guild = message.guild;
+  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      giveWarning(row, message, args, guild, client, user);
     } else {
-      const modlog = client.channels.find('name', `${row.modlog}`);
-
-      if (!modlog) return message.channel.send(`Oops, I couldn\'t find a mod-log channel, ${message.author.username}`).catch(console.error);
-
-      caseNumber(client, modlog).then(num => {
-        const reason = args.splice(1, args.length).join(' ') || `No reasons given. Use ${settings.prefix}reason ${num} <reason>`;
-
-        if (!user.bot) user.send(`You have been warned for: ${reason}`);
-
-        let embed = new RichEmbed()
-          .setColor(0xF18E8E)
-          .setTitle('Warn Successful~')
-          .setThumbnail(reactions.smug2)
-          .setDescription(`${user.username} has been warned. For more details, head over to #${modlog.name}`);
-        message.channel.send({embed});
-
-        embed = new RichEmbed()
-          .setColor(0xF18E8E)
-          .setTimestamp()
-          .setDescription(`**Action:** Warning\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}`)
-          .setFooter(`Case ${num}`);
-
-        return client.channels.get(modlog.id).send({embed});
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+        if (error) return console.log(err);
+        giveWarning(row, message, args, guild, client, user);
+        return;
       });
     }
-  }).catch(() => {
-    console.error;
-    sql.run('CREATE TABLE IF NOT EXISTS channels (guildId TEXT, welcome TEXT, goodbye TEXT, modlog TEXT, autorole TEXT, muted TEXT)').then(() => {
-      sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-    });
   });
 };
 
+
+// Helper method
+function giveWarning(row, message, args, guild, client, user) {
+  const modlog = client.channels.find('name', row['modlog']);
+
+  caseNumber(client, modlog).then(num => {
+    const reason = args.splice(1, args.length).join(' ') || 'No reason';
+
+    if (!user.bot) user.send(`You have been warned for: ${reason}`);
+
+    let embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setTitle('Warn Successful~')
+      .setThumbnail(reactions.smug2)
+      .setDescription(`${user.username} has been warned. For more details, head over to #${modlog.name}`);
+    message.channel.send({embed});
+
+    if (modlog) {
+      embed = new RichEmbed()
+        .setColor(0xF18E8E)
+        .setTimestamp()
+        .setDescription(`**Action:** Warning\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason} (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`)
+        .setFooter(`Case ${num}`);
+      return client.channels.get(modlog.id).send({embed});
+    }
+  });
+}
+
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['warning'],
+  aliases: ['warning', 'alert'],
   permLevel: 2
 };
 

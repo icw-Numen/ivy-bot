@@ -1,4 +1,5 @@
 const settings = require('../settings.json');
+const main = require('../app.js');
 
 async function embedSan(embed) {
   embed.message ? delete embed.message : null;
@@ -15,30 +16,50 @@ exports.run = async (client, message, args) => {
   const caseNumber = args.shift();
   const newReason = args.join(' ');
 
-  // bad idea to use channels.find for multiple guilds, change later for multiguild
-  const modlog = message.guild.channels.find('name', 'bot-mod-logs');
-
-  await modlog.fetchMessages({
-    limit: 100
-  }).then((messages) => {
-    const caselog = messages.filter(m => m.author.id === client.user.id &&
-      m.embeds[0] &&
-      m.embeds[0].type === 'rich' &&
-      m.embeds[0].footer &&
-      m.embeds[0].footer.text.startsWith('Case') &&
-      m.embeds[0].footer.text === `Case ${caseNumber}`
-    ).first();
-    modlog.fetchMessage(caselog.id).then(logMsg => {
-      const embed = logMsg.embeds[0];
-      embedSan(embed);
-      embed.description = embed.description.replace(`No reasons given (use ${settings.prefix}reason <case number> <reason> to set a reason for this action)`, newReason);
-      logMsg.edit({embed});
-    });
+  const guild = message.guild;
+  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      setReason(row, message, args, guild, client, caseNumber, newReason);
+    } else {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+        if (error) return console.log(err);
+        setReason(row, message, args, guild, client, caseNumber, newReason);
+        return;
+      });
+    }
   });
-
 };
 
 
+// Helper method
+async function setReason(row, message, args, guild, client, caseNumber, newReason) {
+  const modlog = guild.channels.find('name', row['modlog']);
+
+  if (modlog) {
+    await modlog.fetchMessages({
+      limit: 100
+    }).then((messages) => {
+      const caselog = messages.filter(m => m.author.id === client.user.id &&
+        m.embeds[0] &&
+        m.embeds[0].type === 'rich' &&
+        m.embeds[0].footer &&
+        m.embeds[0].footer.text.startsWith('Case') &&
+        m.embeds[0].footer.text === `Case ${caseNumber}`
+      ).first();
+      modlog.fetchMessage(caselog.id).then(logMsg => {
+        const embed = logMsg.embeds[0];
+        embedSan(embed);
+        embed.description = embed.description.replace(`No reason (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`, newReason);
+        logMsg.edit({embed});
+      });
+    });
+  }
+}
+
+
+// Command metadata
 exports.conf = {
   aliases: ['setreason'],
   permLevel: 2

@@ -5,9 +5,6 @@ const client = new Discord.Client();
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
-const sql = require('sqlite');
-sql.open('./scores.sqlite');
-sql.open('./guildsettings.sqlite');
 exports.scores;
 exports.guildsettings;
 

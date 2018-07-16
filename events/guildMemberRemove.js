@@ -1,4 +1,4 @@
-const sql = require('sqlite');
+
 
 module.exports = member => {
   const server = member.guild;

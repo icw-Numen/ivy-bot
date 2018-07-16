@@ -1,5 +1,5 @@
 const {RichEmbed} = require('discord.js');
-const sql = require('sqlite');
+
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {

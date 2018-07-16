@@ -1,4 +1,4 @@
-const sql = require('sqlite');
+
 const {caseNumber} = require('../util/caseNumber.js');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');

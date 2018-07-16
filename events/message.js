@@ -46,24 +46,25 @@ module.exports = message => {
   }
 
   main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
+    var row = res;
     if (err) return console.log(err);
-    if (res) {
-      expUp();
+    if (row) {
+      expUp(row);
     } else {
       main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
         if (error) return console.log(err);
-        expUp();
+        expUp(row);
       });
     }
 
-    function expUp() {
+    function expUp(row) {
       if (!main.talkedRecently.has(message.author.id)) {
         const time = '1 minute';
         main.talkedRecently.add(message.author.id);
         setTimeout(() => {
           main.talkedRecently.delete(message.author.id);
         }, ms(time));
-        main.scores.update({ userId: message.author.id }, { $set: { exp: (res['exp'] + 1) } }).catch(error => console.log(error));
+        main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
       }
     }
   });
@@ -90,32 +91,36 @@ module.exports = message => {
   }
   if (cmd) {
     if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${message.author.username}`);
-    cmd.run(client, message, args, perms).then(checkLevel());
+    cmd.run(client, message, args, perms).then(() => {checkLevel(message);});
   } else {
-    checkLevel();
-  }
-
-  function checkLevel() {
-    main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
-      if (err) return console.log(err);
-      if (res) {
-        lvUp();
-      } else {
-        main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
-          if (error) return console.log(err);
-          lvUp();
-        });
-      }
-
-      function lvUp() {
-        const expNextLv = res['level'] * 5 + 10;
-        const curLv = res['level'];
-
-        if (res['exp'] >= expNextLv) {
-          main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (res['level'] + 1) } }).catch(error => console.log(error));
-          message.channel.send(`**Level up!** ${message.author.username} is now **lv.${curLv + 1}**! Yay 🎉`);
-        }
-      }
-    });
+    checkLevel(message);
   }
 };
+
+
+// Helper method
+function checkLevel(message) {
+  main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
+    var row = res;
+    if (err) return console.log(err);
+    if (row) {
+      lvUp(row, message);
+    } else {
+      main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+        if (error) return console.log(err);
+        lvUp(row, message);
+      });
+    }
+  });
+}
+
+// Helper method
+function lvUp(row, message) {
+  const expNextLv = row['level'] * 5 + 10;
+  const curLv = row['level'];
+
+  if (row['exp'] >= expNextLv) {
+    main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (row['level'] + 1) } }).catch(error => console.log(error));
+    message.channel.send(`**Level up!** ${message.author.username} is now **lv.${curLv + 1}**! Yay 🎉`);
+  }
+}

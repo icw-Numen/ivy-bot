@@ -1,5 +1,5 @@
 const {RichEmbed} = require('discord.js');
-const sql = require('sqlite');
+
 
 module.exports = (oMessage, nMessage) => {
   if (oMessage.content === nMessage.content) return;

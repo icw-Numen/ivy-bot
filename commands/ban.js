@@ -2,7 +2,7 @@ const {RichEmbed} = require('discord.js');
 const {caseNumber} = require('../util/caseNumber.js');
 const {parseUser} = require('../util/parseUser.js');
 const settings = require('../settings.json');
-const sql = require('sqlite');
+
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {

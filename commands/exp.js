@@ -7,7 +7,7 @@ exports.run = async (client, message) => {
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
     var row = res;
     if (err) return console.log(err);
-    if (row) {      
+    if (row) {
       getExp(row, message);
     } else {
       main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
@@ -27,8 +27,11 @@ exports.run = async (client, message) => {
 
 // Helper function(s)
 function getExp(row, message) {
-  const user = message.author;
   const expNextLv = row['level'] * 5 + 10;
+  if (expNextLv - row['exp'] === 0) {
+    return;
+  }
+  const user = message.author;
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle(`${user.username}\'s Experience Points~`)

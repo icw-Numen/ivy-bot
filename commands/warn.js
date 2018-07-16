@@ -47,7 +47,7 @@ function giveWarning(row, message, args, guild, client, user) {
       embed = new RichEmbed()
         .setColor(0xF18E8E)
         .setTimestamp()
-        .setDescription(`**Action:** Warning\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason} (use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`)
+        .setDescription(`**Action:** Warning\n**Target:** ${user.tag}\n**Moderator:** ${message.author.tag}\n**Reason:** ${reason}\n(use \`${settings.prefix}reason <case number> <reason>\` to set a reason for this action)`)
         .setFooter(`Case ${num}`);
       return client.channels.get(modlog.id).send({embed});
     }

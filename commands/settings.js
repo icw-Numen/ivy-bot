@@ -40,29 +40,29 @@ function getServerStats(row, message, user, reaction, str) {
     strW = 'Not set';
   } else
   if (row['welcome'].length >= 0) {
-    strW = row['welcome'];
+    strW = `#${row['welcome']}`;
   }
   if (row['goodbye'].length === 0) {
     strG = 'Not set';
   } else
   if (row['goodbye'].length >= 0) {
-    strG = row['goodbye'];
+    strG = `#${row['goodbye']}`;
   }
   if (row['modlog'].length === 0) {
     strM = 'Not set';
   } else
   if (row['modlog'].length >= 0) {
-    strM = row['modlog'];
+    strM = `#${row['modlog']}`;
   }
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle(`${user.username}\'s Stats~`)
     .setThumbnail(reaction)
     .setDescription(str)
-    .addField('Autorole:', `#${strA}`, true)
-    .addField('Welcome channel:', `#${strW}`, true)
-    .addField('Goodbye channel:', `#${strG}`, true)
-    .addField('Mod/Bot logs:', `#${strM}`, true);
+    .addField('Autorole:', `${strA}`, true)
+    .addField('Welcome channel:', `${strW}`, true)
+    .addField('Goodbye channel:', `${strG}`, true)
+    .addField('Mod/Bot logs:', `${strM}`, true);
   message.channel.send({embed});
 }
 

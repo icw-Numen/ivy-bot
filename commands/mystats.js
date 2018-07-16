@@ -9,11 +9,11 @@ exports.run = async (client, message) => {
     if (err) return console.log(err);
     var row = res;
     var str;
+    var lv;
+    var xp;
+    var monies;
     const expNextLv = row.level * 5 + 10;
     if (row) {
-      let lv;
-      let xp;
-      let monies;
       if (expNextLv - row['exp'] === 0) {
         lv = row['level'] + 1;
         xp = 0;
@@ -24,13 +24,16 @@ exports.run = async (client, message) => {
         monies = row['credits'];
       }
 
-      str = `${user.username}, these are your stats:`;
+      str = `${user.username}, your current stats are:`;
       getStats(row, message, user, reactions.normal, str, lv, xp, monies);
     } else {
-      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
+      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: ''}, function (error) {
         if (error) return console.log(err);
-        str = `${user.username}, you are currently at **lv.0**, you have **1/10 exp**, and you have **\$0** in your account`;
-        getStats(row, message, user, reactions.smug, str);
+        lv = 0;
+        xp = 1;
+        monies = 0;
+        str = `${user.username}, your current stats are:`;
+        getStats(row, message, user, reactions.smug, str, lv, xp, monies);
         return;
       });
     }

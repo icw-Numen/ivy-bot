@@ -7,7 +7,6 @@ exports.run = async (client, message) => {
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle(`Ivy, ${package.description}`)
-    .setTimestamp()
     .setImage(imgs.splash)
     .setThumbnail(`${client.user.avatarURL}`)
     .setDescription(`${settings.description}\n\n (Psst! For command details, type \`${settings.prefix}help\` or \`${settings.prefix}help <commandname>\`. The prefix \`${settings.prefix2}\` is fine too if you prefer calling me by my name~ Pinging me with a command works just as fine)`)
@@ -19,7 +18,7 @@ exports.run = async (client, message) => {
     .addField('Database:', 'mLab MongoDB', true)
     .addField('Deployed on:', 'Heroku', true)
     .addField('# of servers joined:', `${client.guilds.array().length}`, true)
-    .addField('Three sizes:', 'B: [Christian manga], W: [Redacted],\nH: [Censored]', true)
+    .addField('Three sizes:', 'B: [Christian manga], W: [redacted],\nH: [censored]', true)
     .addField('Github:', 'https://github.com/icw-Numen/ivy-bot')
     .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
     .setFooter(`Bot and icons/art made with care by ${package.author}`);

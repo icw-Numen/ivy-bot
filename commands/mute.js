@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     if (row) {
       m00te(row, message, args, guild, client, user);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
         if (error) return console.log(err);
         m00te(row, message, args, guild, client, user);
         return;

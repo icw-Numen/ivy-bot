@@ -53,7 +53,7 @@ exports.run = async (client, message, args) => {
               if (row) {
                 getDolla(row, message, user, player, pulls, bullets);
               } else {
-                main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
+                main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: ''}, function (error) {
                   if (error) return console.log(err);
                   getDolla(row, message, user, player, pulls, bullets);
                 });
@@ -71,7 +71,7 @@ exports.run = async (client, message, args) => {
               if (row) {
                 ripScore(row, message, user, player);
               } else {
-                main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
+                main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: ''}, function (error) {
                   if (error) return console.log(err);
                   ripScore(row, message, user, player);
                 });
@@ -84,7 +84,7 @@ exports.run = async (client, message, args) => {
               if (row) {
                 rip(row, message, guild, client, user);
               } else {
-                main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+                main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
                   if (error) return console.log(err);
                   rip(row, message, guild, client, user);
                 });

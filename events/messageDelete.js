@@ -12,7 +12,7 @@ module.exports = (message) => {
     if (row) {
       msgDel(row, message, guild, client);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
         if (error) return console.log(err);
         msgDel(row, message, guild, client);
         return;

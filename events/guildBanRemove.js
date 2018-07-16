@@ -9,7 +9,7 @@ module.exports = (guild, user) => {
     if (row) {
       unbanned(row, guild, user);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
         if (error) return console.log(err);
         unbanned(row, guild, user);
         return;

@@ -8,7 +8,7 @@ module.exports = member => {
     if (row) {
       welcome(row, member);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
         if (error) return console.log(err);
         welcome(row, member);
         return;

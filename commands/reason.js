@@ -23,7 +23,7 @@ exports.run = async (client, message, args) => {
     if (row) {
       setReason(row, message, args, guild, client, caseNumber, newReason);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
         if (error) return console.log(err);
         setReason(row, message, args, guild, client, caseNumber, newReason);
         return;

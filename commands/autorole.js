@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     if (row) {
       setAutorole(row, message, args);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
         if (error) return console.log(err);
         setAutorole(row, message, args);
         return;

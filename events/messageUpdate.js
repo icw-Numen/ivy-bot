@@ -12,7 +12,7 @@ module.exports = (oMessage, nMessage) => {
     if (row) {
       msgUpdt(row, oMessage, nMessage, guild, client);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
         if (error) return console.log(err);
         msgUpdt(row, oMessage, nMessage, guild, client);
         return;

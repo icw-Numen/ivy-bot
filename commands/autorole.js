@@ -28,10 +28,16 @@ function setAutorole(row, message, args) {
   const guild = message.guild;
   if (args.length === 1) {
     main.guildsettings.update({ guildId: guild.id }, { $set: { autorole: (args[0]) } }).catch(error => console.log(error));
-    message.channel.send(`The default role was successfully set to **${args[0]}**, ${message.author.username}`);
+
+    const embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setTitle('Autorole set~')
+      .setThumbnail(reactions.wink)
+      .setDescription(`The default role was successfully set to **${args[0]}**, ${message.author.username}`);
+    message.channel.send({embed});
   } else
   if (args.length === 0) {
-    main.guildsettings.update({ guildId: guild.id }, { $set: { autorole: '' } }).catch(error => console.log(error));   
+    main.guildsettings.update({ guildId: guild.id }, { $set: { autorole: '' } }).catch(error => console.log(error));
 
     const embed = new RichEmbed()
       .setColor(0xF18E8E)

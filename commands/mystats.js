@@ -57,7 +57,7 @@ function getStats(row, message, user, reaction, str, lv, xp, monies) {
     .addField('Level:', `lv. ${lv}`, true)
     .addField('Exp:', `${xp} exp`, true)
     .addField('Balance:', `\$${monies}`, true)
-    .addField('Dailies:', `${str2}`, true);
+    .addField('Dailies:', `${str2}`);
   message.channel.send({embed});
 }
 

@@ -12,7 +12,7 @@ exports.run = async (client, message) => {
       str = `${user.username}, you are currently at **lv.${row['level']}**`;
       getMoney(message, user, reactions.normal, str);
     } else {
-      main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
         if (error) return console.log(err);
         str = `${user.username}, you currently have **\$0** in your account. Rip 💸`;
         getMoney(message, user, reactions.smug, str);

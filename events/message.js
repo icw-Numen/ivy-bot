@@ -80,10 +80,9 @@ module.exports = message => {
   }
   if (cmd) {
     if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${message.author.username}`);
-    cmd.run(client, message, args, perms).then(() => {checkLevel(message);});
-  } else {
-    checkLevel(message);
+    cmd.run(client, message, args, perms);
   }
+  checkLevel(message);
 };
 
 

@@ -13,7 +13,7 @@ exports.run = async (client, message) => {
       str = `${user.username}, you currently have **${row['exp']} exp** (${expNextLv - row['exp']} exp until next level)`;
       getExp(row, message, user, reactions.normal, str, expNextLv);
     } else {
-      main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
         if (error) return console.log(err);
         str = `${user.username}, you currently have **${row['exp']} exp** (${expNextLv - row['exp']} exp until next level)`;
         getExp(row, message, user, reactions.normal2, str, expNextLv);

@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
       messages = messages.filter(message => message.author.bot);
       message.channel.bulkDelete(messages);
     });
-    return new Promise();
+    return 1;
   }
 
   message.channel.fetchMessages({limit: messageCount})
@@ -20,7 +20,7 @@ exports.run = (client, message, args) => {
       message.channel.bulkDelete(messages);
     });
 
-  return new Promise();
+  return 1;
 };
 
 

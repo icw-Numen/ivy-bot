@@ -56,7 +56,7 @@ function getServerStats(row, message, user, reaction, str) {
   }
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
-    .setTitle(`${user.username}\'s Stats~`)
+    .setTitle('Sever settings~')
     .setThumbnail(reaction)
     .setDescription(str)
     .addField('Autorole:', `${strA}`, true)

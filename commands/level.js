@@ -5,14 +5,17 @@ const reactions = require('../reactions.json');
 exports.run = async (client, message) => {
   const user = message.author;
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
+    var str;
     if (row) {
-      getLv2(row, message);
+      str = `${user.username}, you are currently at **lv.${row['level']}**`;
+      getLv(row, message, user, reactions.normal, str);
     } else {
       main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
         if (error) return console.log(err);
-        getLv1(row, message);
+        str = `${user.username}, you are currently at **lv.0**`;
+        getLv(row, message, user, reactions.smug, str);
         return;
       });
     }
@@ -21,24 +24,12 @@ exports.run = async (client, message) => {
 
 
 // Helper method
-function getLv1 (row, message) {
-  const user = message.author;
+function getLv(row, message, user, reaction, str) {
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle(`${user.username}\'s Level~`)
-    .setThumbnail(reactions.smug)
-    .setDescription(`${user.username}, you are currently at **lv.0**`);
-  message.channel.send({embed});
-}
-
-// Helper method
-function getLv2 (row, message) {
-  const user = message.author;
-  const embed = new RichEmbed()
-    .setColor(0xF18E8E)
-    .setTitle(`${user.username}\'s Level~`)
-    .setThumbnail(reactions.normal)
-    .setDescription(`${user.username}, you are currently at **lv.${row['level']}**`);
+    .setThumbnail(reaction)
+    .setDescription(str);
   message.channel.send({embed});
 }
 

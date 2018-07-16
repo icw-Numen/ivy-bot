@@ -5,14 +5,17 @@ const reactions = require('../reactions.json');
 exports.run = async (client, message) => {
   const user = message.author;
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
-    var row = res;
     if (err) return console.log(err);
+    var row = res;
+    var str;
     if (row) {
-      getMoney2(row, message);
+      str = `${user.username}, you are currently at **lv.${row['level']}**`;
+      getMoney(message, user, reactions.normal, str);
     } else {
       main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
         if (error) return console.log(err);
-        getMoney1(row, message);
+        str = `${user.username}, you currently have **\$0** in your account. Rip 💸`;
+        getMoney(message, user, reactions.smug, str);
         return;
       });
     }
@@ -21,28 +24,15 @@ exports.run = async (client, message) => {
 
 
 // Helper method
-function getMoney1(row, message) {
-  const user = message.author;
+function getMoney(message, user, reaction, str) {
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle(`${user.username}\'s Bank Account~`)
-    .setThumbnail(reactions.smug)
-    .setDescription(`${user.username}, you currently have **\$0** in your account. Rip 💸`);
+    .setThumbnail(reaction)
+    .setDescription(str);
   message.channel.send({embed});
   return;
 }
-
-// Helper method
-function getMoney2(row, message) {
-  const user = message.author;
-  const embed = new RichEmbed()
-    .setColor(0xF18E8E)
-    .setTitle(`${user.username}\'s Bank Account~`)
-    .setThumbnail(reactions.normal)
-    .setDescription(`${user.username}, you currently have **\$${row['credits']}** in your account`);
-  message.channel.send({embed});
-}
-
 
 // Command metadata
 exports.conf = {

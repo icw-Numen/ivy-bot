@@ -1,4 +1,4 @@
-
+const main = require('../app.js');
 const {caseNumber} = require('../util/caseNumber.js');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
@@ -6,8 +6,9 @@ const reactions = require('../reactions.json');
 exports.run = async (client, message, args) => {
   let bullets;
   let pulls;
-  const user = message.author.username;
-  const server = message.guild;
+  const player = message.author.username;
+  const guild = message.guild;
+  const user = message.author;
 
   if (!parseInt(args[0])) {
     bullets = 1;
@@ -23,12 +24,12 @@ exports.run = async (client, message, args) => {
 
   if ((args[0] && !parseInt(args[0]) && !args[0].match(/safe/i)) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 5 ||
   args.length > 3) {
-    return message.channel.send(`Please give me a valid number of bullets (1 ~ 5), ${user}`).catch(console.error);
+    return message.channel.send(`Please give me a valid number of bullets (1 ~ 5), ${player}`).catch(console.error);
   }
 
   if ((args[1] && !parseInt(args[1]) && !args[0].match(/safe/i)) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 5 ||
   args.length > 3) {
-    return message.channel.send(`Please give me a valid number of pulls (1 ~ 5), ${user}`).catch(console.error);
+    return message.channel.send(`Please give me a valid number of pulls (1 ~ 5), ${player}`).catch(console.error);
   }
 
   var fired = 0;
@@ -42,29 +43,21 @@ exports.run = async (client, message, args) => {
             .setColor(0xF18E8E)
             .setTitle('Victory~')
             .setThumbnail(reactions.wink1)
-            .setDescription(`Huzzah! 🎉  |  ${user} has pulled the trigger ${pulls} times without getting shot!`);
+            .setDescription(`Huzzah! 🎉  |  ${player} has pulled the trigger ${pulls} times without getting shot!`);
           message.channel.send({embed});
 
           if (!(args.join(' ').includes('safe') && args.join(' ').includes('Safe')) && message.guild.member(message.author).kickable) {
-            sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
-              if (!row) {
-                sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]).then(() => {
-                  return;
+            main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+              if (err) return console.log(err);
+              var row = res;
+              if (row) {
+                getDolla(row, message, user, player, pulls, bullets);
+              } else {
+                main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
+                  if (error) return console.log(err);
+                  getDolla(row, message, user, player, pulls, bullets);
                 });
               }
-              const money = row.credits;
-              sql.run(`UPDATE scores SET credits = ${row.credits + 100} WHERE userId = ${message.author.id}`);
-              const embed = new RichEmbed()
-                .setColor(0xF18E8E)
-                .setTitle('Oh and by the way~')
-                .setThumbnail(reactions.wink)
-                .setDescription(`${message.author.username}, **\$${20*pulls + 20*bullets}** has been awarded to your account as reward for playing with safe mode off! You now have **\$${money + 100}** in your account 💰`);
-              message.channel.send({embed});
-            }).catch(() => {
-              // console.error;
-              sql.run('CREATE TABLE IF NOT EXISTS scores (userId TEXT, exp INTEGER, level INTEGER, credits INTEGER, claimed INTEGER)').then(() => {
-                sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]);
-              });
             });
           }
           return;
@@ -72,65 +65,30 @@ exports.run = async (client, message, args) => {
         if (shot <= bullets && fired === 0) {
           fired = 1;
           if (!(args.join(' ').match(/safe/i)) && message.guild.member(message.author).kickable) {
-            sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
-              if (!row) {
-                sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]).then(() => {
-                  return;
+            main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+              if (err) return console.log(err);
+              var row = res;
+              if (row) {
+                ripScore(row, message, user, player);
+              } else {
+                main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null}, function (error) {
+                  if (error) return console.log(err);
+                  ripScore(row, message, user, player);
                 });
               }
-              const money = row.credits;
-              if (money < 10) {
-                const embed = new RichEmbed()
-                  .setColor(0xF18E8E)
-                  .setThumbnail(reactions.smug2)
-                  .setDescription(`***\\*BANG!!\\**** 🔫  |\n\nOh no! ${user} got badly wounded and has to leave immediately!`);
-                message.channel.send({embed});
-              } else {
-                sql.run(`UPDATE scores SET credits = ${row.credits - 10} WHERE userId = ${message.author.id}`);
-                const embed = new RichEmbed()
-                  .setColor(0xF18E8E)
-                  .setThumbnail(reactions.smug2)
-                  .setDescription(`***\\*BANG!!\\**** 🔫  |\n\nOh no! ${user} got badly wounded and lost **$10**!`);
-                message.channel.send({embed});
-              }
-            }).catch(() => {
-              // console.error;
-              sql.run('CREATE TABLE IF NOT EXISTS scores (userId TEXT, exp INTEGER, level INTEGER, credits INTEGER, claimed INTEGER)').then(() => {
-                sql.run('INSERT INTO scores (userId, exp, level, credits, claimed) VALUES (?, ?, ?, ?, ?)', [message.author.id, 1, 0, 0, 0]);
-              });
             });
 
-            sql.get(`SELECT * FROM channels WHERE guildId ="${server.id}"`).then(row => {
-              if (!row) {
-                return sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-              }
-              const modlog = server.channels.find('name', row.modlog);
-
-              if (modlog) {
-                caseNumber(client, modlog).then(num => {
-                  const reason = 'Got shot in a Russian roulette game';
-
-                  if (!message.author.bot) message.author.send('You\'ve been shot and got kicked out!');
-                  message.guild.member(message.author).kick();
-
-                  const embed = new RichEmbed()
-                    .setColor(0xFFAD56)
-                    .setTimestamp()
-                    .setDescription(`**Action:** Kick\n**Target:** ${message.author.tag}\n**Moderator:** None\n**Reason:** ${reason}`)
-                    .setFooter(`Case ${num}`);
-                  client.channels.get(modlog.id).send({embed});
-                  return;
-                });
+            main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+              var row = res;
+              if (err) return console.log(err);
+              if (row) {
+                rip(row, message, guild, client, user);
               } else {
-                if (!message.author.bot) message.author.send('You\'ve been shot and got kicked out!');
-                message.guild.member(message.author).kick();
-                return;
+                main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '' }, function (error) {
+                  if (error) return console.log(err);
+                  rip(row, message, guild, client, user);
+                });
               }
-            }).catch(() => {
-              console.error;
-              sql.run('CREATE TABLE IF NOT EXISTS channels (guildId TEXT, welcome TEXT, goodbye TEXT, modlog TEXT, autorole TEXT, muted TEXT)').then(() => {
-                sql.run('INSERT INTO channels (guildId, welcome, goodbye, modlog, autorole, muted) VALUES (?, ?, ?, ?, ?, ?)', [server.id, '', '', '', '', '']);
-              });
             });
           } else {
             const embed = new RichEmbed()
@@ -148,6 +106,68 @@ exports.run = async (client, message, args) => {
   }
 };
 
+
+// Helper method
+function getDolla(row, message, user, player, pulls, bullets) {
+  const money = row['credits'];
+  main.scores.update({ userId: user.id }, { $set: { credits: (row['credits'] + 100) } }).catch(error => console.log(error));
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setTitle('Oh and by the way~')
+    .setThumbnail(reactions.wink)
+    .setDescription(`${message.author.username}, **\$${20*pulls + 20*bullets}** has been awarded to your account as reward for playing with safe mode off, ${player}! You now have **\$${money + 100}** in your account 💰`);
+  message.channel.send({embed});
+}
+
+
+// Helper method
+function ripScore(row, message, user, player) {
+  const money = row['credits'];
+  if (money < 10) {
+    const embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setThumbnail(reactions.smug2)
+      .setDescription(`***\\*BANG!!\\**** 🔫  |\n\nOh no! ${player} got badly wounded and has to leave immediately!`);
+    message.channel.send({embed});
+  } else {
+    main.scores.update({ userId: user.id }, { $set: { credits: (row['credits'] - 10) } }).catch(error => console.log(error));
+    const embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setThumbnail(reactions.smug2)
+      .setDescription(`***\\*BANG!!\\**** 🔫  |\n\nOh no! ${player} got badly wounded and lost **$10**!`);
+    message.channel.send({embed});
+  }
+}
+
+
+// Helper method
+function rip(row, message, guild, client, user) {
+  const modlog = guild.channels.find('name', row['modlog']);
+
+  if (modlog) {
+    caseNumber(client, modlog).then(num => {
+      const reason = 'Got shot in a Russian roulette game';
+
+      if (!user.bot) user.send('You\'ve been shot and got kicked out!');
+      message.guild.member(user).kick();
+
+      const embed = new RichEmbed()
+        .setColor(0xFFAD56)
+        .setTimestamp()
+        .setDescription(`**Action:** Kick\n**Target:** ${user.tag}\n**Moderator:** None\n**Reason:** ${reason}`)
+        .setFooter(`Case ${num}`);
+      client.channels.get(modlog.id).send({embed});
+      return;
+    });
+  } else {
+    if (!user.bot) user.send('You\'ve been shot and got kicked out! You also lost **$10** in the process');
+    message.guild.member(user).kick();
+    return;
+  }
+}
+
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,

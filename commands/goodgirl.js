@@ -14,7 +14,7 @@ exports.run = (client, message) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['goodbot', 'goodmaid', 'goodcow'],
+  aliases: ['goodbot', 'goodmaid', 'goodcow', 'patpat', 'pat'],
   permLevel: 0
 };
 

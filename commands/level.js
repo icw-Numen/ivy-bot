@@ -16,7 +16,7 @@ exports.run = async (client, message) => {
         return;
       });
     }
-  });  
+  });
 };
 
 
@@ -41,7 +41,6 @@ function getLv2 (row, message) {
     .setDescription(`${user.username}, you are currently at **lv.${row['level']}**`);
   message.channel.send({embed});
 }
-
 
 
 // Command metadata

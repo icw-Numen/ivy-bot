@@ -33,7 +33,7 @@ exports.run = (client, message, args) => {
       .addField('Level/credits System Commands:', `${pointS}`)
       .addField('Developer Commands:', `${devS}`)
       .addField('Lewd, 🔞 Commands:', '[coming soon]')
-      .setFooter(`Bot and images made with care by ${package.author}`);
+      .setFooter(`Bot and artwork/icons made with care by ${package.author}`);
     return message.channel.send({embed});
   } else {
     let command = args[0];
@@ -48,7 +48,7 @@ exports.run = (client, message, args) => {
         .addField('Usage:', `\`${settings.prefix}${command.help.usage}\``)
         .addField('Alias(es):', `\`${command.conf.aliases.join('\`, \`')}\``)
         .addField('Category:', `\`${command.help.type}\``)
-        .setFooter(`Bot and images made with care by ${package.author}`);
+        .setFooter(`Bot and artwork/icons made with care by ${package.author}`);
       return message.channel.send({embed});
     } else {
       return message.channel.send(`Oops, I couldn\'t find that command, ${message.author.username}`).catch(console.error);

@@ -14,7 +14,7 @@ exports.run = async (client, message) => {
     .addField('Pixiv:', 'https://www.pixiv.net/member.php?id=10878110')
     .addField('Ko-fi (tip jar):', 'http://Ko-fi.com/rawsaucenumen')
     //.addField(`${package.author}\'s personal website: `, '[link]')
-    .setFooter(`Bot and images made with care by ${package.author}`);
+    .setFooter(`Bot and artwork/icons made with care by ${package.author}`);
 
   return message.channel.send({embed});
 };

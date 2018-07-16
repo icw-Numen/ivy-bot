@@ -19,10 +19,10 @@ exports.run = async (client, message) => {
     .addField('Database:', 'mLab MongoDB', true)
     .addField('Deployed on:', 'Heroku', true)
     .addField('# of servers joined:', `${client.guilds.array().length}`, true)
-    .addField('Three sizes:', 'B: [Christian manga], W: [Redacted], H: [Censored]', true)
+    .addField('Three sizes:', 'B: [Christian manga], W: [Redacted],\nH: [Censored]', true)
     .addField('Github:', 'https://github.com/icw-Numen/ivy-bot')
     .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
-    .setFooter(`Bot and images made with care by ${package.author}`);
+    .setFooter(`Bot and artwork/icons made with care by ${package.author}`);
   return message.channel.send({embed});
 };
 

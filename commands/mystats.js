@@ -24,7 +24,7 @@ exports.run = async (client, message) => {
         monies = row['credits'];
       }
 
-      str = `${user.username}, your current stats are:`;
+      str = `${user.username}, your current stats are the following:`;
       getStats(row, message, user, reactions.normal, str, lv, xp, monies);
     } else {
       main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: ''}, function (error) {
@@ -32,7 +32,7 @@ exports.run = async (client, message) => {
         lv = 0;
         xp = 1;
         monies = 0;
-        str = `${user.username}, your current stats are:`;
+        str = `${user.username}, your current stats are the following:`;
         getStats(row, message, user, reactions.smug, str, lv, xp, monies);
         return;
       });
@@ -57,7 +57,7 @@ function getStats(row, message, user, reaction, str, lv, xp, monies) {
     .addField('Level:', `lv. ${lv}`, true)
     .addField('Exp:', `${xp} exp`, true)
     .addField('Balance:', `\$${monies}`, true)
-    .addField('Dailies:', `${str2}`);
+    .addField('Dailies:', `${str2}`, true);
   message.channel.send({embed});
 }
 

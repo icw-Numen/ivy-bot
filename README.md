@@ -10,11 +10,13 @@
 ## Introduction
 You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luck because you're looking at her page right now! :P
 
-**This page is essentially a quick reference manual on how to use maid bot Ivy. For more complete, in-depth information, the GitHub repository also has a wiki page [(link here)](https://github.com/icw-Numen/ivy-bot/wiki) where you can find neat things like more step-by-step guides, Ivy's bio, author comments.**
+**This page is essentially a quick reference manual on how to use maid bot Ivy. For more complete, in-depth information, the GitHub repository also has a wiki page [(link here)](https://github.com/icw-Numen/ivy-bot/wiki) where you can find neat things like more step-by-step guides, Ivy's bio, author comments, and author information.**
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Features
+
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Prefixes
  

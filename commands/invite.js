@@ -24,6 +24,6 @@ exports.conf = {
 exports.help = {
   name: 'invite',
   description: 'Sends a temporary server invite',
-  usage: 'invite <channel>',
+  usage: 'invite',
   type: 'server'
 };

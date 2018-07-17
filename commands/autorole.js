@@ -59,7 +59,7 @@ exports.conf = {
 
 exports.help = {
   name: 'autorole',
-  description: 'Sets the server\'s default role for new members. Passing nothing resets default role to none',
+  description: 'Sets the server\'s default role for new members. Passing nothing resets the default role to none',
   usage: 'autorole <role>',
   type: 'server'
 };

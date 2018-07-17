@@ -38,7 +38,7 @@ exports.conf = {
 
 exports.help = {
   name: 'removerole',
-  description: 'Removes a role to the user',
+  description: 'Removes a role from the user',
   usage: 'removerole <role>',
   type: 'server'
 };

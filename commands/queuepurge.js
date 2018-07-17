@@ -42,7 +42,7 @@ exports.conf = {
 
 exports.help = {
   name: 'queuepurge',
-  description: 'Deletes all entries of the music queue',
+  description: 'Deletes all entries in the music queue',
   usage: 'queuepurge',
   type: 'music'
 };

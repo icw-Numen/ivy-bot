@@ -63,7 +63,7 @@ exports.conf = {
 
 exports.help = {
   name: 'enqueue',
-  description: 'Adds a track to the queue. 25 songs can be queued max.',
+  description: 'Adds a track to the queue. Queue can hold 25 tracks max.',
   usage: 'enqueue <youtube link>',
   type: 'music'
 };

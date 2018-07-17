@@ -76,7 +76,7 @@ exports.conf = {
 
 exports.help = {
   name: 'kick',
-  description: 'Kicks the mentioned user for a given reason',
+  description: 'Kicks the mentioned user',
   usage: 'kick <mention> <reason>',
   type: 'mod'
 };

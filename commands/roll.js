@@ -4,12 +4,12 @@ const reactions = require('../reactions.json');
 exports.run = (client, message, args) => {
   const user = message.author.username;
 
-  if ((args[0] && !parseInt(args[0])) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 200) {
-    return message.channel.send(`Please give me a valid number of faces, ${user}`).catch(console.error);
+  if ((args[0] && !parseInt(args[0])) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 100) {
+    return message.channel.send(`Please give me a valid number of dice (0 ~ 100), ${user}`).catch(console.error);
   }
 
-  if ((args[1] && !parseInt(args[1])) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 100) {
-    return message.channel.send(`Please give me a valid number of dice, ${user}`).catch(console.error);
+  if ((args[1] && !parseInt(args[1])) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 200) {
+    return message.channel.send(`Please give me a valid number of faces (0 ~ 200), ${user}`).catch(console.error);
   }
 
   let dice;
@@ -52,6 +52,6 @@ exports.conf = {
 exports.help = {
   name: 'roll',
   description: 'Rolls one or more dice. You can specify the number of faces too',
-  usage: 'roll <faces> <# of dice>',
+  usage: 'roll <# of dice> <faces>',
   type: 'fun'
 };

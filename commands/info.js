@@ -19,7 +19,7 @@ exports.run = async (client, message) => {
     .addField('Deployed on:', 'Heroku', true)
     .addField('# of servers joined:', `${client.guilds.array().length}`, true)
     .addField('Three sizes:', 'B: [Christian manga], W: [redacted],\nH: [censored]', true)
-    .addField('Ivy\'s website:', 'https://icw-numen.github.io/ivy-bot/')
+    .addField('Ivy\'s website:', 'https://github.com/icw-Numen/ivy-bot/wiki')
     .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
     .setFooter(`Bot and icons/art made with care by ${package.author}`);
   return message.channel.send({embed});

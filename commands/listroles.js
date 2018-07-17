@@ -14,7 +14,7 @@ exports.run = (client, message) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['listroles', 'listrole', 'rolelist', 'roleslist', 'lr', 'rl', 'roles'],
+  aliases: ['listrole', 'rolelist', 'roleslist', 'lr', 'rl', 'roles'],
   permLevel: 0
 };
 

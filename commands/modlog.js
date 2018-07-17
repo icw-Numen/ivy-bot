@@ -57,5 +57,5 @@ exports.help = {
   name: 'modlog',
   description: 'Sets the server\'s default channel for storing mod logs. Making the mod log channel visible to mods/admins only is recommended',
   usage: 'modlog <role>',
-  type: 'mod'
+  type: 'server'
 };

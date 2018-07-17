@@ -66,7 +66,7 @@ exports.conf = {
 
 exports.help = {
   name: 'help',
-  description: 'Displays all the available commands for your permission level. Typing a command after "help" gives that command\'s details',
+  description: 'Displays all the available commands. Typing a command after "help" gives that command\'s details',
   usage: 'help <command/url>',
   type: 'bot'
 };

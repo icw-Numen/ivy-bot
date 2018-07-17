@@ -20,7 +20,7 @@ exports.conf = {
 
 exports.help = {
   name: 'goodgirl',
-  description: '*blush*',
+  description: 'Lets you tell Ivy that she\'s being a good girl (does nothing special otherwise)',
   usage: 'goodgirl',
   type: 'bot'
 };

@@ -76,7 +76,7 @@ exports.conf = {
 
 exports.help = {
   name: 'ban',
-  description: 'Bans the mentioned user for a given reason.',
+  description: 'Bans the mentioned user',
   usage: 'ban <mention> <reason>',
   type: 'mod'
 };

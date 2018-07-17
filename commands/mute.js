@@ -106,7 +106,7 @@ exports.conf = {
 
 exports.help = {
   name: 'mute',
-  description: 'Mutes or unmutes a mentioned user for a given reason. \nNote that you must set each channel to not allow muted members to text/speak because of how Discord roles work.',
+  description: 'Mutes or unmutes a mentioned user.\nNote that you must set each channel to not allow muted members to text/speak because of how Discord roles work',
   usage: 'mute <mention> <reason>',
   type: 'mod'
 };

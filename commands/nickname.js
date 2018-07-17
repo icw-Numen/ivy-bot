@@ -64,13 +64,13 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['setnick', 'setnickname', 'setname', 'newnick', 'newnickname'],
+  aliases: ['setnick', 'setnickname', 'setname', 'newnick', 'newname', 'newnickname'],
   permLevel: 0
 };
 
 exports.help = {
   name: 'nickname',
-  description: 'Changes the user\'s nickname. You can change the my nickname too (I have special lines for when you give me some specific nicknames). Typing nothing resets the nickname',
+  description: 'Changes the user\'s nickname. You can change the my nickname too (I have special lines for when you give me certain nicknames). Typing nothing resets the nickname',
   usage: 'nickname <mention> <nickname>',
   type: 'utilities'
 };

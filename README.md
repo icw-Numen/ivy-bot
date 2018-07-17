@@ -51,7 +51,7 @@ Each command has aliases/shortcuts too, which are alternate command names. Use `
 | Command | Description | Aliases | Example |
 | --- | --- | --- | --- |
 | info | Sends an embed with information about the bot | intro, botinfo, ivyinfo, bot, ivy, about | ```~info``` |
-| author | Sends an embed with information about the bot's author | ```~author``` |
+| author | Sends an embed with information about the bot's author | authorinfo, lewdbringer, dev, devinfo, botauthor, botdev | ```~author``` |
 | help | Displays all the available commands | ```~help```, ```~help bigmoji``` |
 | ping | Ping/Pong command. Responds with ping | ```~ping``` |
 | goodgirl | Lets you tell Ivy that she's being a good girl | ```~goodgirl``` |

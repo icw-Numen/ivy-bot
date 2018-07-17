@@ -39,6 +39,7 @@ Maid bot Ivy has three prefixes. I chose the first one for
 ## Commands
 #### Bot Commands:
 | Command | Description | Example |
+| --- | --- | --- |
 | info | Sends an embed with information about the bot | ~info |
 | author | | |
 | help | | |

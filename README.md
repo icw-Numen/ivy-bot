@@ -22,7 +22,7 @@ Also, if you're going to look at her source code, please bear with my atrocious 
 ## Adding Ivy to your server
 Just want to add her to your server ASAP? Fret not, I have already deployed maid bot Ivy on Heroku, so you don't have to worry about installing anything on your part. Simply follow the steps below:
 
-1. Go to her Discord bot page, then click on "invite" (make sure you're logged in to Discord)
+1. Go to her Discord bot page (coming soon), then click on "invite" (make sure you're logged in to Discord)
 2. Select the server you want to add her to
 3. Make sure to give her permissions to manage roles, channels, along with moderation permissions (kick, ban)
 4. Click on "Authorize"

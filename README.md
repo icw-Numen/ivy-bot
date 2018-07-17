@@ -18,7 +18,7 @@ Also, if you're going to look at her source code, please bear with my atrocious 
 
 .env file not included in GitHub repository for obvious reasons.
 
-[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Adding Ivy to your server
 Just want to add her to your server ASAP? Fret not, I have already deployed maid bot Ivy on Heroku, so you don't have to worry about installing anything on your part. Simply follow the steps below:
@@ -29,12 +29,12 @@ Just want to add her to your server ASAP? Fret not, I have already deployed maid
 4. Click on "Authorize"
 5. You're set! You should be able to see her on your server now
 
-[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Prefixes
 Maid bot Ivy has three prefixes. I chose the first one for 
 
-[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Commands
 #### Bot Commands:
@@ -55,4 +55,4 @@ Maid bot Ivy has three prefixes. I chose the first one for
 #### Developer Commands:
 #### Lewd Commands:
 
-[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)

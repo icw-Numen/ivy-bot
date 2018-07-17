@@ -52,15 +52,15 @@ Each command has aliases/shortcuts too, which are alternate command names. Use `
 | --- | --- | --- | --- |
 | info | Sends an embed with information about the bot | intro, botinfo, ivyinfo, bot, ivy, about | ```~info``` |
 | author | Sends an embed with information about the bot's author | authorinfo, lewdbringer, dev, devinfo, botauthor, botdev | ```~author``` |
-| help | Displays all the available commands | ```~help```, ```~help bigmoji``` |
-| ping | Ping/Pong command. Responds with ping | ```~ping``` |
-| goodgirl | Lets you tell Ivy that she's being a good girl | ```~goodgirl``` |
+| help | Displays all the available commands | h, halp | ```~help```, ```~help bigmoji``` |
+| ping | Ping/Pong command. Responds with ping | ms | ```~ping``` |
+| goodgirl | Lets you tell Ivy that she's being a good girl | 'goodbot', 'goodmaid', 'goodcow', 'patpat', 'pat', 'pet' | ```~goodgirl``` |
 #### Useful Commands:
-| Command | Description | Example |
-| --- | --- | --- |
-| avatar | Sends a bigger version of someone's avatar | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
-| bigmoji | Sends a bigger version of the given emoji | ```~help```, ```~help bigmoji``` |
-| nickname | Changes the user's nickname. Ivy has special lines for some names if you change her name | ```~nickname @Ivy cow``` |
+| Command | Description | Aliases | Example |
+| --- | --- | --- | --- |
+| avatar | Sends a bigger version of someone's avatar | icon, avy | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
+| bigmoji | Sends a bigger version of the given emoji | bigemoji, bmoji, bmj |```~help```, ```~help bigmoji``` |
+| nickname | Changes the user's nickname. Ivy has special lines for some names if you change her name | setnick, setnickname, setname, newnick, newname, newnickname | ```~nickname @Ivy cow``` |
 #### Fun Commands:
 | Command | Description | Example |
 | --- | --- | --- |

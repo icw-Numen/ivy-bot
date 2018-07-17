@@ -8,20 +8,20 @@ _(This is Ivy. She's happy to see you here today.)_
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Features](https://github.com/icw-Numen/ivy-bot#features)
-- [Prefix(es)](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#prefixes)
-- [Commands](https://github.com/icw-Numen/ivy-bot#commands)
-  - [Bot Commands](https://github.com/icw-Numen/ivy-bot#bot-commands)
-  - [Useful Commands](https://github.com/icw-Numen/ivy-bot#useful-commands)
-  - [Fun Commands](https://github.com/icw-Numen/ivy-bot#fun-commands)
-  - [Music Commands](https://github.com/icw-Numen/ivy-bot#music-commands)
-  - [Moderation Commands](https://github.com/icw-Numen/ivy-bot#moderation-commands)
-  - [Server Commands](https://github.com/icw-Numen/ivy-bot#server-commands)
-  - [Level/credits System Commands](https://github.com/icw-Numen/ivy-bot#levelcredits-system-commands)
-  - [Meme Commands](https://github.com/icw-Numen/ivy-bot#meme-commands)
-  - [Developer Commands](https://github.com/icw-Numen/ivy-bot#developer-commands)
-  - [Lewd Commands](https://github.com/icw-Numen/ivy-bot#lewd-commands)
-- [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
+- [Features](#features)
+- [Prefix(es)](#prefixes)
+- [Commands](#commands)
+  - [Bot Commands](#bot-commands)
+  - [Useful Commands](#useful-commands)
+  - [Fun Commands](#fun-commands)
+  - [Music Commands](#music-commands)
+  - [Moderation Commands](#moderation-commands)
+  - [Server Commands](#server-commands)
+  - [Level/credits System Commands](#levelcredits-system-commands)
+  - [Meme Commands](#meme-commands)
+  - [Developer Commands](#developer-commands)
+  - [Lewd Commands](#lewd-commands)
+- [Adding Ivy to your server](#adding-ivy-to-your-server)
 
 ## Introduction
 You know that one **_extra thicc_** maid bot on Discord? No? Well, you're looking at her page right now! :P
@@ -30,7 +30,7 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 
 **This page is essentially a quick reference manual on how to use maid bot Ivy. For more complete, in-depth information, the GitHub repository also has a wiki page [(link here)](https://github.com/icw-Numen/ivy-bot/wiki) where you can find neat things like more step-by-step guides, Ivy's bio, author comments, and author information.**
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 ## Features
 
@@ -46,7 +46,7 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 - Points/leveling/credits system
 - User data and server settings are stored on a cloud-based database
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 ## Prefixes
 The first two are ```~``` and ```Ivy, ```. The third a mention.
@@ -57,7 +57,7 @@ The first two are ```~``` and ```Ivy, ```. The third a mention.
 | Ivy, | Ivy, help |
 | @Ivy | @Ivy help |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 ## Commands
 
@@ -74,7 +74,7 @@ Bot-related commands.
 | ping | Ping/Pong command. Responds with ping | ms | ```~ping``` |
 | goodgirl | Lets you tell Ivy that she's being a good girl | goodbot, goodmaid, goodcow, patpat, pat, pet | ```~goodgirl``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Useful Commands:
 Handy commands with handy functions.
@@ -85,7 +85,7 @@ Handy commands with handy functions.
 | bigmoji | Sends a bigger version of the given emoji | bigemoji, bmoji, bmj |```~help```, ```~help bigmoji``` |
 | nickname | Changes the user's nickname. Ivy has special lines for some names when you change her name | setnick, setnickname, setname, newnick, newname, newnickname | ```~nickname @Ivy cow``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Fun Commands:
 Fun stuff and games.
@@ -98,7 +98,7 @@ Fun stuff and games.
 | rps | Plays Rock Paper Scissors against the bot | jankenpon | ```~rps rock```, ```~rps Rock``` |
 | roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 5). **Losing without safe mode gets you kicked from the server** | russianroulette, playroulette, rlt | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Music Commands:
 Commands related to playing music in a voice channel.
@@ -116,7 +116,7 @@ Commands related to playing music in a voice channel.
 | skip | Skips the current music in the queue | next | ```~skip``` |
 | queuepurge | Deletes all entries in the music queue | queueclear, clear, deletequeue, queuedelete | ```~queuepurge``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Moderation Commands:
 Commands for moderation quality of life improvements.
@@ -132,7 +132,7 @@ Commands for moderation quality of life improvements.
 | reason | Sets the reason for a mod action in the mod logs (by its case number) if none was given to it before | setreason | ```~setreason 5 bad girl``` |
 | unban | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Server Commands:
 Commands related to server settings and operations.
@@ -149,7 +149,7 @@ Commands related to server settings and operations.
 | settings | Shows current server settings set by the bot | serversettings, channelsettings, botsettings | ```~settings``` |
 | invite | Sends a temporary server invite | serverinvite, serverlink, invitation, serverinvitation, createinvite | ```~invite``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Level/credits System Commands:
 Commands related to the level/economy system.
@@ -162,7 +162,7 @@ Commands related to the level/economy system.
 | money | Shows how much money you currently have | monies, moolah, moola, credits, wallet, bank, piggybank | ```~money``` |
 | mystats | Shows the level, exp, and money you currently have | stats | ```~mystats``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Meme Commands:
 Self-explanatory. These are all harmless, so just use them freely.
@@ -173,7 +173,7 @@ Self-explanatory. These are all harmless, so just use them freely.
 | lenny | Sends a lenny face. Has slight chance to send rare lenny faces too ( ͡° ͜ʖ ͡°) | lennyface | ```~lenny``` |
 | owo| OwO what's this? | OwO, 0w0 | ```~owo``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Developer Commands:
 These can only be used by the one hosting the bot.
@@ -184,12 +184,12 @@ These can only be used by the one hosting the bot.
 | setbotavatar | Changes the bot's avatar | bav, setboticon | ```~setbot avatar https://mei.do/cow.jpg``` |
 | reload | Reloads the command file, if it's been updated or modified | rld | ```~setbot avatar https://mei.do/cow.jpg``` |
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 #### Lewd Commands:
 Coming soon!
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 
 ## Adding Ivy to your server
 Just want to add her to your server ASAP? Simply follow the steps below:
@@ -200,5 +200,5 @@ Just want to add her to your server ASAP? Simply follow the steps below:
 4. Click on "Authorize"
 5. You're all set! You should be able to see her on your server now
 
-[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+[(Back to Table of Contents)](#table-of-contents)
 

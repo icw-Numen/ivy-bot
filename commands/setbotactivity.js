@@ -14,7 +14,7 @@ exports.conf = {
 
 exports.help = {
   name: 'setbotactivity',
-  description: 'Changes the bot\'s avatar to the given input string',
+  description: 'Changes the bot\'s activity/"Playing" status to the given input string',
   usage: 'setbotactivity <string>',
   type: 'dev'
 };

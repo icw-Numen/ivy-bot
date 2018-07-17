@@ -1,7 +1,7 @@
 # Welcome to ~~demon~~ maid bot Ivy's quick reference page!
 <img src="https://orig00.deviantart.net/5574/f/2018/195/d/f/maid_ivy_crop_by_icw_numen-dch83gp.png" width="200">
 
-*This is Ivy.*
+*^ This is Ivy. She's happy to see you here.*
 
 ## Table of Contents
 - [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)

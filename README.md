@@ -1,8 +1,11 @@
 # Welcome to ~~demon~~ maid bot Ivy's one and only README file
+
+
 ## Table of Contents
-- [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
-- Adding Ivy to your server
-- Commands
+1. [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
+2. [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
+3. Commands
+
 
 ## Introduction
 You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luck because you're looking at part of her code right now! :P
@@ -15,6 +18,7 @@ Also, if you're going to look at her source code, please bear with my atrocious 
 
 .env file not included for obvious reasons.
 
+
 ## Adding Ivy to your server
 Just want to add her to your server ASAP? Fret not, I have already deployed maid bot Ivy on Heroku, so you don't have to worry about installing anything on your part. Simply follow the steps below:
 
@@ -25,5 +29,6 @@ Click on "Authorize"
 You're set! You should be able to see her on your server now
 
 
+## Commands
 
 

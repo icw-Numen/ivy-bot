@@ -12,7 +12,7 @@ You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luc
 
 In this README file, I'll go through a basic overview on the bot's features and commands, how to use it, and then comment on what I plan to add to her in the future. 
 
-**The GitHub repository also has a wiki page, and you can find more detailed information there. I personally recommend reading the wiki over this README file, as it has more in-depth information than the README file.**
+**The GitHub repository also has a wiki page, and you can find more detailed information there. I personally recommend reading the wiki over this README file, as it has more in-depth information might not be present in the README file.**
 
 Also, if you're going to look at her source code, please bear with my atrocious coding style. The bot's practically done, but refactoring some code is still a ~~premanent~~ work in progress. I'm still sort of new to Javascript or app development/deployment in general, I guess.
 
@@ -39,5 +39,5 @@ Just want to add her to your server ASAP? Fret not, I have already deployed maid
 #### Level/credits System Commands:
 #### Meme Commands:
 #### Developer Commands:
-#### Lewd, 🔞 Commands:
+#### Lewd Commands:
 

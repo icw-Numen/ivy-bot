@@ -1,17 +1,14 @@
-# Welcome to ~~demon~~ maid bot Ivy's one and only README file
-
+# Welcome to ~~demon~~ maid bot Ivy's official website
 
 ## Table of Contents
 - [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
+- [Features]()
 - [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
 - [Prefix(es)]()
 - [Commands](https://github.com/icw-Numen/ivy-bot#commands)
 
-
-
-
 ## Introduction
-You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luck because you're looking at part of her code right now! :P
+You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luck because you're looking at her page right now! :P
 
 In this README file, I'll go through a basic overview on the bot's features and commands, how to use it, and then comment on what I plan to add to her in the future. 
 
@@ -21,6 +18,7 @@ Also, if you're going to look at her source code, please bear with my atrocious 
 
 .env file not included in GitHub repository for obvious reasons.
 
+[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Adding Ivy to your server
 Just want to add her to your server ASAP? Fret not, I have already deployed maid bot Ivy on Heroku, so you don't have to worry about installing anything on your part. Simply follow the steps below:
@@ -31,9 +29,12 @@ Just want to add her to your server ASAP? Fret not, I have already deployed maid
 4. Click on "Authorize"
 5. You're set! You should be able to see her on your server now
 
+[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Prefixes
 Maid bot Ivy has three prefixes. I chose the first one for 
+
+[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Commands
 #### Bot Commands:
@@ -53,3 +54,4 @@ Maid bot Ivy has three prefixes. I chose the first one for
 #### Developer Commands:
 #### Lewd Commands:
 
+[(Click here to go scroll back to the top of the page)](https://github.com/icw-Numen/ivy-bot#table-of-contents)

@@ -114,21 +114,25 @@ Commands related to server settings and operations.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
-| addrole |  | | ```~ban @Ivy```, ```~ban @Ivy bad girl``` |
-| autorole |  |  | ```~kick @Ivy```, ```~kick @Ivy bad girl``` |
-| welcome |  |  | ```~warn @Ivy```, ```~warn @Ivy bad girl``` |
-| goodbye |  | unmute | ```~mute @Ivy```, ```~mute @Ivy bad girl``` |
-| listmoji | This will prevent users from sending messages to the channel for the set duration | ld, lock | ```~lockdown 3 hours```, ```~lockdown 1 day``` |
-| listroles | Purges the specified amount of messages (default's 100) under 14 days old from a given channel | obliterate, delete, deletemsg | ```~purge```, ```~purge 20```, ```~purge 10 bot``` |
-| removerole | Sets the reason for a mod action in the mod logs (by its case number) if none was given to it before | setreason | ```~setreason 5 bad girl``` |
-| settings | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
-| invite | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
+| addrole | Assigns a role to the user | roleadd, setrole, roleset, iam, assign, assignrole | ```~addrole lewd```, ```~iam lewd```, ```Ivy, iam lewd``` |
+| autorole | Sets the server's default role for new members. Passing nothing resets it to none | defaultrole | ```~autorole```, ```~autorole lewd``` |
+| welcome | Sets the server's default channel for welcoming new members. Passing nothing resets it to none | setwelcome | ```~welcome```, ```~welcome welcome``` |
+| goodbye | Sets the server's default channel for sending goodbyes to members who just left the guild. Passing nothing resets it to none | setgoodbye | ```~goodbye```, ```~goodbye goodbye``` |
+| listmoji | Sends a list of the server's emojis | listemojis, listmojis, listemoji, emojilist, emojislist, emojis, le, el, emojis | ```~listmoji``` |
+| listroles | Sends a list of the server's roles | listrole, rolelist, roleslist, lr, rl, roles | ```~listroles``` |
+| removerole | Removes a role from the user | roleremove | ```~removerole lewd``` |
+| settings | Shows current server settings set by the bot | serversettings, channelsettings, botsettings | ```~settings``` |
+| invite | Sends a temporary server invite | serverinvite, serverlink, invitation, serverinvitation, createinvite | ```~invite``` |
+
 #### Level/credits System Commands:
 Commands related to the level/economy system.
+
 #### Meme Commands:
 Self-explanatory.
+
 #### Developer Commands:
 These can only be used by the one hosting the bot.
+
 #### Lewd Commands:
 Coming soon!
 

@@ -59,6 +59,8 @@ Bot-related commands.
 | ping | Ping/Pong command. Responds with ping | ms | ```~ping``` |
 | goodgirl | Lets you tell Ivy that she's being a good girl | 'goodbot', 'goodmaid', 'goodcow', 'patpat', 'pat', 'pet' | ```~goodgirl``` |
 
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+
 #### Useful Commands:
 Handy commands with handy functions.
 
@@ -67,6 +69,8 @@ Handy commands with handy functions.
 | avatar | Sends a bigger version of someone's avatar | icon, avy | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
 | bigmoji | Sends a bigger version of the given emoji | bigemoji, bmoji, bmj |```~help```, ```~help bigmoji``` |
 | nickname | Changes the user's nickname. Ivy has special lines for some names when you change her name | setnick, setnickname, setname, newnick, newname, newnickname | ```~nickname @Ivy cow``` |
+
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 #### Fun Commands:
 Fun stuff and games.
@@ -78,6 +82,8 @@ Fun stuff and games.
 | roll | Rolls one or more dice. You can specify the number of faces too (default's 6) | dice, diceroll | ```~roll```, ```~roll 2```, ```~roll 3 20``` |
 | rps | Plays Rock Paper Scissors against the bot | jankenpon | ```~rps rock```, ```~rps Rock``` |
 | roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 5). **Losing without safe mode gets you kicked from the server** | russianroulette, playroulette, rlt | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
+
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 #### Music Commands:
 Commands related to playing music in a voice channel.
@@ -95,6 +101,8 @@ Commands related to playing music in a voice channel.
 | queuepurge | Deletes all entries in the music queue | queueclear, clear, deletequeue, queuedelete | ```~queuepurge``` |
 | removetrack | Removes the specified track from the queue | removemusic, removesong | ```~removetrack 12``` |
 
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+
 #### Moderation Commands:
 Commands for moderation quality of life improvements.
 
@@ -108,6 +116,8 @@ Commands for moderation quality of life improvements.
 | purge | Purges the specified amount of messages (default's 100) under 14 days old from a given channel | obliterate, delete, deletemsg | ```~purge```, ```~purge 20```, ```~purge 10 bot``` |
 | reason | Sets the reason for a mod action in the mod logs (by its case number) if none was given to it before | setreason | ```~setreason 5 bad girl``` |
 | unban | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
+
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 #### Server Commands:
 Commands related to server settings and operations.
@@ -124,14 +134,22 @@ Commands related to server settings and operations.
 | settings | Shows current server settings set by the bot | serversettings, channelsettings, botsettings | ```~settings``` |
 | invite | Sends a temporary server invite | serverinvite, serverlink, invitation, serverinvitation, createinvite | ```~invite``` |
 
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+
 #### Level/credits System Commands:
 Commands related to the level/economy system.
+
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 #### Meme Commands:
 Self-explanatory.
 
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
+
 #### Developer Commands:
 These can only be used by the one hosting the bot.
+
+[(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 #### Lewd Commands:
 Coming soon!
@@ -139,7 +157,7 @@ Coming soon!
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Adding Ivy to your server
-Just want to add her to your server ASAP? Fret not, I have already deployed maid bot Ivy on Heroku, so you don't have to worry about installing anything on your part. Simply follow the steps below:
+Just want to add her to your server ASAP? Simply follow the steps below:
 
 1. Go to her Discord bot page (coming soon), then click on "invite" (make sure you're logged in to Discord)
 2. Select the server you want to add her to

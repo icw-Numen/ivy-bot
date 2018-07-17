@@ -1,4 +1,4 @@
-# Welcome to ~~demon~~ maid bot Ivy's quick reference page
+# Welcome to ~~demon~~ maid bot Ivy's quick reference page!
 <img src="https://img00.deviantart.net/4f2d/i/2018/195/3/b/maid_ivy_colored_ps_crop2_by_icw_numen-dch85au.png" width="500">
 
 ## Table of Contents
@@ -97,8 +97,32 @@ Commands related to playing music in a voice channel.
 
 #### Moderation Commands:
 Commands for moderation quality of life improvements.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| ban | Bans the mentioned user. You can pass in a reason for logging purposes | hammer | ```~ban @Ivy```, ```~ban @Ivy bad girl``` |
+| kick | Kicks the mentioned user. You can pass in a reason for logging purposes | boot | ```~kick @Ivy```, ```~kick @Ivy bad girl``` |
+| warn | Issues a warning to the mentioned user | warning, alert | ```~warn @Ivy```, ```~warn @Ivy bad girl``` |
+| mute | Mutes or unmutes a mentioned user | unmute | ```~mute @Ivy```, ```~mute @Ivy bad girl``` |
+| lockdown | This will prevent users from sending messages to the channel for the set duration | ld, lock | ```~lockdown 3 hours```, ```~lockdown 1 day``` |
+| purge | Purges the specified amount of messages (default's 100) under 14 days old from a given channel | obliterate, delete, deletemsg | ```~purge```, ```~purge 20```, ```~purge 10 bot``` |
+| reason | Sets the reason for a mod action in the mod logs (by its case number) if none was given to it before | setreason | ```~setreason 5 bad girl``` |
+| unban | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
+
 #### Server Commands:
-Commands related to per-server settings.
+Commands related to server settings and operations.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| addrole |  | | ```~ban @Ivy```, ```~ban @Ivy bad girl``` |
+| autorole |  |  | ```~kick @Ivy```, ```~kick @Ivy bad girl``` |
+| welcome |  |  | ```~warn @Ivy```, ```~warn @Ivy bad girl``` |
+| goodbye |  | unmute | ```~mute @Ivy```, ```~mute @Ivy bad girl``` |
+| listmoji | This will prevent users from sending messages to the channel for the set duration | ld, lock | ```~lockdown 3 hours```, ```~lockdown 1 day``` |
+| listroles | Purges the specified amount of messages (default's 100) under 14 days old from a given channel | obliterate, delete, deletemsg | ```~purge```, ```~purge 20```, ```~purge 10 bot``` |
+| removerole | Sets the reason for a mod action in the mod logs (by its case number) if none was given to it before | setreason | ```~setreason 5 bad girl``` |
+| settings | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
+| invite | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
 #### Level/credits System Commands:
 Commands related to the level/economy system.
 #### Meme Commands:

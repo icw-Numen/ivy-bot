@@ -24,15 +24,15 @@ exports.run = (client, message, args) => {
       .setTitle('Command List~')
       .setDescription(` \n\n~~demon~~ maid ${client.user.username} to the rescue :9\n\n${tip}\n\nAs of now, there are **${client.commands.size}** commands in total`)
       .addField('Bot Commands:', `${botS}`)
-      .addField('Meme Commands:', `${memeS}`)
       .addField('Useful Commands:', `${utilS}`)
       .addField('Fun Commands:', `${funS}`)
       .addField('Music Commands:', `${musicS}`)
       .addField('Moderation Commands:', `${modS}`)
       .addField('Server Commands:', `${serverS}`)
       .addField('Level/credits System Commands:', `${pointS}`)
+      .addField('Meme Commands:', `${memeS}`)
       .addField('Developer Commands:', `${devS}`)
-      .addField('Lewd, 🔞 Commands:', '[coming soon]')
+      .addField('Lewd Commands:', '[coming soon]')
       .setFooter(`Bot and icons/art made with care by ${package.author}`);
     return message.channel.send({embed});
   } else {

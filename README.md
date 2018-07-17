@@ -48,9 +48,9 @@ The first two are ```~``` and ```Ivy, ```. The third is pinging her.
 
 Each command has aliases/shortcuts too, which are alternate command names. Use ```~help <command name>``` to check each command's aliases.
 
-| Command | Description | Example |
-| --- | --- | --- |
-| info | Sends an embed with information about the bot | ```~info``` |
+| Command | Description | Aliases | Example |
+| --- | --- | --- | --- |
+| info | Sends an embed with information about the bot | intro, botinfo, ivyinfo, bot, ivy, about | ```~info``` |
 | author | Sends an embed with information about the bot's author | ```~author``` |
 | help | Displays all the available commands | ```~help```, ```~help bigmoji``` |
 | ping | Ping/Pong command. Responds with ping | ```~ping``` |

@@ -44,7 +44,7 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Prefixes
-The first two are ```~``` and ```Ivy, ```. The third is pinging her.
+The first two are ```~``` and ```Ivy, ```. The third a mention.
 
 | Prefix | Example |
 | --- | --- |

@@ -1,6 +1,6 @@
 # Welcome to ~~demon~~ maid bot Ivy's one and only README file
 ## Table of Contents
-- Introduction
+- [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
 
 ## Introduction
 You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luck because you're looking at part of her code right now! :P

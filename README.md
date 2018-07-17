@@ -67,7 +67,7 @@ Bot-related commands.
 | author | Sends an embed with information about the bot's author | authorinfo, lewdbringer, dev, devinfo, botauthor, botdev | ```~author``` |
 | help | Displays all the available commands | h, halp | ```~help```, ```~help bigmoji``` |
 | ping | Ping/Pong command. Responds with ping | ms | ```~ping``` |
-| goodgirl | Lets you tell Ivy that she's being a good girl | 'goodbot', 'goodmaid', 'goodcow', 'patpat', 'pat', 'pet' | ```~goodgirl``` |
+| goodgirl | Lets you tell Ivy that she's being a good girl | goodbot, goodmaid, goodcow, patpat, pat, pet | ```~goodgirl``` |
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 

@@ -50,8 +50,14 @@ The first two are ```~``` and ```Ivy, ```. The third is pinging her.
 | author | Sends an embed with information about the bot's author | ```~author``` |
 | help | Displays all the available commands | ```~help```, ```~help bigmoji``` |
 | ping | Ping/Pong command. Responds with ping | ```~ping``` |
-| goodgirl | Lets you tell Ivy that she\'s a good girl | ```~goodgirl``` |
+| goodgirl | Lets you tell Ivy that she's being a good girl | ```~goodgirl``` |
 #### Useful Commands:
+| Command | Description | Example |
+| --- | --- | --- |
+| avatar | Sends a bigger version of someone's avatar | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
+| bigmoji | Sends a bigger version of the given emoji | ```~help```, ```~help bigmoji``` |
+| nickname | Changes the user's nickname. 
+Ivy has special lines for some names if you change her name | ```~nickname @Ivy cow``` |
 #### Fun Commands:
 #### Music Commands:
 #### Moderation Commands:
@@ -70,7 +76,7 @@ Just want to add her to your server ASAP? Fret not, I have already deployed maid
 2. Select the server you want to add her to
 3. Make sure to give her permissions to manage roles, channels, along with moderation permissions (kick, ban)
 4. Click on "Authorize"
-5. You're set! You should be able to see her on your server now
+5. You're all set! You should be able to see her on your server now
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 

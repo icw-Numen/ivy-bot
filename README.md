@@ -1,5 +1,6 @@
 # Welcome to ~~demon~~ maid bot Ivy's quick reference page!
-<img src="https://img00.deviantart.net/4f2d/i/2018/195/3/b/maid_ivy_colored_ps_crop2_by_icw_numen-dch85au.png" width="500">
+<img src="https://orig00.deviantart.net/5574/f/2018/195/d/f/maid_ivy_crop_by_icw_numen-dch83gp.png" width="500">
+*This is Ivy. Say hi to her.*
 
 ## Table of Contents
 - [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)

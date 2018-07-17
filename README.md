@@ -2,9 +2,12 @@
 
 
 ## Table of Contents
-1. [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
-2. [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
-3. [Commands](https://github.com/icw-Numen/ivy-bot#commands)
+- [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
+- [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
+- [Prefix(es)]()
+- [Commands](https://github.com/icw-Numen/ivy-bot#commands)
+
+
 
 
 ## Introduction
@@ -16,7 +19,7 @@ In this README file, I'll go through a basic overview on the bot's features and 
 
 Also, if you're going to look at her source code, please bear with my atrocious coding style. The bot's practically done, but refactoring some code is still a ~~premanent~~ work in progress. I'm still sort of new to Javascript or app development/deployment in general, I guess.
 
-.env file not included for obvious reasons.
+.env file not included in GitHub repository for obvious reasons.
 
 
 ## Adding Ivy to your server
@@ -29,8 +32,17 @@ Just want to add her to your server ASAP? Fret not, I have already deployed maid
 5. You're set! You should be able to see her on your server now
 
 
+## Prefixes
+Maid bot Ivy has three prefixes. I chose the first one for 
+
 ## Commands
 #### Bot Commands:
+| Command | Description | Example |
+| info | Sends an embed with information about the bot | ~info |
+| author | | |
+| help | | |
+| ping | | |
+| goodgirl | | |
 #### Useful Commands:
 #### Fun Commands:
 #### Music Commands:

@@ -1,4 +1,4 @@
-# Welcome to ~~demon~~ maid bot Ivy's official website
+# Welcome to ~~demon~~ maid bot Ivy's quick reference page
 
 ## Table of Contents
 - [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
@@ -8,7 +8,9 @@
 - [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
 
 ## Introduction
-You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luck because you're looking at her page right now! :P
+You know that one **_extra thicc_** maid bot on Discord? No? Well, you're looking at her page right now! :P
+
+Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provide userful services for all.
 
 **This page is essentially a quick reference manual on how to use maid bot Ivy. For more complete, in-depth information, the GitHub repository also has a wiki page [(link here)](https://github.com/icw-Numen/ivy-bot/wiki) where you can find neat things like more step-by-step guides, Ivy's bio, author comments, and author information.**
 
@@ -16,7 +18,7 @@ You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luc
 
 ## Features
 
-- 24/7 uptime
+- Online 24/7
 - Three prefixes
 - A nice personality~
 - Music, moderation, and useful commands
@@ -44,11 +46,11 @@ The first two are ```~``` and ```Ivy, ```. The third is pinging her.
 #### Bot Commands:
 | Command | Description | Example |
 | --- | --- | --- |
-| info | Sends an embed with information about the bot | ~info |
-| author | | |
-| help | | |
-| ping | | |
-| goodgirl | | |
+| info | Sends an embed with information about the bot | ```~info``` |
+| author | Sends an embed with information about the bot's author | ```~author``` |
+| help | Displays all the available commands | ```~help```, ```~help bigmoji``` |
+| ping | Ping/Pong command. Responds with ping | ```~ping``` |
+| goodgirl | Lets you tell Ivy that she\'s a good girl | ```~goodgirl``` |
 #### Useful Commands:
 #### Fun Commands:
 #### Music Commands:

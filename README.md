@@ -16,10 +16,27 @@ You know that one **_extra thicc_** maid bot on Discord? No? Well, you're in luc
 
 ## Features
 
+- 24/7 uptime
+- Three prefixes
+- A nice personality~
+- Music, moderation, and useful commands
+- Includes fun and meme commands too
+- Can set automatic role for new members
+- Can set welcome/goodbye/log channels
+- Each command has aliases for convenience
+- Points/leveling/credits system
+- User data and server settings are stored on a cloud-based database
+
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Prefixes
- 
+The first two are ```~``` and ```Ivy, ```. The third is pinging her.
+
+| Prefix | Example |
+| --- | --- |
+| ~ | ~help |
+| Ivy, | Ivy, help |
+| @Ivy | @Ivy, help |
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 

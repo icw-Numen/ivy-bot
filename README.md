@@ -2,8 +2,8 @@
 
 ## Table of Contents
 - [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
-- [Features]()
-- [Prefix(es)]()
+- [Features](https://github.com/icw-Numen/ivy-bot#features)
+- [Prefix(es)](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#prefixes)
 - [Commands](https://github.com/icw-Numen/ivy-bot#commands)
 - [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
 

@@ -149,15 +149,35 @@ Commands related to server settings and operations.
 #### Level/credits System Commands:
 Commands related to the level/economy system.
 
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| dailies | Gives you $100. You can claim it again the next day as soon as the date changes | hollahollagetdolla | ```~dailies``` |
+| exp | Shows how many experience points you currently have | xp | ```~exp``` |
+| level | Shows your current level | lv, lvl | ```~level``` |
+| money | Shows how much money you currently have | monies, moolah, moola, credits, wallet, bank, piggybank | ```~money``` |
+| mystats | Shows the level, exp, and money you currently have | stats | ```~mystats``` |
+
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 #### Meme Commands:
-Self-explanatory.
+Self-explanatory. These are all harmless, so just use them freely.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| ayy | lmao | ay, ayyy | ```~dailies``` |
+| lenny | Sends a lenny face. Has slight chance to send rare lenny faces too ( ͡° ͜ʖ ͡°) | lennyface | ```~lenny``` |
+| owo| OwO what's this? | OwO, 0w0 | ```~owo``` |
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 #### Developer Commands:
 These can only be used by the one hosting the bot.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| setbotactivity | Changes the bot's activity/"Playing" status to the given input string | bact, setbotstatus | ```~setbotactivity with fire``` |
+| setbotavatar | Changes the bot's avatar | bav, setboticon | ```~setbot avatar https://mei.do/cow.jpg``` |
+| reload | Reloads the command file, if it's been updated or modified | rld | ```~setbot avatar https://mei.do/cow.jpg``` |
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 

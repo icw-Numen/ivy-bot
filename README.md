@@ -44,45 +44,68 @@ The first two are ```~``` and ```Ivy, ```. The third is pinging her.
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 
 ## Commands
+
+Note: Each command has aliases/shortcuts, which are just alternate command names.
+
 #### Bot Commands:
+Bot-related commands.
 
-Each command has aliases/shortcuts too, which are alternate command names. Use ```~help <command name>``` to check each command's aliases.
-
-| Command | Description | Aliases | Example |
+| Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
 | info | Sends an embed with information about the bot | intro, botinfo, ivyinfo, bot, ivy, about | ```~info``` |
 | author | Sends an embed with information about the bot's author | authorinfo, lewdbringer, dev, devinfo, botauthor, botdev | ```~author``` |
 | help | Displays all the available commands | h, halp | ```~help```, ```~help bigmoji``` |
 | ping | Ping/Pong command. Responds with ping | ms | ```~ping``` |
 | goodgirl | Lets you tell Ivy that she's being a good girl | 'goodbot', 'goodmaid', 'goodcow', 'patpat', 'pat', 'pet' | ```~goodgirl``` |
+
 #### Useful Commands:
-| Command | Description | Aliases | Example |
+Handy commands with handy functions.
+
+| Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
 | avatar | Sends a bigger version of someone's avatar | icon, avy | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
 | bigmoji | Sends a bigger version of the given emoji | bigemoji, bmoji, bmj |```~help```, ```~help bigmoji``` |
-| nickname | Changes the user's nickname. Ivy has special lines for some names if you change her name | setnick, setnickname, setname, newnick, newname, newnickname | ```~nickname @Ivy cow``` |
+| nickname | Changes the user's nickname. Ivy has special lines for some names when you change her name | setnick, setnickname, setname, newnick, newname, newnickname | ```~nickname @Ivy cow``` |
+
 #### Fun Commands:
-| Command | Description | Example |
-| --- | --- | --- |
-| coinflip | Flips a coin | ```~coinflip``` |
-| 8ball | The magic 8-ball answers any questions you might have about the future | ```~8ball Half Life 3 confirmed?``` |
-| roll | Rolls one or more dice. You can specify the number of faces too (default's 6) | ```~roll```, ```~roll 2```, ```~roll 3 20``` |
-| rps | Plays Rock Paper Scissors against the bot | ```~rps rock```, ```~rps Rock``` |
-| roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 5). **Losing without safe mode gets you kicked from the server** | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
+Fun stuff and games.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| coinflip | Flips a coin | flip | ```~coinflip``` |
+| 8ball | The magic 8-ball answers any questions you might have about the future | 8-ball, 8b | ```~8ball Half Life 3 confirmed?``` |
+| roll | Rolls one or more dice. You can specify the number of faces too (default's 6) | dice, diceroll | ```~roll```, ```~roll 2```, ```~roll 3 20``` |
+| rps | Plays Rock Paper Scissors against the bot | jankenpon | ```~rps rock```, ```~rps Rock``` |
+| roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 5). **Losing without safe mode gets you kicked from the server** | russianroulette, playroulette, rlt | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
+
 #### Music Commands:
-| Command | Description | Example |
-| --- | --- | --- |
-| coinflip | Flips a coin | ```~coinflip``` |
-| 8ball | The magic 8-ball answers any questions you might have about the future | ```~8ball Half Life 3 confirmed?``` |
-| roll | Rolls one or more dice. You can specify the number of faces too (default's 6) | ```~roll```, ```~roll 2```, ```~roll 3 20``` |
-| rps | Plays Rock Paper Scissors against the bot | ```~rps rock```, ```~rps Rock``` |
-| roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 5). **Losing without safe mode gets you kicked from the server** | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
+Commands related to playing music in a voice channel.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| enqueue | Adds a track to the queue. Queue can hold 25 tracks max | addqueue', 'addsong', 'addmusic', 'enqueue', 'playthis', 'enq | ```~enqueue <youtube link here>``` |
+| join | Joins the voice channel you are in | joinvc | ```~join``` |
+| leave | Leaves the voice channel. Also stops playing music | stop, end | ```~leave``` |
+| play | Starts playing the tracks in the music queue | start | ```~play``` |
+| playing | Shows the current track being played from the music queue | nowplaying, playingnow, cursong, curmusic, curtrack | ```~playing``` |
+| pause | Pauses the currently playing music | pausemusic, pausesong, pausetrack | ```~pause``` |
+| skip | Skips the current music in the queue | next | ```~skip``` |
+| queue | Shows the music queue | musiclist, songlist, tracklist, playlist, q | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
+| queuepurge | Deletes all entries in the music queue | queueclear, clear, deletequeue, queuedelete | ```~queuepurge``` |
+| removetrack | Removes the specified track from the queue | removemusic, removesong | ```~removetrack 12``` |
+
 #### Moderation Commands:
+Commands for moderation quality of life improvements.
 #### Server Commands:
+Commands related to per-server settings.
 #### Level/credits System Commands:
+Commands related to the level/economy system.
 #### Meme Commands:
+Self-explanatory.
 #### Developer Commands:
+These can only be used by the one hosting the bot.
 #### Lewd Commands:
+Coming soon!
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 

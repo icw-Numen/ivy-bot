@@ -3,11 +3,11 @@
 
 _(This is Ivy. She's happy to see you here today.)_
 
-| [Invite link](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=8&scope=bot) | [Wiki](https://github.com/icw-Numen/ivy-bot/wiki) |
+| [Invite link](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=8&scope=bot) | [Wiki  (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) |
 | --- | --- |
 
 ## Table of Contents
-- [Introduction](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#introduction)
+- [Introduction](#introduction)
 - [Features](https://github.com/icw-Numen/ivy-bot#features)
 - [Prefix(es)](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#prefixes)
 - [Commands](https://github.com/icw-Numen/ivy-bot#commands)

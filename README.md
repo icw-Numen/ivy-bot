@@ -50,7 +50,7 @@ The first two are ```~``` and ```Ivy, ```. The third a mention.
 | --- | --- |
 | ~ | ~help |
 | Ivy, | Ivy, help |
-| @Ivy | @Ivy, help |
+| @Ivy | @Ivy help |
 
 [(Back to Table of Contents)](https://github.com/icw-Numen/ivy-bot#table-of-contents)
 

@@ -56,8 +56,7 @@ The first two are ```~``` and ```Ivy, ```. The third is pinging her.
 | --- | --- | --- |
 | avatar | Sends a bigger version of someone's avatar | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
 | bigmoji | Sends a bigger version of the given emoji | ```~help```, ```~help bigmoji``` |
-| nickname | Changes the user's nickname. 
-Ivy has special lines for some names if you change her name | ```~nickname @Ivy cow``` |
+| nickname | Changes the user's nickname. Ivy has special lines for some names if you change her name | ```~nickname @Ivy cow``` |
 #### Fun Commands:
 #### Music Commands:
 #### Moderation Commands:

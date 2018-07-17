@@ -6,6 +6,16 @@
 - [Features](https://github.com/icw-Numen/ivy-bot#features)
 - [Prefix(es)](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#prefixes)
 - [Commands](https://github.com/icw-Numen/ivy-bot#commands)
+  - [Bot Commands](https://github.com/icw-Numen/ivy-bot#bot-commands)
+  - [Useful Commands](https://github.com/icw-Numen/ivy-bot#useful-commands)
+  - [Fun Commands](https://github.com/icw-Numen/ivy-bot#fun-commands)
+  - [Music Commands](https://github.com/icw-Numen/ivy-bot#music-commands)
+  - [Moderation Commands](https://github.com/icw-Numen/ivy-bot#moderation-commands)
+  - [Server Commands](https://github.com/icw-Numen/ivy-bot#server-commands)
+  - [Level/credits System Commands](https://github.com/icw-Numen/ivy-bot#levelcredits-system-commands)
+  - [Meme Commands](https://github.com/icw-Numen/ivy-bot#meme-commands)
+  - [Developer Commands](https://github.com/icw-Numen/ivy-bot#developer-commands)
+  - [Lewd Commands](https://github.com/icw-Numen/ivy-bot#lewd-commands)
 - [Adding Ivy to your server](https://github.com/icw-Numen/ivy-bot/blob/master/README.md#adding-ivy-to-your-server)
 
 ## Introduction

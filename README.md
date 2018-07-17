@@ -65,7 +65,7 @@ The first two are ```~``` and ```Ivy, ```. The third is pinging her.
 | 8ball | The magic 8-ball answers any questions you might have about the future | ```~8ball Half Life 3 confirmed?``` |
 | roll | Rolls one or more dice. You can specify the number of faces too (default's 6) | ```~roll```, ```~roll 2```, ```~roll 3 20``` |
 | rps | Plays Rock Paper Scissors against the bot | ```~rps rock```, ```~rps Rock``` |
-| roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 5) | ```~nickname @Ivy cow``` |
+| roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 5). **Losing without safe mode gets you kicked** | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
 #### Music Commands:
 #### Moderation Commands:
 #### Server Commands:

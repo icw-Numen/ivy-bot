@@ -30,14 +30,17 @@ exports.run = async (client, message, args) => {
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url.slice(0);}).catch(error => {
+    youtube.searchVideos(args.join(' '), 10).then(link => {url = link[0].url.slice(0);}).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
     });
+    if (!url) {
+      return  message.channel.send(`Oops, I couldn\'t find a video that matches your request, ${user.username}`).catch(console.error);
+    }
   }
 
   const server = main.servers[message.guild.id];
   if (args.length === 0) {
-    return message.channel.send(`Please give me a link so I can add it to the queue, ${user.username}`).catch(console.error);
+    return message.channel.send(`Please give me a video so I can add it to the queue, ${user.username}`).catch(console.error);
   }
 
   getInfo(url).then(info => {

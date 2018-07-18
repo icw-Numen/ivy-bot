@@ -66,6 +66,6 @@ exports.conf = {
 exports.help = {
   name: 'joindate',
   description: 'Tells when the mentioned member has joined the server. Mentioning no one tells you when you have joined the server. This command also works with a username if you don\'t want to ping anyone',
-  usage: 'joindate <mention / username>',
+  usage: 'joindate <mention/username>',
   type: 'server'
 };

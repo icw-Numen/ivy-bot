@@ -23,13 +23,13 @@ exports.run = async (client, message) => {
     return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
   }
 
+  const server = main.servers[message.guild.id];
+
   if (server.dispatcher) {
     if (!server.dispatcher.paused) {
       return message.channel.send(`I'm already playing something, ${user.username}`).catch(console.error);
     }
   }
-
-  const server = main.servers[message.guild.id];
 
   if (server.queue.length === 0 && !server.dispatcher) {
     return message.channel.send(`It appears that the music queue is empty. Please give me a link with \`${settings.prefix}enqueue\` so I can add it to the queue, ${user.username}`).catch(console.error);

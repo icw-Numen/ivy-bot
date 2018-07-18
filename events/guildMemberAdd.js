@@ -1,4 +1,6 @@
 const main = require('../app.js');
+const reactions = require('../reactions.json');
+const {RichEmbed} = require('discord.js');
 
 module.exports = member => {
   const guild = member.guild;
@@ -26,5 +28,10 @@ function welcome(row, member) {
   if (!channel) return;
   const role = guild.roles.find('name', row['autorole']);
   if (role && bot.hasPermission('MANAGE_ROLES')) member.addRole(role).catch(console.error);
-  channel.send(`Hello~ Welcome to **${guild.name}**, ${member.user.username}!`);
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setThumbnail(reactions.normal)
+    .setTitle('A new member has joined the server~')
+    .setDescription(`Hello~ Welcome to **${guild.name}**, ${member.user.username}!`);
+  return channel.send({embed});
 }

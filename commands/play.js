@@ -32,7 +32,7 @@ exports.run = async (client, message) => {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Let the party begin~')
-      .setThumbnail(reactions.normal2)
+      .setThumbnail(reactions.wink1)
       .setDescription(`Now playing music, ${user.username}`);
     message.channel.send({embed});
     playHelper(server.vc, message);

@@ -1,4 +1,6 @@
 const main = require('../app.js');
+const {RichEmbed} = require('discord.js');
+const reactions = require('../reactions.json');
 
 module.exports = member => {
   const guild = member.guild;
@@ -22,5 +24,10 @@ module.exports = member => {
 function memRem(row, member, guild) {
   const channel = guild.channels.find('name', row['goodbye']);
   if (!channel) return;
-  channel.send(`Goodbye, ${member.user.username}...`);
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setThumbnail(reactions.smug)
+    .setTitle('A member has left the server~')
+    .setDescription(`Goodbye, ${member.user.username}...`);
+  return channel.send({embed});
 }

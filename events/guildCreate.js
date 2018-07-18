@@ -1,10 +1,10 @@
-const Discord = require('discord.js');
+const {RichEmbed} = require('discord.js');
 const settings = require('../settings.json');
 const package = require('../package.json');
 const reactions = require('../reactions.json');
 
 module.exports = (guild) => {
-  const embed = new Discord.RichEmbed()
+  const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setThumbnail(reactions.normal2)
     .setTitle('Hello everyone~')

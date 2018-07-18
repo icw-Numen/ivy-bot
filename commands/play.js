@@ -27,11 +27,13 @@ exports.run = async (client, message, args) => {
   const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;
   const youtube = new YouTube(process.env.YOUTUBEAPIKEY);
 
-  let url;
+  var url;
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    url = youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url;});
+    youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url;}).catch(error => {
+      return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
+    });
   }
 
   const server = main.servers[message.guild.id];

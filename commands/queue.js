@@ -19,7 +19,11 @@ exports.run = async (client, message) => {
   for (var i = 0; i < 10; i++) {
     if (i < q.length) {
       const info = await ytdl.getInfo(q[i]);
-      qA[i] = '- ' + '**' + info.title + '**' + `\n(added by ${q2[i]})`;
+      if (i === 0) {
+        qA[i] = '- ' + '**' + info.title + '**' + `\n(added by ${q2[i]})`;
+      } else {
+        qA[i] = '- ' + '**' + info.title + '**' + `\n(added by ${q2[i]})`;
+      }
     } else {
       break;
     }

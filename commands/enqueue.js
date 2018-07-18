@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
   if (args.join(' ').match(ytReg)) {
     url = args.join();
   } else {
-    youtube.searchVideos(args.join(' '), 5).then(link => {
+    youtube.searchVideos(args.join(' '), 1).then(link => {
       url = link[0].url;
       playVideo(url, message);
     }).catch(error => {

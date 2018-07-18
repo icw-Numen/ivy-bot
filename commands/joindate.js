@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
       .setColor(0xF18E8E)
       .setTitle('My join date~')
       .setThumbnail(reactions.closed)
-      .setDescription(`Thanks for asking! I have joined this server at ${joindate}, ${message.author.username}`);
+      .setDescription(`Thanks for asking! I have joined this server at **${joindate}**, ${message.author.username}`);
     return message.channel.send({embed});
   } else
   if (message.mentions.users.size < 1) {
@@ -19,7 +19,7 @@ exports.run = (client, message, args) => {
         .setColor(0xF18E8E)
         .setTitle(`${message.author.username}\' join date~`)
         .setThumbnail(reactions.normal)
-        .setDescription(`You have joined this server at ${joindate}, ${message.author.username}`);
+        .setDescription(`You have joined this server at **${joindate}**, ${message.author.username}`);
       return message.channel.send({embed});
     }
 
@@ -36,7 +36,7 @@ exports.run = (client, message, args) => {
       .setColor(0xF18E8E)
       .setTitle(`${user.user.username}\' join date~`)
       .setThumbnail(reactions.normal)
-      .setDescription(`${user.user.username} has joined this server at ${joindate}, ${message.author.username}`);
+      .setDescription(`${user.user.username} has joined this server at **${joindate}**, ${message.author.username}`);
     return message.channel.send({embed});
 
   } else if (message.mentions.users.size === 1) {
@@ -47,7 +47,7 @@ exports.run = (client, message, args) => {
       .setColor(0xF18E8E)
       .setTitle(`${user.user.username}\' join date~`)
       .setThumbnail(reactions.normal)
-      .setDescription(`${user.user.username} has joined this server at ${joindate}, ${message.author.username}`);
+      .setDescription(`${user.user.username} has joined this server at **${joindate}**, ${message.author.username}`);
     return message.channel.send({embed});
   }
   else {

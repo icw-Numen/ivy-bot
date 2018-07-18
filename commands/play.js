@@ -83,7 +83,7 @@ exports.conf = {
 
 exports.help = {
   name: 'play',
-  description: 'Starts playing the tracks in the music queue. Giving a link adds the track to the queue. 25 songs can be queued max.\nNot giving anything simply resumes where the queue was left off',
+  description: 'Starts playing the tracks in the music queue. Giving a link adds the track to the queue. Passing keywords will make Ivy queue the first result. 25 songs can be queued max.\nNot giving anything simply resumes where the queue was left off',
   usage: 'play <youtube link>',
   type: 'music'
 };

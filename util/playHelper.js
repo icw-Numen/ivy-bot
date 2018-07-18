@@ -24,6 +24,13 @@ function playHelper (connection, message) {
     message.channel.send({embed});
   }).catch(error => {return error;});
 
+  if (server.dispatcher) {
+    if (server.dispatcher.paused) {
+      server.dispatcher.resume();
+      return;
+    }
+  }
+
   server.dispatcher = connection.playStream(ytdl(curSong, {filter: 'audioonly'}), {volume: .3});
 
   server.dispatcher.on('end', () => {

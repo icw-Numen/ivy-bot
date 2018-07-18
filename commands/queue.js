@@ -16,9 +16,13 @@ exports.run = async (client, message) => {
   const q = server.queue;
   const q2 = server.qUsers;
   var qA = [];
-  for (var i = 0; i < q.length; i++) {
-    const info = await ytdl.getInfo(q[i]);
-    qA[i] = '- ' + '**' + info.title + '**' + `\n(added by ${q2[i]})`;
+  for (var i = 0; i < 10; i++) {
+    if (i < q.length) {
+      const info = await ytdl.getInfo(q[i]);
+      qA[i] = '- ' + '**' + info.title + '**' + `\n(added by ${q2[i]})`;
+    } else {
+      break;
+    }
   }
 
   let qF = qA.join(' \n');
@@ -36,7 +40,7 @@ exports.run = async (client, message) => {
     .setColor(0xF18E8E)
     .setTitle('Music Queue~')
     .setThumbnail(reaction)
-    .setDescription(`${message.author.username}, this server's music queue is:\n\n${qF}\n\n**${qA.length}** tracks total (25 max.)`);
+    .setDescription(`${message.author.username}, this server's first ten tracks in the music queue are:\n\n${qF}\n\n**${qA.length}** tracks total (25 max.)`);
   message.channel.send({embed});
 };
 
@@ -49,7 +53,7 @@ exports.conf = {
 
 exports.help = {
   name: 'queue',
-  description: 'Shows the music queue',
+  description: 'Shows the first ten entries in the music queue',
   usage: 'queue',
   type: 'music'
 };

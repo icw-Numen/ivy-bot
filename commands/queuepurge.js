@@ -12,7 +12,7 @@ exports.run = (client, message) => {
     };
   }
 
-  const user = message.author.user;
+  const user = message.author;
 
   if (main.servers[message.guild.id].vc === '') {
     return message.channel.send(`Please join a voice channel and add me with \`${settings.prefix}join\`, ${user.username}`).catch(console.error);

@@ -31,10 +31,8 @@ exports.run = async (client, message, args) => {
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    console.log(args.join(' '));
     youtube.searchVideos(args.join(' '), 5).then(link => {
       url = link[0].url;
-      console.log(url);
       playVideo(url, message);
     }).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);

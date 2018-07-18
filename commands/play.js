@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    ytApi.search(args.join(' ')).then(link => {url = link[0].url;});
+    url = ytApi.search(args.join(' ')).then(link => {url = link[0].url;});
   }
 
 

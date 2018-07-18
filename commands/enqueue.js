@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
   var url;
 
   if (args.join(' ').match(ytReg)) {
-    url = args[0];
+    url = args.join();
   } else {
     youtube.searchVideos(args.join(' '), 5).then(link => {
       url = link[0].url;

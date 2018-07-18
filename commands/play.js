@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
 
   var url;
   if (args.join(' ').match(ytReg)) {
-    url = args[0];
+    url = args.join();
   } else if (!(args.length === 0)) {
     youtube.searchVideos(args.join(' '), 5).then(link => {
       url = link[0].url;
@@ -88,10 +88,10 @@ function playVideo(url, message) {
         playHelper(server.vc, message);
       } else {
         server.queue.push(url);
-        server.qUsers.push(user.username);        
+        server.qUsers.push(user.username);
       }
     });
-  }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
+  }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(console.log(error));});
 }
 
 

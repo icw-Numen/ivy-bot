@@ -9,7 +9,8 @@ function playHelper (connection, message) {
   if (server.dispatcher) {
     if (server.dispatcher.paused) {
       server.dispatcher.resume();
-      return;}
+      return;
+    }
   }
 
   const curSong = server.queue[0];

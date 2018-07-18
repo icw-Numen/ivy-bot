@@ -174,7 +174,7 @@ Self-explanatory. These are all harmless, so just use them freely.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
-| ayy | lmao | ay, ayyy | ```~dailies``` |
+| ayy | lmao | ay, ayyy | ```~ayy``` |
 | lenny | Sends a lenny face. Has slight chance to send rare lenny faces too ( ͡° ͜ʖ ͡°) | lennyface | ```~lenny``` |
 | owo| OwO what's this? | OwO, 0w0 | ```~owo``` |
 

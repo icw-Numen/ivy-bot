@@ -7,6 +7,7 @@ _(This is Ivy. She's happy to see you here today.)_
 | :---: |
 | [Support/Dev's Discord Server](https://discord.gg/HVh7QcV) |
 | [Wiki and Guides (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) |
+| [Donate!](http://ko-fi.com/rawsaucenumen) |
 
 ## Table of Contents
 - [Introduction](#introduction)

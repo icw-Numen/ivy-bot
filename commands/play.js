@@ -36,14 +36,17 @@ exports.run = async (client, message) => {
       .setThumbnail(reactions.wink1)
       .setDescription(`Now playing music, ${user.username}`);
     message.channel.send({embed}).then(m => {
-      playHelper(server.vc, message);
       if (server.dispatcher) {
-        if (!server.dispatcher.paused) {
-          if (bot.hasPermission('MANAGE_MESSAGES')) {
-            setTimeout(function() {
-              m.delete();
-            }, 3000);
-          }
+        if (server.dispatcher.paused) {
+          server.dispatcher.resume();
+          return;
+        }
+      } else {
+        playHelper(server.vc, message);
+        if (bot.hasPermission('MANAGE_MESSAGES')) {
+          setTimeout(function() {
+            m.delete();
+          }, 3000);
         }
       }
     });

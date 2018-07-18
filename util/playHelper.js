@@ -7,13 +7,6 @@ const {RichEmbed} = require('discord.js');
 function playHelper (connection, message) {
   const server = main.servers[message.guild.id];
 
-  if (server.dispatcher) {
-    if (server.dispatcher.paused) {
-      server.dispatcher.resume();
-      return;
-    }
-  }
-
   const curSong = server.queue[0];
   const curUser = server.qUsers[0];
 

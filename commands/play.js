@@ -1,12 +1,10 @@
 const main = require('../app.js');
 const {playHelper} = require('../util/playHelper.js');
-const {getInfo} = require('ytdl-getinfo');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 const settings = require('../settings.json');
-const YouTube = require('simple-youtube-api');
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message) => {
   if (!main.servers[message.guild.id]) {
     main.servers[message.guild.id] = {
       queue: [],
@@ -26,32 +24,11 @@ exports.run = async (client, message, args) => {
 
   const server = main.servers[message.guild.id];
 
-  if (args.length === 0 && server.queue.length === 0 && !server.dispatcher) {
-    return message.channel.send(`It appears that the music queue is empty. Please give me a link so I can add it to the queue, ${user.username}`).catch(console.error);
+  if (server.queue.length === 0 && !server.dispatcher) {
+    return message.channel.send(`It appears that the music queue is empty. Please give me a link with \`${settings.prefix}enqueue\` so I can add it to the queue, ${user.username}`).catch(console.error);
   }
 
-  const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;
-  const youtube = new YouTube(process.env.YOUTUBEAPIKEY);
-
-  var url;
-  if (args.join(' ').match(ytReg)) {
-    url = args.join();
-  } else if (!(args.length === 0)) {
-    youtube.searchVideos(args.join(' '), 5).then(link => {
-      url = link[0].url;
-      playVideo(url, message, args);
-    }).catch(error => {
-      return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
-    });
-    return;
-  }
-
-  if (server.queue.length === 0) {
-    server.queue.push(url);
-    server.qUsers.push(user.username + `, position **${server.queue.length + 1}**`);
-  }
-
-  if (args.length === 0 && !(server.queue.length === 0)) {
+  if (!(server.queue.length === 0)) {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Let the party begin~')
@@ -61,64 +38,19 @@ exports.run = async (client, message, args) => {
     playHelper(server.vc, message);
     return;
   }
-
-  playVideo(url, message, args);
 };
-
-
-// Helper method
-function playVideo(url, message, args) {
-  const user = message.author;
-  const server = main.servers[message.guild.id];
-  getInfo(url).then(info => {
-    if (server.queue.length >= 25) {
-      return message.channel.send(`Ah, there can be only 25 tracks max. in the queue, ${user.username}`).catch(console.error);
-    }
-
-    let str;
-    if (server.queue.length === 0)  {
-      str = `has been added to the queue at position **1**, ${user.username}`;
-    }
-    else {
-      str = `has been added to the queue at position **${server.queue.length + 1}**, ${user.username}`;
-    }
-    const embed = new RichEmbed()
-      .setColor(0xF18E8E)
-      .setTitle(`${info.items[0].title}`)
-      .setDescription(`${str}`)
-      .setThumbnail(reactions.wink)
-      .setURL(info.items[0].url);
-    message.channel.send({embed}).then(() => {
-      if (!server.dispatcher) {
-        playHelper(server.vc, message);
-      }
-      if (server.dispatcher) {
-        if (server.dispatcher.paused) {
-          server.dispatcher.resume();
-          return;
-        }
-      }
-
-      if (args.length !== 0) {
-        server.queue.push(url);
-        server.qUsers.push(user.username + `, position **${server.queue.length + 1}**`);
-      }
-    });
-  }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(console.log(error));});
-}
-
 
 // Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['start'],
+  aliases: ['start', 'resume'],
   permLevel: 0
 };
 
 exports.help = {
   name: 'play',
-  description: 'Starts playing the tracks in the music queue. Giving a link adds the track to the queue. Passing keywords will make Ivy queue the first result. 25 songs can be queued max.\nNot giving anything simply resumes where the queue was left off',
+  description: 'Starts playing the tracks in the music queue. Unpauses if something was paused before',
   usage: 'play <youtube link>',
   type: 'music'
 };

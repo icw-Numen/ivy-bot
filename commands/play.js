@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
 
   const server = main.servers[message.guild.id];
 
-  if (args.length === 0 && server.queue.length === 0) {
+  if (args.length === 0 && server.queue.length === 0 && !server.dispatcher) {
     return message.channel.send(`It appears that the music queue is empty. Please give me a link so I can add it to the queue, ${user.username}`).catch(console.error);
   }
 
@@ -87,6 +87,12 @@ function playVideo(url, message) {
       if (!server.dispatcher) {
         playHelper(server.vc, message);
       } else {
+        if (server.dispatcher) {
+          if (server.dispatcher.paused) {
+            server.dispatcher.resume();
+            return;
+          }
+        }
         server.queue.push(url);
         server.qUsers.push(user.username);
       }

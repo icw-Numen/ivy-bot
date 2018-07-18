@@ -208,6 +208,6 @@ Just want to add her to your server ASAP? Simply follow the steps below:
 [(Back to Table of Contents)](#table-of-contents)
 
 ## Contributors
-- @icw-Numen
+- icw-Numen
 
 [(Back to Table of Contents)](#table-of-contents)

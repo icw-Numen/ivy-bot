@@ -20,12 +20,8 @@ exports.run = async (client, message) => {
   if (!message.member.voiceChannel) {
     return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
   }
-  
-  const server = main.servers[message.guild.id];
 
-  if (server.vc === '') {
-    return message.channel.send(`Please add me to a voice channel first, ${message.author.username}`).catch(console.error);
-  }
+  const server = main.servers[message.guild.id];
 
   await server.vc.disconnect();
   server.vc = '';

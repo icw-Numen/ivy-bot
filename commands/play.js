@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
     url = args[0];
   } else {
     youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url;}).catch(error => {
-      return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
+      return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(console.log(error));
     });
   }
 

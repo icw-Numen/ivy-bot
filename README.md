@@ -5,7 +5,7 @@ _(This is Ivy. She's happy to see you here today.)_
 
 | [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=8&scope=bot) |
 | --- |
-| [Support / Dev's Server](https://discord.gg/HVh7QcV) |
+| [Support/Dev's Discord Server](https://discord.gg/HVh7QcV) |
 | [Wiki and Guides (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) |
 
 ## Table of Contents

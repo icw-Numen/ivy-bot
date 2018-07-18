@@ -52,7 +52,7 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 
 ## Prefixes
 Prefixes are special characters/expressions you type before a command to let Ivy know that you are giving her a command to execute. 
-The first two are ```~``` and ```Ivy, ```. The third a mention.
+The first two are ```~``` and ```Ivy, ```. The third is a mention.
 
 | Prefix | Example |
 | --- | --- |

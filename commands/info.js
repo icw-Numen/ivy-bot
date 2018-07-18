@@ -18,7 +18,7 @@ exports.run = async (client, message) => {
     .addField('Database:', 'mLab MongoDB', true)
     .addField('Deployed on:', 'Heroku', true)
     .addField('# of servers joined:', `${client.guilds.array().length}`, true)
-    .addField('Three sizes:', 'B: [Christian manga], W: [redacted],\nH: [censored]', true)
+    .addField('Support server:', 'https://discord.gg/HVh7QcV', true)
     .addField('Ivy\'s website:', 'https://github.com/icw-Numen/ivy-bot/blob/master/README.md')
     .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
     .setFooter(`Bot and icons/art made with care by ${package.author}`);
@@ -28,7 +28,7 @@ exports.run = async (client, message) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['intro', 'botinfo', 'ivyinfo', 'bot', 'ivy', 'about'],
+  aliases: ['intro', 'botinfo', 'ivyinfo', 'bot', 'ivy', 'about', 'features'],
   permLevel: 0
 };
 

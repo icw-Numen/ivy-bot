@@ -9,8 +9,11 @@ const ytApi = require('simple-youtube-api');
 exports.run = async (client, message, args) => {
   const user = message.author;
 
+  if (main.servers[message.guild.id].vc === '') {
+    return message.channel.send(`Please join a voice channel and add me with \`${settings.prefix}join\`, ${user.username}`).catch(console.error);
+  }
   if (!message.member.voiceChannel) {
-    return message.channel.send(`Please join a voice channel first and then add me with \`${settings.prefix}join\`, ${user.username}`).catch(console.error);
+    return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
   }
 
   const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;

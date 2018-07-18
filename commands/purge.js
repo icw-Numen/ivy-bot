@@ -4,12 +4,16 @@ exports.run = (client, message, args) => {
   if (!arg.match(/bot/i) && args.length !== 0
   && !parseInt(args.join(' '))) return message.channel.send(`Please give me a valid input, ${message.author.username}`).catch(console.error);
 
+  const bot = message.guild.member(client.user);
+
+  if (!bot.hasPermission('MANAGE_MESSAGES')) {
+    return message.channel.send(`It seems I don\'t have the correct permissions to delete messages, ${message.author.username}`).catch(console.error);
+  }
+
   if (arg.match(/bot/i)) {
     return message.channel.fetchMessages({limit: messageCount}).then(messages => {
       messages = messages.filter(message => message.author.bot);
-      message.channel.bulkDelete(messages).catch(() => {
-        return message.channel.send(`Oops, I can\'t seem to delete the message(s), ${message.author.username}`).catch(console.error);
-      });
+      message.channel.bulkDelete(messages);
     });
   }
 
@@ -18,9 +22,7 @@ exports.run = (client, message, args) => {
       if (arg.match(/bot/i)) {
         messages = messages.filter(message => message.author.bot);
       }
-      message.channel.bulkDelete(messages).catch(() => {
-        return message.channel.send(`Oops, I can\'t seem to delete the message(s), ${message.author.username}`).catch(console.error);
-      });
+      message.channel.bulkDelete(messages);
     });
 };
 

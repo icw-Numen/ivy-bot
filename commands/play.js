@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url;}).catch(error => {
+    youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url.slice(0);}).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
     });
   }
@@ -76,7 +76,7 @@ exports.run = async (client, message, args) => {
       server.queue.push(url);
       server.qUsers.push(user.username);
     });
-  }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(console.log(error));});
+  }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
 };
 
 exports.conf = {

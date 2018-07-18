@@ -40,7 +40,8 @@ function m00te(row, message, args, guild, client, user) {
     if (!muterole) muterole = message.guild.roles.find('name', 'muted');
 
     if (!muterole) {
-      message.guild.createRole({name: 'Muted', color: [0, 0, 0], permissions: 0}).then(role => {
+      // 1024 means people with the Muted role will only have the permissions to read messages
+      message.guild.createRole({name: 'Muted', color: [0, 0, 0], permissions: 1024}).then(role => {
         message.channel.send('I couldn\'t find a muted role, creating muted role...').catch(console.error);
         muterole = role;
       });
@@ -106,7 +107,7 @@ exports.conf = {
 
 exports.help = {
   name: 'mute',
-  description: 'Mutes or unmutes a mentioned user.\nNote that you must set each channel to not allow muted members to text/speak because of how Discord roles work',
+  description: 'Mutes or unmutes a mentioned user.\n\n**Note that you must set each channel to not allow muted members to text/speak because of how Discord roles work**',
   usage: 'mute <mention> <reason>',
   type: 'mod'
 };

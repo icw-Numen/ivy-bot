@@ -7,6 +7,14 @@ const settings = require('../settings.json');
 const ytApi = require('simple-youtube-api');
 
 exports.run = async (client, message, args) => {
+  if (!main.servers[message.guild.id]) {
+    main.servers[message.guild.id] = {
+      queue: [],
+      qUsers: [],
+      vc: ''
+    };
+  }
+  
   const user = message.author;
 
   if (main.servers[message.guild.id].vc === '') {
@@ -23,14 +31,6 @@ exports.run = async (client, message, args) => {
     url = args[0];
   } else {
     url = ytApi.search(args.join(' ')).then(link => {url = link[0].url;});
-  }
-
-  if (!main.servers[message.guild.id]) {
-    main.servers[message.guild.id] = {
-      queue: [],
-      qUsers: [],
-      vc: ''
-    };
   }
 
   const server = main.servers[message.guild.id];

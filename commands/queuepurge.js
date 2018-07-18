@@ -4,19 +4,21 @@ const reactions = require('../reactions.json');
 const settings = require('../settings.json');
 
 exports.run = (client, message) => {
+  if (!main.servers[message.guild.id]) {
+    main.servers[message.guild.id] = {
+      queue: [],
+      qUsers: [],
+      vc: ''
+    };
+  }
+
   const user = message.author.user;
+
   if (main.servers[message.guild.id].vc === '') {
     return message.channel.send(`Please join a voice channel and add me with \`${settings.prefix}join\`, ${user.username}`).catch(console.error);
   }
   if (!message.member.voiceChannel) {
     return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
-  }
-
-  if (!main.servers[message.guild.id]) {
-    main.servers[message.guild.id] = {
-      queue: [],
-      qUsers: []
-    };
   }
 
   const server = main.servers[message.guild.id];

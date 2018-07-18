@@ -71,7 +71,7 @@ function playVideo(url, message) {
       .setURL(info.items[0].url);
     message.channel.send({embed}).then(() => {
       server.queue.push(url);
-      server.qUsers.push(user.username + `, position **${server.queue.length + 1}**`);
+      server.qUsers.push(user.username + `, position **${server.queue.length}**`);
     });
   }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
 }

@@ -23,9 +23,9 @@ exports.run = async (client, message) => {
     getInfo(curSong).then(info => {
       const embed = new RichEmbed()
         .setColor(0xF18E8E)
-        .setTitle('Skipping~')
+        .setTitle(`${info.items[0].title}`)
         .setThumbnail(reactions.wink1)
-        .setDescription(`**${info.items[0].title}** has been skipped, ${message.author.username}`)
+        .setDescription(`has been skipped, ${message.author.username}`)
         .setURL(info.items[0].url);
       message.channel.send({embed});
     }).catch(error => {return message.channel.send(`Oops, looks like something went wrong, ${message.author.username}. Please try again`).catch(error);});

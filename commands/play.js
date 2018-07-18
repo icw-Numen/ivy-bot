@@ -4,6 +4,7 @@ const {getInfo} = require('ytdl-getinfo');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 const settings = require('../settings.json');
+const ytApi = require('simple-youtube-api');
 
 exports.run = async (client, message, args) => {
   const user = message.author;
@@ -13,6 +14,14 @@ exports.run = async (client, message, args) => {
   }
 
   const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;
+
+  let url;
+  if (args.join(' ').match(ytReg)) {
+    url = args[0];
+  } else {
+    ytApi.search(args.join(' ')).then(link => {url = link[0].url;});
+  }
+
 
   if (!main.servers[message.guild.id]) {
     main.servers[message.guild.id] = {
@@ -39,7 +48,7 @@ exports.run = async (client, message, args) => {
     return;
   }
 
-  getInfo(args[0]).then(info => {
+  getInfo(url).then(info => {
     if (server.queue.length >= 25) {
       return message.channel.send(`Ah, there can be only 25 tracks max. in the queue, ${user.username}`).catch(console.error);
     }
@@ -58,13 +67,9 @@ exports.run = async (client, message, args) => {
       .setThumbnail(reactions.wink)
       .setURL(info.items[0].url);
     message.channel.send({embed}).then(() => {
-      if (args[0].match(ytReg)) {
-        if (!server.dispatcher) playHelper(server.vc, message);
-        server.queue.push(args[0]);
-        server.qUsers.push(user.username);
-      } else {
-        return;
-      }
+      if (!server.dispatcher) playHelper(server.vc, message);
+      server.queue.push(url);
+      server.qUsers.push(user.username);
     });
   }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
 };

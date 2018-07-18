@@ -23,6 +23,7 @@
     "npm": "^6.1.0",
     "opusscript": "0.0.6",
     "rebuild": "^0.1.2",
+    "simple-youtube-api": "^5.0.2",
     "ytdl-core": "^0.20.4",
     "ytdl-getinfo": "^1.0.6"
   }

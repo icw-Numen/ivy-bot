@@ -14,6 +14,7 @@ exports.run = async (client, message) => {
   }
 
   const user = message.author;
+  const bot = message.guild.member(client.user);
 
   if (main.servers[message.guild.id].vc === '') {
     return message.channel.send(`Please join a voice channel and add me with \`${settings.prefix}join\`, ${user.username}`).catch(console.error);
@@ -34,7 +35,13 @@ exports.run = async (client, message) => {
       .setTitle('Let the party begin~')
       .setThumbnail(reactions.wink1)
       .setDescription(`Now playing music, ${user.username}`);
-    message.channel.send({embed});
+    message.channel.send({embed}).then(m => {
+      if (bot.hasPermission('MANAGE_MESSAGES')) {
+        setTimeout(function() {
+          m.delete();
+        }, 4000);
+      }
+    });
     playHelper(server.vc, message);
     return;
   }

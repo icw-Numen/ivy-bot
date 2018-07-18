@@ -39,11 +39,16 @@ exports.run = async (client, message, args) => {
   } else if (!(args.length === 0)) {
     youtube.searchVideos(args.join(' '), 5).then(link => {
       url = link[0].url;
-      playVideo(url, message);
+      playVideo(url, message, args);
     }).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
     });
     return;
+  }
+
+  if (server.queue.length === 0) {
+    server.queue.push(url);
+    server.qUsers.push(user.username);
   }
 
   if (args.length === 0 && !(server.queue.length === 0)) {
@@ -57,12 +62,12 @@ exports.run = async (client, message, args) => {
     return;
   }
 
-  playVideo(url, message);
+  playVideo(url, message, args);
 };
 
 
 // Helper method
-function playVideo(url, message) {
+function playVideo(url, message, args) {
   const user = message.author;
   const server = main.servers[message.guild.id];
   getInfo(url).then(info => {
@@ -86,13 +91,15 @@ function playVideo(url, message) {
     message.channel.send({embed}).then(() => {
       if (!server.dispatcher) {
         playHelper(server.vc, message);
-      } else {
-        if (server.dispatcher) {
-          if (server.dispatcher.paused) {
-            server.dispatcher.resume();
-            return;
-          }
+      }
+      if (server.dispatcher) {
+        if (server.dispatcher.paused) {
+          server.dispatcher.resume();
+          return;
         }
+      }
+
+      if (args.length !== 0) {
         server.queue.push(url);
         server.qUsers.push(user.username);
       }

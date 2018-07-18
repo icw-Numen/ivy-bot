@@ -135,7 +135,7 @@ Commands for moderation quality of life improvements.
 [(Back to Table of Contents)](#table-of-contents)
 
 #### Server Commands:
-Commands related to server settings and operations.
+Commands specifically related to the server Ivy's in.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
@@ -148,6 +148,7 @@ Commands related to server settings and operations.
 | removerole | Removes a role from the user | roleremove | ```~removerole lewd``` |
 | settings | Shows current server settings set by the bot | serversettings, channelsettings, botsettings | ```~settings``` |
 | invite | Sends a temporary server invite | serverinvite, serverlink, invitation, serverinvitation, createinvite | ```~invite``` |
+| joindate | Tells when the mentioned member has joined the server | joined | ```~joindate @Ivy```, ```~joindate Ivy ```|
 
 [(Back to Table of Contents)](#table-of-contents)
 

@@ -114,7 +114,7 @@ Commands related to playing music in a voice channel.
 | queue | Shows the music queue | musiclist, songlist, tracklist, playlist, q | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 safe``` |
 | enqueue | Adds a track to the queue. Queue can hold 25 tracks max | addqueue, addsong, addmusic, enqueue, playthis, enq | ```~enqueue```, ```~enqueue <youtube_ling_here>```, ```~enqueue ayy lmao macarena``` |
 | removetrack | Removes the specified track from the queue | removemusic, removesong | ```~removetrack 12``` |
-| play | Starts playing the tracks in the music queue | start | ```~play```, ```~play <youtube_ling_here>```, ```~play ayy lmao macarena``` |
+| play | Starts playing the tracks in the music queue. Unpauses if something was paused before | start | ```~play```, ```~play <youtube_ling_here>```, ```~play ayy lmao macarena``` |
 | playing | Shows the current track being played from the music queue | nowplaying, playingnow, cursong, curmusic, curtrack | ```~playing``` |
 | pause | Pauses the currently playing music | pausemusic, pausesong, pausetrack | ```~pause``` |
 | skip | Skips the current music in the queue | next | ```~skip``` |

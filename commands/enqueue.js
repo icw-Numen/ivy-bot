@@ -33,9 +33,6 @@ exports.run = async (client, message, args) => {
     youtube.searchVideos(args.join(' '), 10).then(link => {url = link[0].url.slice(0);}).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
     });
-    if (!url) {
-      return  message.channel.send(`Oops, I couldn\'t find a video that matches your request, ${user.username}`).catch(console.error);
-    }
   }
 
   const server = main.servers[message.guild.id];

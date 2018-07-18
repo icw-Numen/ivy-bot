@@ -31,14 +31,12 @@ exports.run = async (client, message, args) => {
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url.slice(0);}).catch(error => {
+    youtube.searchVideos(args.join(' '), 5).then(link => {
+      url = link[0].url.slice(0);
+      playVideo(url, message);
+    }).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
     });
-
-    console.log(url);
-    if (!url) {
-      return  message.channel.send(`Oops, I couldn\'t find a video that matches your request, ${user.username}`).catch(console.error);
-    }
   }
 
   const server = main.servers[message.guild.id];
@@ -58,6 +56,12 @@ exports.run = async (client, message, args) => {
     return;
   }
 
+  playVideo(url, message);
+};
+
+function playVideo(url, message) {
+  const user = message.author;
+  const server = main.servers[message.guild.id];
   getInfo(url).then(info => {
     if (server.queue.length >= 25) {
       return message.channel.send(`Ah, there can be only 25 tracks max. in the queue, ${user.username}`).catch(console.error);
@@ -82,7 +86,7 @@ exports.run = async (client, message, args) => {
       server.qUsers.push(user.username);
     });
   }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
-};
+}
 
 exports.conf = {
   enabled: true,

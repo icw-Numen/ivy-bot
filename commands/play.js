@@ -25,7 +25,6 @@ exports.run = async (client, message, args) => {
     url = ytApi.search(args.join(' ')).then(link => {url = link[0].url;});
   }
 
-
   if (!main.servers[message.guild.id]) {
     main.servers[message.guild.id] = {
       queue: [],

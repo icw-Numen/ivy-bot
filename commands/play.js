@@ -23,6 +23,12 @@ exports.run = async (client, message) => {
     return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
   }
 
+  if (server.dispatcher) {
+    if (!server.dispatcher.paused) {
+      return message.channel.send(`I'm already playing something, ${user.username}`).catch(console.error);
+    }
+  }
+
   const server = main.servers[message.guild.id];
 
   if (server.queue.length === 0 && !server.dispatcher) {
@@ -40,7 +46,7 @@ exports.run = async (client, message) => {
       if (bot.hasPermission('MANAGE_MESSAGES')) {
         setTimeout(function() {
           m.delete();
-        }, 4000);
+        }, 6000);
       }
     });
     return;

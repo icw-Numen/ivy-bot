@@ -46,7 +46,12 @@ function playHelper (connection, message) {
     else {
       connection.disconnect();
       setTimeout(function() {
-        message.channel.send('... Play stream stopped. Did I do well?');
+        const embed = new RichEmbed()
+          .setColor(0xF18E8E)
+          .setTitle('Done~')
+          .setThumbnail(reactions.closedeyes)
+          .setDescription('Reached the end of the queue. Did I do well?');
+        message.channel.send({embed});
       }, 3000);
     }
   });

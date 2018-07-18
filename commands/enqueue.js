@@ -2,7 +2,7 @@ const main = require('../app.js');
 const {getInfo} = require('ytdl-getinfo');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
-const ytApi = require('simple-youtube-api');
+const YouTube = require('simple-youtube-api');
 const settings = require('../settings.json');
 
 exports.run = async (client, message, args) => {
@@ -24,11 +24,13 @@ exports.run = async (client, message, args) => {
   }
 
   const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;
+  const youtube = new YouTube(process.env.YOUTUBEAPIKEY);
   let url;
+
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    url = ytApi.search(args.join(' ')).then(link => {url = link[0].url;});
+    url = youtube.searchVideos(args.join(' '), 5).then(link => {url = link[0].url;});
   }
 
   const server = main.servers[message.guild.id];

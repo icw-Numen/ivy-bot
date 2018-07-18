@@ -14,6 +14,7 @@ exports.run = async (client, message) => {
     .addField('Weight:', '[censored]', true)
     .addField('Age:', '[unknown]', true)
     .addField('Race:', '[unknown]', true)
+    .addField('Nationality:', '[unknown]', true)
     .addField('Occupation:', 'Maid', true)
     .addField('Likes:', 'Being praised, physical contact', true)
     .addField('Dislikes:', 'Being called a cow', true)

@@ -71,10 +71,11 @@ Bot-related commands.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
-| info | Sends an embed with information about the bot | intro, botinfo, ivyinfo, bot, ivy, about | ```~info``` |
+| info | Sends an embed with information about the bot | intro, botinfo, ivyinfo, bot, ivy, about, features | ```~info``` |
 | author | Sends an embed with information about the bot's author | authorinfo, lewdbringer, dev, devinfo, botauthor, botdev | ```~author``` |
 | help | Displays all the available commands | h, halp | ```~help```, ```~help bigmoji``` |
 | ping | Ping/Pong command. Responds with ping | ms | ```~ping``` |
+| profile | Sends an embed with information about the Ivy as a character | lore, characterinfo, bio, characterprofile, whoareyou | ```~profile``` |
 | goodgirl | Lets you tell Ivy that she's being a good girl | goodbot, goodmaid, goodcow, patpat, pat, pet | ```~goodgirl``` |
 
 [(Back to Table of Contents)](#table-of-contents)

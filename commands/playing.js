@@ -24,6 +24,7 @@ exports.run = async (client, message) => {
   const server = main.servers[message.guild.id];
   var curSong = server.queue[0];
   const curUser = server.qUsers[0];
+  const curPos = server.qUsers[0].split(' ').pop();
 
   if (!server.dispatcher) {
     return message.channel.send(`Oops, looks like nothing\'s being played right now, ${message.author.username}`).catch(console.error);
@@ -34,7 +35,7 @@ exports.run = async (client, message) => {
       .setColor(0xF18E8E)
       .setTitle(`${info.items[0].title}`)
       .setThumbnail(reactions.normal)
-      .setDescription(`is currently being played (track added by ${curUser}), ${message.author.username}`)
+      .setDescription(`is currently being played (track added by ${curUser} at position ${curPos}), ${message.author.username}`)
       .setURL(curSong);
     message.channel.send({embed});
   }).catch(error => {return message.channel.send(`Oops, looks like nothing\'s being played right now, ${message.author.username}`).catch(error);});

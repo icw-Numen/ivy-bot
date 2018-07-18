@@ -15,6 +15,7 @@ function playHelper (connection, message) {
 
   const curSong = server.queue[0];
   const curUser = server.qUsers[0];
+  const curPos = server.qUsers[0].split(' ').pop();
 
   if (!curSong || !curUser) {
     return;
@@ -24,7 +25,7 @@ function playHelper (connection, message) {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle(`${info.items[0].title}`)
-      .setDescription(`is now being played (track added by ${curUser})`)
+      .setDescription(`is now being played (track added by ${curUser} at position ${curPos})`)
       .setURL(info.items[0].url);
     message.channel.send({embed});
   }).catch(error => {return error;});

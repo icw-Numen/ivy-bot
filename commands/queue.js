@@ -18,7 +18,7 @@ exports.run = async (client, message) => {
   var qA = [];
   for (var i = 0; i < q.length; i++) {
     const info = await ytdl.getInfo(q[i]);
-    qA[i] = (i + 1) + '. ' + '**' + info.title + '**' + ` (added by ${q2[i]})`;
+    qA[i] = (i + 1) + '- ' + '**' + info.title + '**' + ` (added by ${q2[i]})`;  
   }
 
   let qF = qA.join(' \n');

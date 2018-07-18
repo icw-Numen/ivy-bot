@@ -48,7 +48,7 @@ exports.run = async (client, message, args) => {
 
   if (server.queue.length === 0) {
     server.queue.push(url);
-    server.qUsers.push(user.username);
+    server.qUsers.push(user.username + `, position **${server.queue.length + 1}**`);
   }
 
   if (args.length === 0 && !(server.queue.length === 0)) {
@@ -101,7 +101,7 @@ function playVideo(url, message, args) {
 
       if (args.length !== 0) {
         server.queue.push(url);
-        server.qUsers.push(user.username);
+        server.qUsers.push(user.username + `, position **${server.queue.length + 1}**`);
       }
     });
   }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(console.log(error));});

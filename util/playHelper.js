@@ -36,7 +36,7 @@ function playHelper (connection, message) {
   server.dispatcher.on('end', () => {
     if (server.queue[0] && message.guild.voiceConnection) {
       setTimeout(function() {
-        if (message.guild.voiceConnection) {
+        if (!(main.servers[message.guild.id].vc === '')) {
           server.queue.shift();
           server.qUsers.shift();
           playHelper(connection, message);

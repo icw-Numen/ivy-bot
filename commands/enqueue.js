@@ -73,7 +73,7 @@ function playVideo(url, message) {
       server.queue.push(url);
       server.qUsers.push(user.username + `, position **${server.queue.length}**`);
     });
-  }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
+  }).catch(error => {return message.channel.send(`Please give me a valid video, ${user.username}`).catch(error);});
 }
 
 

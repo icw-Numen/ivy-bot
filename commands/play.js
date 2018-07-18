@@ -24,25 +24,26 @@ exports.run = async (client, message, args) => {
     return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
   }
 
+  const server = main.servers[message.guild.id];
+
+  if (args.length === 0 && server.queue.length === 0) {
+    return message.channel.send(`It appears that the music queue is empty. Please give me a link so I can add it to the queue, ${user.username}`).catch(console.error);
+  }
+
   const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;
   const youtube = new YouTube(process.env.YOUTUBEAPIKEY);
 
   var url;
   if (args.join(' ').match(ytReg)) {
     url = args[0];
-  } else {
+  } else if (!(args.length === 0)) {
     youtube.searchVideos(args.join(' '), 5).then(link => {
       url = link[0].url;
       playVideo(url, message);
     }).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
     });
-  }
-
-  const server = main.servers[message.guild.id];
-
-  if (args.length === 0 && server.queue.length === 0) {
-    return message.channel.send(`It appears that the music queue is empty. Please give me a link so I can add it to the queue, ${user.username}`).catch(console.error);
+    return;
   }
 
   if (args.length === 0 && !(server.queue.length === 0)) {
@@ -59,6 +60,8 @@ exports.run = async (client, message, args) => {
   playVideo(url, message);
 };
 
+
+// Helper method
 function playVideo(url, message) {
   const user = message.author;
   const server = main.servers[message.guild.id];
@@ -81,13 +84,18 @@ function playVideo(url, message) {
       .setThumbnail(reactions.wink)
       .setURL(info.items[0].url);
     message.channel.send({embed}).then(() => {
-      if (!server.dispatcher) playHelper(server.vc, message);
-      server.queue.push(url);
-      server.qUsers.push(user.username);
+      if (!server.dispatcher) {
+        playHelper(server.vc, message);
+      } else {
+        server.queue.push(url);
+        server.qUsers.push(user.username);        
+      }
     });
   }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
 }
 
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,

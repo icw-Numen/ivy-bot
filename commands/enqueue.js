@@ -23,6 +23,10 @@ exports.run = async (client, message, args) => {
     return message.channel.send(`Please join a voice channel first, ${user.username}`).catch(console.error);
   }
 
+  if (args.length === 0) {
+    return message.channel.send(`Please give me a video so I can add it to the queue, ${user.username}`).catch(console.error);
+  }
+
   const ytReg = /(?:https?:\/\/)?(?:(?:www\.|m.)?youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9-_]{11})/;
   const youtube = new YouTube(process.env.YOUTUBEAPIKEY);
   var url;
@@ -30,16 +34,23 @@ exports.run = async (client, message, args) => {
   if (args.join(' ').match(ytReg)) {
     url = args[0];
   } else {
-    youtube.searchVideos(args.join(' '), 10).then(link => {url = link[0].url.slice(0);}).catch(error => {
+    youtube.searchVideos(args.join(' '), 5).then(link => {
+      url = link[0].url;
+      playVideo(url, message);
+    }).catch(error => {
       return message.channel.send(`Oops, something went wrong when searching for a video. Please try again, ${user.username}`).catch(error);
     });
+    return;
   }
 
+  playVideo(url, message);
+};
+
+
+// Helper method
+function playVideo(url, message) {
+  const user = message.author;
   const server = main.servers[message.guild.id];
-  if (args.length === 0) {
-    return message.channel.send(`Please give me a video so I can add it to the queue, ${user.username}`).catch(console.error);
-  }
-
   getInfo(url).then(info => {
     if (server.queue.length >= 25) {
       return message.channel.send(`Ah, there can be only 25 tracks max. in the queue, ${user.username}`).catch(console.error);
@@ -63,8 +74,10 @@ exports.run = async (client, message, args) => {
       server.qUsers.push(user.username);
     });
   }).catch(error => {return message.channel.send(`Please give me a valid link, ${user.username}`).catch(error);});
-};
+}
 
+
+// Command metadata
 exports.conf = {
   enabled: true,
   guildOnly: false,

@@ -58,11 +58,11 @@ module.exports = message => {
       if (err) return console.log(err);
       var row = res;
       if (row) {
-        expUp(row, message, user);
+        main.scores.update({ userId: user.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
       } else {
-        main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
+        main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
           if (error) return console.log(error);
-          expUp(row, message, user);
+          main.scores.update({ userId: user.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
         });
       }
     });
@@ -95,11 +95,6 @@ module.exports = message => {
   checkLevel(message, user);
 };
 
-
-// Helper method
-function expUp(row, message, user) {
-  main.scores.update({ userId: user.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
-}
 
 // Helper method
 function checkLevel(message, user) {

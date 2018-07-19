@@ -48,17 +48,6 @@ module.exports = message => {
     if (message.channel.type === 'dm') return;
   }
 
-  if (!main.talkedRecently.has(user.id)) {
-    const time = '1 minute';
-    main.talkedRecently.add(user.id);
-    setTimeout(() => {
-      main.talkedRecently.delete(user.id);
-    }, ms(time));
-    main.scores.findOneAndUpdate({ userId : { $gte: user.id }}, {$inc: {exp: 1}}, {upsert: true}, function (err) {
-      if (err) return console.log(err);
-    });
-  }
-
   // if a message does not start with the bot prefix, the bot will ignore it
   if (!message.content.startsWith(settings.prefix) &&
     !message.content.startsWith(settings.prefix2) &&
@@ -91,6 +80,17 @@ module.exports = message => {
 
 // Helper method
 function checkLevel(message, user) {
+  if (!main.talkedRecently.has(user.id)) {
+    const time = '1 minute';
+    main.talkedRecently.add(user.id);
+    setTimeout(() => {
+      main.talkedRecently.delete(user.id);
+    }, ms(time));
+    main.scores.findOneAndUpdate({ userId : { $eq: user.id }}, {$inc: {exp: 1}}, {upsert: false}, function (err) {
+      if (err) return console.log(err);
+    });
+  }
+
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;

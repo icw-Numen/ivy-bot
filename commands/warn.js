@@ -17,9 +17,9 @@ exports.run = async (client, message, args) => {
     if (row) {
       giveWarning(row, message, args, guild, client, user);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        giveWarning(row, message, args, guild, client, user);
+        giveWarning(r, message, args, guild, client, user);
         return;
       });
     }

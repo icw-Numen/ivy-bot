@@ -10,9 +10,9 @@ module.exports = member => {
     if (row) {
       memRem(row, member, guild);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        memRem(row, member, guild);
+        memRem(r, member, guild);
         return;
       });
     }

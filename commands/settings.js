@@ -13,10 +13,10 @@ exports.run = async (client, message) => {
       str = `${user.username}, my settings for this server are:`;
       getServerStats(row, message, user, reactions.normal, str);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
         str = `${user.username}, my settings for this server are:`;
-        getServerStats(row, message, user, reactions.smug, str);
+        getServerStats(r, message, user, reactions.smug, str);
         return;
       });
     }

@@ -11,9 +11,9 @@ exports.run = async (client, message) => {
     if (row) {
       runDailies(row, message);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
-        runDailies(row, message);
+        runDailies(r, message);
         return;
       });
     }

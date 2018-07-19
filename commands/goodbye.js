@@ -13,9 +13,9 @@ exports.run = async (client, message, args) => {
     if (row) {
       setGoodbye(row, message, args, guild);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        setGoodbye(row, message, args, guild);
+        setGoodbye(r, message, args, guild);
         return;
       });
     }

@@ -10,9 +10,9 @@ module.exports = member => {
     if (row) {
       welcome(row, member);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        welcome(row, member);
+        welcome(r, member);
         return;
       });
     }

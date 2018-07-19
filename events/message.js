@@ -60,9 +60,9 @@ module.exports = message => {
       if (row) {
         main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
       } else {
-        main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, res) {
+        main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
           if (error) return console.log(error);
-          main.scores.update({ userId: message.author.id }, { $set: { exp: (res['exp'] + 1) } }).catch(error => console.log(error));
+          main.scores.update({ userId: message.author.id }, { $set: { exp: (r['exp'] + 1) } }).catch(error => console.log(error));
         });
       }
     });
@@ -104,9 +104,9 @@ function checkLevel(message, user) {
     if (row) {
       lvUp(row, message, user);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, res) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
-        lvUp(res, message, user);
+        lvUp(r, message, user);
       });
     }
   });

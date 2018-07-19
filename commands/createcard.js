@@ -38,13 +38,9 @@ function makeCard(row, message, args) {
 
   const count = row['cards'].length;
 
-  console.log(count);
-
   if (!row['cards']) {
     main.scores.update({ userId: message.author.id }, { $set: { cards: []} }).catch(error => console.log(error));
   }
-
-  console.log(count);
 
   if (count === 0) {
     main.scores.update({ userId: message.author.id }, { $push: { cards: cardtemplate } }).catch(error => console.log(error));

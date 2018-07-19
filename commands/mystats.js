@@ -27,13 +27,13 @@ exports.run = async (client, message) => {
       str = `${user.username}, your current stats are the following:`;
       getStats(row, message, user, reactions.normal, str, lv, xp, monies);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
         lv = 0;
         xp = 1;
         monies = 0;
         str = `${user.username}, your current stats are the following:`;
-        getStats(row, message, user, reactions.smug, str, lv, xp, monies);
+        getStats(r, message, user, reactions.smug, str, lv, xp, monies);
         return;
       });
     }

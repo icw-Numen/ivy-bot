@@ -68,6 +68,8 @@ function showCard(row, message, args) {
 
   if (description.length > 0) {
     embed.setDescription(description);
+  } else if ((description.length === 0) && (fields.length > 0)) {
+    embed.setDescription('(empty card)');
   }
 
   if (fields.length > 0) {

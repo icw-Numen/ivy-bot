@@ -60,9 +60,9 @@ module.exports = message => {
       if (row) {
         main.scores.update({ userId: user.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
       } else {
-        main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
+        main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error, res) {
           if (error) return console.log(error);
-          main.scores.update({ userId: user.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
+          main.scores.update({ userId: user.id }, { $set: { exp: (res['exp'] + 1) } }).catch(error => console.log(error));
         });
       }
     });

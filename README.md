@@ -3,7 +3,7 @@
 
 _(This is Ivy. She's happy to see you here today.)_
 
-| [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=8&scope=bot) | [Support/Dev's Discord Server](https://discord.gg/HVh7QcV) |
+| [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) | [Support/Dev's Discord Server](https://discord.gg/HVh7QcV) |
 | :---: | :---: |
 | [Wiki and Guides (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) | [Donate!](http://ko-fi.com/rawsaucenumen) |
 
@@ -199,7 +199,7 @@ Coming soon!
 ## Adding Ivy to your server
 Just want to add her to your server ASAP? Simply follow the steps below:
 
-1. [Click this link](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=8&scope=bot) (Make sure you're logged in to Discord first, though)
+1. [Click this link](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) (Make sure you're logged in to Discord first, though)
 2. Select the server you want to add her to from the drop-down menu
 3. Make sure to give her Administrator permissions
 4. Click on "Authorize"

@@ -14,7 +14,7 @@ module.exports = (message) => {
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        msgDel(r, message, guild, client);
+        msgDel(r.ops[0], message, guild, client);
         return;
       });
     }

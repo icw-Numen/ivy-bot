@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        setAutorole(r, message, args);
+        setAutorole(r.ops[0], message, args);
         return;
       });
     }

@@ -33,7 +33,7 @@ exports.run = async (client, message) => {
         xp = 1;
         monies = 0;
         str = `${user.username}, your current stats are the following:`;
-        getStats(r, message, user, reactions.smug, str, lv, xp, monies);
+        getStats(r.ops[0], message, user, reactions.smug, str, lv, xp, monies);
         return;
       });
     }

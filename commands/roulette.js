@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
               } else {
                 main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
                   if (error) return console.log(error);
-                  getDolla(r, message, user, player, pulls, bullets);
+                  getDolla(r.ops[0], message, user, player, pulls, bullets);
                 });
               }
             });
@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
               } else {
                 main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
                   if (error) return console.log(error);
-                  ripScore(r, message, user, player);
+                  ripScore(r.ops[0], message, user, player);
                 });
               }
             });
@@ -86,7 +86,7 @@ exports.run = async (client, message, args) => {
               } else {
                 main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
                   if (error) return console.log(error);
-                  rip(r, message, guild, client, user);
+                  rip(r.ops[0], message, guild, client, user);
                 });
               }
             });

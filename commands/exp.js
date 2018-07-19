@@ -16,7 +16,7 @@ exports.run = async (client, message) => {
       main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
         str = `${user.username}, you currently have **${row['exp']} exp** (${expNextLv - row['exp']} exp until next level)`;
-        getExp(r, message, user, reactions.normal2, str, expNextLv);
+        getExp(r.ops[0], message, user, reactions.normal2, str, expNextLv);
         return;
       });
     }

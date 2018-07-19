@@ -15,9 +15,9 @@ exports.run = async (client, message, args) => {
     if (row) {
       makeCard(row, message, args);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, res) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
-        makeCard(res, message, args);
+        makeCard(r, message, args);
         return;
       });
     }

@@ -30,7 +30,7 @@ function welcome(row, member) {
   if (role && bot.hasPermission('MANAGE_ROLES')) member.addRole(role).catch(console.error);
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
-    .setThumbnail(reactions.normal)
+    .setThumbnail(reactions.closedeyes)
     .setTitle('A new member has joined the server~')
     .setDescription(`Hello~ Welcome to **${guild.name}**, ${member.user.username}!`);
   return channel.send({embed});

@@ -4,7 +4,7 @@ const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
   const user = message.author;
-  
+
   if (args.length === 0) {
     return message.channel.send(`Please give me a title for your custom card, ${user.username}`).catch(console.error);
   }
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
     if (row) {
       makeCard(row, message, args);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: {}}, function (error) {
         if (error) return console.log(error);
         makeCard(row, message, args);
         return;
@@ -35,15 +35,15 @@ function makeCard(row, message, args) {
     thumbnail: ''
   };
 
-  console.log(row['cards'].size);
+  console.log(row['cards'].keys().length);
 
   if (!row['cards']) {
-    main.scores.update({ userId: message.author.id }, { $set: { cards: new Map()} }).catch(error => console.log(error));
+    main.scores.update({ userId: message.author.id }, { $set: { cards: {}} }).catch(error => console.log(error));
   }
 
-  console.log(row['cards'].size);
+  console.log(row['cards'].keys().length);
 
-  if (row['cards'].size === 0) {
+  if (row['cards'].keys().length === 0) {
     main.scores.update({ userId: message.author.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate)} }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
@@ -52,10 +52,10 @@ function makeCard(row, message, args) {
       .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}.\nThis one\'s on the house, but keep in mind that next ones will cost **\$${cost}**`);
     return message.channel.send({embed});
   } else
-  if (row['cards'].size !== 0 && row['credits'] < cost) {
+  if (row['cards'].keys().length !== 0 && row['credits'] < cost) {
     return message.channel.send(`It seems you don\'t have enough credits to create a new custom card, ${user.username}.\nAlso, creating a new card costs **\$${cost}**`).catch(console.error);
   } else
-  if (row['cards'].size !== 0 && row['credits'] >= cost) {
+  if (row['cards'].keys().length !== 0 && row['credits'] >= cost) {
     main.scores.update({ userId: message.author.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate), credits: (row['credits'] - cost) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)

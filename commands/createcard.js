@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
     } else {
       main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
-        makeCard(r, message, args);
+        makeCard(r.ops[0], message, args);
         return;
       });
     }

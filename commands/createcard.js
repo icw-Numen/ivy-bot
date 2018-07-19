@@ -3,11 +3,12 @@ const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
+  const user = message.author;
+  
   if (args.length === 0) {
     return message.channel.send(`Please give me a title for your custom card, ${user.username}`).catch(console.error);
   }
 
-  const user = message.author;
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;

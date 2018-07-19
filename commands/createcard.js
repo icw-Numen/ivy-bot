@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
   if (args.length === 0) {
     return message.channel.send(`Please give me a title for your custom card, ${user.username}`).catch(console.error);
   }
-  
+
   const user = message.author;
   main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
     if (err) return console.log(err);
@@ -33,6 +33,10 @@ function makeCard(row, message, args) {
     fields: [],
     thumbnail: ''
   };
+
+  if (!row['cards']) {
+    main.scores.update({ userId:user.id }, { $set: { cards: new Map()} }).catch(error => console.log(error));
+  }
 
   if (row['cards'].length === 0) {
     main.scores.update({ userId:user.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate)} }).catch(error => console.log(error));

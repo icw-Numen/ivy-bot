@@ -104,9 +104,9 @@ function checkLevel(message, user) {
     if (row) {
       lvUp(row, message, user);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, res) {
         if (error) return console.log(error);
-        lvUp(row, message, user);
+        lvUp(res, message, user);
       });
     }
   });

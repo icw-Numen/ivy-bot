@@ -37,9 +37,16 @@ function makeCard(row, message, args) {
   };
 
   const count = row['cards'].length;
+  let dupe;
 
-  if (!row['cards']) {
-    main.scores.update({ userId: message.author.id }, { $set: { cards: []} }).catch(error => console.log(error));
+  if (count > 0) {
+    dupe = row['cards'].find(function(element) {
+      return element.title === args.join(' ');
+    });
+  }  
+
+  if (dupe) {
+    message.channel.send(`You\'ve already created a custom card with that title, ${user.username}`).catch(console.error);
   }
 
   if (count === 0) {

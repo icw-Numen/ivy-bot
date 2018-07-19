@@ -34,9 +34,13 @@ function makeCard(row, message, args) {
     thumbnail: ''
   };
 
+  console.log(row['cards'].size);
+
   if (!row['cards']) {
     main.scores.update({ userId:user.id }, { $set: { cards: new Map()} }).catch(error => console.log(error));
   }
+
+  console.log(row['cards'].size);
 
   if (row['cards'].size === 0) {
     main.scores.update({ userId:user.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate)} }).catch(error => console.log(error));
@@ -56,7 +60,7 @@ function makeCard(row, message, args) {
       .setColor(0xF18E8E)
       .setTitle('Custom card creation successful~')
       .setThumbnail(reactions.closedeyes)
-      .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}. That would be **\$600**~`);
+      .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}. That would be **\$${cost}**~`);
     return message.channel.send({embed});
   }
 }

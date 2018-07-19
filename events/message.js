@@ -6,10 +6,10 @@ const reactions = require('../reactions.json');
 
 // message event handler
 module.exports = message => {
-  const user = message.author;
+  const user = user;
   const ping = message.mentions.users.first();
   //ignores its own messages
-  if (message.author.bot) return;
+  if (user.bot) return;
 
   //the bot == client
   const client = message.client;
@@ -48,21 +48,21 @@ module.exports = message => {
     if (message.channel.type === 'dm') return;
   }
 
-  if (!main.talkedRecently.has(message.author.id)) {
+  if (!main.talkedRecently.has(user.id)) {
     const time = '1 minute';
-    main.talkedRecently.add(message.author.id);
+    main.talkedRecently.add(user.id);
     setTimeout(() => {
-      main.talkedRecently.delete(message.author.id);
+      main.talkedRecently.delete(user.id);
     }, ms(time));
-    main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
+    main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
       if (err) return console.log(err);
       var row = res;
       if (row) {
-        expUp(row, message);
+        expUp(row, message, user);
       } else {
         main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
           if (error) return console.log(error);
-          expUp(row, message);
+          expUp(row, message, user);
         });
       }
     });
@@ -89,7 +89,7 @@ module.exports = message => {
     cmd = client.commands.get(client.aliases.get(command));
   }
   if (cmd) {
-    if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${message.author.username}`);
+    if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${user.username}`);
     cmd.run(client, message, args, perms);
   }
   checkLevel(message, user);
@@ -97,39 +97,39 @@ module.exports = message => {
 
 
 // Helper method
-function expUp(row, message) {
-  main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
+function expUp(row, message, user) {
+  main.scores.update({ userId: user.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
 }
 
 // Helper method
 function checkLevel(message, user) {
-  main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
+  main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {
-      lvUp(row, message);
+      lvUp(row, message, user);
     } else {
       main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
         if (error) return console.log(error);
-        lvUp(row, message);
+        lvUp(row, message, user);
       });
     }
   });
 }
 
 // Helper method
-function lvUp(row, message) {
+function lvUp(row, message, user) {
   const expNextLv = row['level'] * 5 + 10;
   const curLv = row['level'];
   const bonus = row['level'] + 10;
 
   if (row['exp'] >= expNextLv) {
-    main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (row['level'] + 1), credits: (row['credits'] + (row['level'] + 10)) } }).catch(error => console.log(error));
+    main.scores.update({ userId: user.id }, { $set: { exp: 0, level: (row['level'] + 1), credits: (row['credits'] + (row['level'] + 10)) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Level up!~')
       .setThumbnail(reactions.wink1)
-      .setDescription(`${message.author.username} is now **lv. ${curLv + 1}**! 🎉\n\n**\$${bonus}** has been awarded as a bonus reward`)
+      .setDescription(`${user.username} is now **lv. ${curLv + 1}**! 🎉\n\n**\$${bonus}** has been awarded as a bonus reward`)
       .addField('Level:', `lv. ${curLv + 1}`, true)
       .addField('Balance:', `\$${row['credits'] + row['level'] + 10}`, true);
     message.channel.send({embed});

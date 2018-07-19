@@ -6,6 +6,7 @@ const reactions = require('../reactions.json');
 
 // message event handler
 module.exports = message => {
+  const user = message.author;
   const ping = message.mentions.users.first();
   //ignores its own messages
   if (message.author.bot) return;
@@ -53,7 +54,7 @@ module.exports = message => {
     if (row) {
       expUp(row, message);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
         if (error) return console.log(err);
         expUp(row, message);
       });
@@ -84,7 +85,7 @@ module.exports = message => {
     if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${message.author.username}`);
     cmd.run(client, message, args, perms);
   }
-  checkLevel(message);
+  checkLevel(message, user);
 };
 
 
@@ -101,14 +102,14 @@ function expUp(row, message) {
 }
 
 // Helper method
-function checkLevel(message) {
+function checkLevel(message, user) {
   main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {
       lvUp(row, message);
     } else {
-      main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
         if (error) return console.log(err);
         lvUp(row, message);
       });

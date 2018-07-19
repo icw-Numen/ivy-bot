@@ -12,7 +12,7 @@ exports.run = async (client, message) => {
       str = `${user.username}, you are currently at **lv.${row['level']}**`;
       getLv(row, message, user, reactions.normal, str);
     } else {
-      main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
+      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
         if (error) return console.log(err);
         str = `${user.username}, you are currently at **lv.0**`;
         getLv(row, message, user, reactions.smug, str);

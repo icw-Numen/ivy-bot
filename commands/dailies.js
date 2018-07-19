@@ -11,7 +11,7 @@ exports.run = async (client, message) => {
     if (row) {
       runDailies(row, message);
     } else {
-      main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null}, function (error) {
+      main.scores.insertOne({userId: user.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
         if (error) return console.log(err);
         runDailies(row, message);
         return;

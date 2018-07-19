@@ -57,7 +57,7 @@ function showCard(row, message, args) {
     .setThumbnail(reactions.closedeyes)
     .setDescription(`Please wait while I load your card, ${message.author.username}`);
 
-  const embed = new RichEmbed()
+  var embed = new RichEmbed()
     .setColor(0x36393E)
     .setTitle(title)
     .setThumbnail(thumbnail);

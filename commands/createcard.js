@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
     if (row) {
       makeCard(row, message, args);
     } else {
-      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
         if (error) return console.log(error);
         makeCard(row, message, args);
         return;
@@ -37,13 +37,13 @@ function makeCard(row, message, args) {
   console.log(row['cards'].size);
 
   if (!row['cards']) {
-    main.scores.update({ userId:user.id }, { $set: { cards: new Map()} }).catch(error => console.log(error));
+    main.scores.update({ userId: message.author.id }, { $set: { cards: new Map()} }).catch(error => console.log(error));
   }
 
   console.log(row['cards'].size);
 
   if (row['cards'].size === 0) {
-    main.scores.update({ userId:user.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate)} }).catch(error => console.log(error));
+    main.scores.update({ userId: message.author.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate)} }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Custom card creation successful~')
@@ -55,7 +55,7 @@ function makeCard(row, message, args) {
     return message.channel.send(`It seems you don\'t have enough credits to create a new custom card, ${user.username}.\nAlso, creating a new card costs **\$${cost}**`).catch(console.error);
   } else
   if (row['cards'].size !== 0 && row['credits'] >= cost) {
-    main.scores.update({ userId:user.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate), credits: (row['credits'] - cost) } }).catch(error => console.log(error));
+    main.scores.update({ userId: message.author.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate), credits: (row['credits'] - cost) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Custom card creation successful~')

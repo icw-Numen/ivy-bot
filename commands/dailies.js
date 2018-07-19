@@ -11,7 +11,7 @@ exports.run = async (client, message) => {
     if (row) {
       runDailies(row, message);
     } else {
-      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
+      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
         if (error) return console.log(error);
         runDailies(row, message);
         return;
@@ -28,11 +28,11 @@ function runDailies(row, message) {
     return message.channel.send(`You have already claimed your dailies today, ${user.username}`).catch(console.error);
   }
 
-  main.scores.update({ userId:user.id }, { $set: { claimed: moment().format('L') } }).catch(error => console.log(error));
+  main.scores.update({ userId: message.author.id }, { $set: { claimed: moment().format('L') } }).catch(error => console.log(error));
 
   const money = row['credits'];
 
-  main.scores.update({ userId:user.id }, { $set: { credits: (row['credits'] + 100) } }).catch(error => console.log(error));
+  main.scores.update({ userId: message.author.id }, { $set: { credits: (row['credits'] + 100) } }).catch(error => console.log(error));
 
   const embed = new RichEmbed()
     .setColor(0xF18E8E)

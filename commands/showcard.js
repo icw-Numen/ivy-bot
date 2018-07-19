@@ -60,7 +60,7 @@ function showCard(row, message, args) {
   return message.channel.send({embed}).then(m => {
     setTimeout(function() {
       m.delete();
-    }, 3500);
+    }, 4000);
 
     embed = new RichEmbed()
       .setColor(0x36393E)

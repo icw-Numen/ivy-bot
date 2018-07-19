@@ -51,35 +51,36 @@ function showCard(row, message, args) {
     thumbnail =  card.thumbnail;
   }
 
-  const embedIvy = new RichEmbed()
+  var embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle('Sending card~')
     .setThumbnail(reactions.closedeyes)
     .setDescription(`Please wait while I load your card, ${message.author.username}`);
 
-  var embed = new RichEmbed()
-    .setColor(0x36393E)
-    .setTitle(title)
-    .setThumbnail(thumbnail);
-
-  if (thumbnail.length > 0) {
-    embed.setThumbnail(thumbnail);
-  }
-
-  if (description.length > 0) {
-    embed.setDescription(description);
-  } else if ((description.length === 0) && (fields.length > 0)) {
-    embed.setDescription('(empty card)');
-  }
-
-  if (fields.length > 0) {
-    fields.forEach(f => {embed.addField(f.split(' ')[0], f.slice(f.split(' ')[0].length - 1, f.length));});
-  }
-
-  return message.channel.send({embedIvy}).then(m => {
+  return message.channel.send({embed}).then(m => {
     setTimeout(function() {
       m.delete();
     }, 4000);
+
+    embed = new RichEmbed()
+      .setColor(0x36393E)
+      .setTitle(title)
+      .setThumbnail(thumbnail);
+
+    if (thumbnail.length > 0) {
+      embed.setThumbnail(thumbnail);
+    }
+
+    if (description.length > 0) {
+      embed.setDescription(description);
+    } else if ((description.length === 0) && (fields.length > 0)) {
+      embed.setDescription('(empty card)');
+    }
+
+    if (fields.length > 0) {
+      fields.forEach(f => {embed.addField(f.split(' ')[0], f.slice(f.split(' ')[0].length - 1, f.length));});
+    }
+
     message.channel.send({embed});
   });
 }

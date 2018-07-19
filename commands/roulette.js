@@ -53,7 +53,7 @@ exports.run = async (client, message, args) => {
               if (row) {
                 getDolla(row, message, user, player, pulls, bullets);
               } else {
-                main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: {}}, function (error) {
+                main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error) {
                   if (error) return console.log(error);
                   getDolla(row, message, user, player, pulls, bullets);
                 });
@@ -71,7 +71,7 @@ exports.run = async (client, message, args) => {
               if (row) {
                 ripScore(row, message, user, player);
               } else {
-                main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: {}}, function (error) {
+                main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error) {
                   if (error) return console.log(error);
                   ripScore(row, message, user, player);
                 });

@@ -13,7 +13,7 @@ exports.run = async (client, message) => {
       getMoney(message, user, reactions.normal, str);
     } else {
       main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
-        if (error) return console.log(err);
+        if (error) return console.log(error);
         str = `${user.username}, you currently have **\$0** in your account. Rip 💸`;
         getMoney(message, user, reactions.smug, str);
         return;

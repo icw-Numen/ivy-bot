@@ -11,7 +11,7 @@ module.exports = member => {
       memRem(row, member, guild);
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
-        if (error) return console.log(err);
+        if (error) return console.log(error);
         memRem(row, member, guild);
         return;
       });

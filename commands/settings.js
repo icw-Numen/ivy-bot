@@ -14,7 +14,7 @@ exports.run = async (client, message) => {
       getServerStats(row, message, user, reactions.normal, str);
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
-        if (error) return console.log(err);
+        if (error) return console.log(error);
         str = `${user.username}, my settings for this server are:`;
         getServerStats(row, message, user, reactions.smug, str);
         return;

@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
       setModlog(row, message, args, guild);
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
-        if (error) return console.log(err);
+        if (error) return console.log(error);
         setModlog(row, message, args, guild);
         return;
       });

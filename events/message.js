@@ -6,7 +6,7 @@ const reactions = require('../reactions.json');
 
 // message event handler
 module.exports = message => {
-  const user = user;
+  const user = message.author;
   const ping = message.mentions.users.first();
   //ignores its own messages
   if (user.bot) return;

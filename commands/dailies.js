@@ -32,7 +32,7 @@ function runDailies(row, message) {
 
   const money = row['credits'];
 
-  main.scores.update({ userId: message.author.id }, { $set: { credits: (row['credits'] + 100) } }).catch(error => console.log(error));
+  main.scores.update({ userId: message.author.id }, { $inc: { credits: 100 } }).catch(error => console.log(error));
 
   const embed = new RichEmbed()
     .setColor(0xF18E8E)

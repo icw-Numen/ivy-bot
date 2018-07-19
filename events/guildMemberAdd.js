@@ -11,8 +11,17 @@ module.exports = member => {
       welcome(row, member);
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
+        main.scores.findOne({ userId : { $gte: member.id }}, function (err, res) {
+          if (err) return console.log(err);
+          var row = res;
+          if (row) {
+            main.scores.insertOne({userId: member.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error) {
+              if (error) return console.log(error);
+            });
+          }
+        });
         if (error) return console.log(error);
-        welcome(r, member);
+        welcome(r.ops[0], member);
         return;
       });
     }

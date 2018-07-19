@@ -11,7 +11,7 @@ module.exports = (guild, user) => {
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        unbanned(r, guild, user);
+        unbanned(r.ops[0], guild, user);
         return;
       });
     }

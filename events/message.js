@@ -54,17 +54,8 @@ module.exports = message => {
     setTimeout(() => {
       main.talkedRecently.delete(user.id);
     }, ms(time));
-    main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+    main.scores.findOneAndUpdate({ userId : { $gte: user.id }}, {$inc: {exp: 1}}, {upsert: true}, function (err) {
       if (err) return console.log(err);
-      var row = res;
-      if (row) {
-        main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
-      } else {
-        main.scores.insertOne({userId: message.author.id, exp: 0, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
-          if (error) return console.log(error);
-          main.scores.update({ userId: message.author.id }, { $set: { exp: (r.ops[0]['exp'] + 1) } }).catch(error => console.log(error));
-        });
-      }
     });
   }
 
@@ -92,7 +83,9 @@ module.exports = message => {
     if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${user.username}`);
     cmd.run(client, message, args, perms);
   }
-  checkLevel(message, user);
+  if (!main.talkedRecently.has(user.id)) {
+    checkLevel(message, user);
+  }
 };
 
 
@@ -103,11 +96,6 @@ function checkLevel(message, user) {
     var row = res;
     if (row) {
       lvUp(row, message, user);
-    } else {
-      main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
-        if (error) return console.log(error);
-        lvUp(r.ops[0], message, user);
-      });
     }
   });
 }
@@ -119,7 +107,7 @@ function lvUp(row, message, user) {
   const bonus = row['level'] + 10;
 
   if (row['exp'] >= expNextLv) {
-    main.scores.update({ userId: message.author.id }, { $set: { exp: 0, level: (row['level'] + 1), credits: (row['credits'] + (row['level'] + 10)) } }).catch(error => console.log(error));
+    main.scores.update({ userId: message.author.id }, { $set: { exp: 0 }, $inc: {level: 1, credits: (curLv + 10)} }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Level up!~')

@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     if (row) {
       setWelcome(row, message, args, guild);
     } else {
-      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error) {
+      main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
         setWelcome(r.ops[0], message, args, guild);
         return;

@@ -12,7 +12,7 @@ module.exports = member => {
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
         if (error) return console.log(error);
-        memRem(r, member, guild);
+        memRem(r.ops[0], member, guild);
         return;
       });
     }

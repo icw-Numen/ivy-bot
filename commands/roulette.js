@@ -110,7 +110,7 @@ exports.run = async (client, message, args) => {
 // Helper method
 function getDolla(row, message, user, player, pulls, bullets) {
   const money = row['credits'];
-  main.scores.update({ userId: message.author.id }, { $set: { credits: (row['credits'] + 100) } }).catch(error => console.log(error));
+  main.scores.update({ userId: message.author.id }, { $inc: { credits: 100 } }).catch(error => console.log(error));
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle('Oh and by the way~')
@@ -130,7 +130,7 @@ function ripScore(row, message, user, player) {
       .setDescription(`**_\\*BANG\\*_** 🔫  |\n\nOh no! ${player} got badly wounded and has to leave immediately!`);
     message.channel.send({embed});
   } else {
-    main.scores.update({ userId: message.author.id }, { $set: { credits: (row['credits'] - 10) } }).catch(error => console.log(error));
+    main.scores.update({ userId: message.author.id }, { $inc: { credits: (-10) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setThumbnail(reactions.smug2)

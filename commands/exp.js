@@ -8,13 +8,14 @@ exports.run = async (client, message) => {
     if (err) return console.log(err);
     var row = res;
     var str;
-    const expNextLv = row['level'] * 5 + 10;
     if (row) {
+      const expNextLv = row['level'] * 5 + 10;
       str = `${user.username}, you currently have **${row['exp']} exp** (${expNextLv - row['exp']} exp until next level)`;
       getExp(row, message, user, reactions.normal, str, expNextLv);
     } else {
       main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
+        const expNextLv = 10;
         str = `${user.username}, you currently have **${row['exp']} exp** (${expNextLv - row['exp']} exp until next level)`;
         getExp(r.ops[0], message, user, reactions.normal2, str, expNextLv);
         return;

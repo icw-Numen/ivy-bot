@@ -12,8 +12,8 @@ exports.run = async (client, message) => {
     var lv;
     var xp;
     var monies;
-    const expNextLv = row.level * 5 + 10;
     if (row) {
+      const expNextLv = row.level * 5 + 10;
       if (expNextLv - row['exp'] === 0) {
         lv = row['level'] + 1;
         xp = 0;

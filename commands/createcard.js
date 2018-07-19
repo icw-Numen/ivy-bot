@@ -38,7 +38,7 @@ function makeCard(row, message, args) {
     main.scores.update({ userId:user.id }, { $set: { cards: new Map()} }).catch(error => console.log(error));
   }
 
-  if (row['cards'].length === 0) {
+  if (row['cards'].size === 0) {
     main.scores.update({ userId:user.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate)} }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
@@ -47,10 +47,10 @@ function makeCard(row, message, args) {
       .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}.\nThis one\'s on the house, but keep in mind that next ones will cost **\$${cost}**`);
     return message.channel.send({embed});
   } else
-  if (row['cards'].length !== 0 && row['credits'] < cost) {
+  if (row['cards'].size !== 0 && row['credits'] < cost) {
     return message.channel.send(`It seems you don\'t have enough credits to create a new custom card, ${user.username}.\nAlso, creating a new card costs **\$${cost}**`).catch(console.error);
   } else
-  if (row['cards'].length !== 0 && row['credits'] >= cost) {
+  if (row['cards'].size !== 0 && row['credits'] >= cost) {
     main.scores.update({ userId:user.id }, { $set: { cards: row['cards'].set(args.join(' '), cardtemplate), credits: (row['credits'] - cost) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)

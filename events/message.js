@@ -48,18 +48,25 @@ module.exports = message => {
     if (message.channel.type === 'dm') return;
   }
 
-  main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
-    if (err) return console.log(err);
-    var row = res;
-    if (row) {
-      expUp(row, message);
-    } else {
-      main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
-        if (error) return console.log(err);
+  if (!main.talkedRecently.has(message.author.id)) {
+    const time = '1 minute';
+    main.talkedRecently.add(message.author.id);
+    setTimeout(() => {
+      main.talkedRecently.delete(message.author.id);
+    }, ms(time));
+    main.scores.findOne({ userId : { $gte: message.author.id }}, function (err, res) {
+      if (err) return console.log(err);
+      var row = res;
+      if (row) {
         expUp(row, message);
-      });
-    }
-  });
+      } else {
+        main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
+          if (error) return console.log(error);
+          expUp(row, message);
+        });
+      }
+    });
+  }
 
   // if a message does not start with the bot prefix, the bot will ignore it
   if (!message.content.startsWith(settings.prefix) &&
@@ -91,14 +98,7 @@ module.exports = message => {
 
 // Helper method
 function expUp(row, message) {
-  if (!main.talkedRecently.has(message.author.id)) {
-    const time = '1 minute';
-    main.talkedRecently.add(message.author.id);
-    setTimeout(() => {
-      main.talkedRecently.delete(message.author.id);
-    }, ms(time));
-    main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
-  }
+  main.scores.update({ userId: message.author.id }, { $set: { exp: (row['exp'] + 1) } }).catch(error => console.log(error));
 }
 
 // Helper method
@@ -110,7 +110,7 @@ function checkLevel(message, user) {
       lvUp(row, message);
     } else {
       main.scores.insertOne({userId: user.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: new Map()}, function (error) {
-        if (error) return console.log(err);
+        if (error) return console.log(error);
         lvUp(row, message);
       });
     }

@@ -28,8 +28,14 @@ exports.run = (client, message, args) => {
     reaction = reactions.smug2;
   }
 
-  if (args[0] === 'succubus'|| args[1] === 'succubus') {
-    str = `You have good taste, ${message.author.username}~`;
+  if ((args[0] === 'succubus'|| args[1] === 'succubus') ||
+  (args[0] === 'demon_girl'|| args[1] === 'demon_girl') ||
+  (args[0] === 'maid'|| args[1] === 'maid') ||
+  (args[0] === 'horns'|| args[1] === 'horns') ||
+  (args[0] === 'large_breasts'|| args[1] === 'large_breasts') ||
+  (args[0] === 'huge_breasts'|| args[1] === 'huge_breasts') ||
+  (args[0] === 'short_hair'|| args[1] === 'short_hair')) {
+    str = `Ooh~ You have good taste, ${message.author.username}~`;
     reaction = reactions.wink1;
   }
 
@@ -42,14 +48,14 @@ exports.run = (client, message, args) => {
       return message.channel.send(`Oops, no lewds to be found here, ${message.author.username}~`).catch(console.error);
     }
 
-    const url = booru.url(post.file_url);
+    const url = booru.url(post.large_file_url);
     const link = url.href;
 
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Bringing the lewds~')
       .setThumbnail(reaction)
-      .setImage(post.file_url)
+      .setImage(post.large_file_url)
       .setURL(link)
       .setDescription(str);
     if (message.channel.nsfw) {

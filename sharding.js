@@ -1,6 +1,6 @@
-const Discord = require('discord.js');
-const Manager = new Discord.ShardingManager('./app.js', {totalShards: 2, autoSpawn: true, token: process.env.TOKEN});
+const { ShardingManager } = require('discord.js');
+const Manager = new ShardingManager('./app.js', {token: process.env.TOKEN, autoSpawn: true});
 exports.manager = Manager;
-Manager.spawn();
+Manager.spawn(2);
 
 Manager.on('launch', shard => console.log(`Shard ${shard.id}/${shard.manager.totalShards} loaded`));

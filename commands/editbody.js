@@ -93,7 +93,7 @@ exports.conf = {
 
 exports.help = {
   name: 'editbody',
-  description: 'Edits the contents of the specified card. If no description or entries/fields were set, new ones will be created',
+  description: 'Edits the contents of the specified card. If the entry/field does not exist, a new one will be created',
   usage: 'editbody <card title> <description/field title> <new description/new field body>',
   type: 'custom card'
 };

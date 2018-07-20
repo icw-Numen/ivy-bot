@@ -37,7 +37,7 @@ function makeCard(row, message, args) {
   };
 
   if (args.length === 0 || args.length > 1) {
-    return message.channel.send(`Please give a valid title for your card, ${user.username}. Titles must not contain spaces, but other characters are fine`).catch(console.error);
+    return message.channel.send(`Please give a valid title for your card, ${user.username}. Titles cannot contain spaces, but other characters are fine`).catch(console.error);
   }
 
   const count = row['cards'].length;

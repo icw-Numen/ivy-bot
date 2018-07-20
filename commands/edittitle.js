@@ -45,12 +45,17 @@ function showCard(row, message, args) {
       return message.channel.send(`Please specify a valid custom card, ${message.author.username}`);
     }
 
+    if (args.slice(2, args.length).length > 1) {
+      return message.channel.send(`Please give a valid title for your card, ${message.author.username}. Titles cannot contain spaces, but other characters are fine`).catch(console.error);
+    }
+
     const fieldIndex =  card.fields.findIndex(field => {
       return field.title === args[1];
     });
 
     if (args[1] === 'title') {
-      const newTitle = args.slice(2, args.length).join(' ');
+      const newTitle = args[2];
+
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.title': newTitle } }).catch(error => console.log(error));
       str = `I\'ve updated your custom card\'s title, ${message.author.username}`;
     } else
@@ -85,7 +90,7 @@ exports.conf = {
 
 exports.help = {
   name: 'edittitle',
-  description: 'Edits the contents of the specified card. If no description or entries/fields were set, new ones will be created',
-  usage: 'edittitle <card title> <description/field title> <new description/new field body>',
+  description: 'Edits the title of the specified card. If the entry/field title does not exist, a new entry/field will be created',
+  usage: 'edittitle <card title> <title/field title> <new description/new field body>',
   type: 'custom card'
 };

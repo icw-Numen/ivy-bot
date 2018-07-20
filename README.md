@@ -223,7 +223,7 @@ Just want to add her to your server ASAP? Simply follow the steps below:
 [(Back to Table of Contents)](#table-of-contents)
 
 ## Contributors
-- icw-Numen
+- icw-Numen (Numen#3815 on Discord)
 
 [(Back to Table of Contents)](#table-of-contents)
 

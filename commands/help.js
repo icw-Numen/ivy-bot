@@ -16,6 +16,7 @@ exports.run = (client, message, args) => {
     const devS = '\`~' + mp.filter(c => c.help.type === 'dev').map(c => `${c.help.name}\``).join(',  \`~');
     const utilS = '\`~' + mp.filter(c => c.help.type === 'utilities').map(c => `${c.help.name}\``).join(',  \`~');
     const cardS = '\`~' + mp.filter(c => c.help.type === 'custom card').map(c => `${c.help.name}\``).join(',  \`~');
+    const lewdS = '\`~' + mp.filter(c => c.help.type === 'lewd').map(c => `${c.help.name}\``).join(',  \`~');
 
     const tip = `Use \`${settings.prefix}help <commandname>\` for details, including aliases (these are basically alternate names for each command).\n\nYou can also use my name as the prefix if you wish (like this: \`${settings.prefix2}help\`). Pinging me works fine too (like this: \`@${client.user.username} help\`).`;
 
@@ -34,7 +35,7 @@ exports.run = (client, message, args) => {
       .addField('Level/credits System Commands:', `${pointS}`)
       .addField('Meme Commands:', `${memeS}`)
       .addField('Developer Commands:', `${devS}`)
-      .addField('Lewd Commands:', '[coming soon]')
+      .addField('Lewd Commands:', `${lewdS}`)
       .setFooter(`Bot and icons/art made with care by ${package.author}`);
     return message.channel.send({embed});
   } else {

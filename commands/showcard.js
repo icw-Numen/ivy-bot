@@ -84,9 +84,9 @@ function showCard(row, message, args) {
     if (fields.length > 0) {
       fields.forEach(f => {
         if (f.body.length > 0) {
-          embed.addField(f.title, f.body);
+          embed.addField(f.title, f.body, true);
         } else {
-          embed.addField(f.title, '(This field is empty...)');
+          embed.addField(f.title, '(This field is empty...)', true);
         }
       });
     }

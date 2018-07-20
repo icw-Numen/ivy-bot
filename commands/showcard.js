@@ -67,9 +67,10 @@ function showCard(row, message, args) {
     }, 3500);
 
     embed = new RichEmbed()
-      .setColor(0x36393E)
+      .setColor(0xF18E8E)
       .setTitle(title)
-      .setThumbnail(thumbnail);
+      .setThumbnail(thumbnail)
+      .setAuthor(message.author.username, message.author.avatarURL);
 
     if (thumbnail.length > 0) {
       embed.setThumbnail(thumbnail);

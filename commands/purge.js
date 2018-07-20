@@ -30,7 +30,7 @@ exports.run = (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['obliterate', 'delete', 'deletemsg'],
+  aliases: ['obliterate', 'delete', 'deletemsg', 'burnwithfire'],
 
   //this means only mods (permLevel 2) or higher can use this command
   permLevel: 2

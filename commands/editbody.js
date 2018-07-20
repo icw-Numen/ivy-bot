@@ -46,7 +46,7 @@ function showCard(row, message, args) {
     }
 
     const fieldIndex =  card.fields.findIndex(field => {
-      return field.title === args[1].slice(0, args.length - 1);
+      return field.title === args[1];
     });
 
     const field = row['cards'].fields[fieldIndex];

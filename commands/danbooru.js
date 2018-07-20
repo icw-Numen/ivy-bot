@@ -3,21 +3,24 @@ const reactions = require('../reactions.json');
 const Danbooru = require('danbooru');
 
 exports.run = (client, message, args) => {
-  const arg = args.join(' ');
-  let tag1;
-  let tag2;
-  if (arg.indexOf(',') > -1) {
-    tag1 = arg[0].slice(0, arg[0].length - 1);
-    tag2 = ' ' + args.join(' ').slice(arg.indexOf(',') + 1, args.join(' ').length);
-  } else {
-    tag1 = args.join(' ');
-    tag2 = '';
-  }
   if (args.length === 0) {
     return message.channel.send(`Please give me at least one tag, ${message.author.username}`).catch(console.error);
   }
-  if (args.length > 2) {
+  if ((args.join(' ').split(',').length - 1) > 1) {
     return message.channel.send(`Please give me no more than two tags, ${message.author.username}`).catch(console.error);
+  }
+  const arg = args.join(' ');
+  let tag1;
+  let tag2;
+  let str;
+  if (arg.indexOf(',') > -1) {
+    tag1 = arg[0].slice(0, arg[0].length - 1);
+    tag2 = ' ' + args.join(' ').slice(arg.indexOf(',') + 1, args.join(' ').length);
+    str = `Browsing Danbooru for some goodies with tags **${tag1}** and **${tag2}**, ${message.author.username}~`;
+  } else {
+    tag1 = args.join(' ');
+    tag2 = '';
+    str = `Browsing Danbooru for some goodies with tags **${tag1}**, ${message.author.username}~`;
   }
 
   const booru = new Danbooru();
@@ -38,7 +41,7 @@ exports.run = (client, message, args) => {
       .setThumbnail(reactions.smug2)
       .setImage(post.large_file_url)
       .setURL(link)
-      .setDescription(`Browsing Danbooru for some goodies with tags **${args[0]}** and **${args[0]}**, ${message.author.username}~`);
+      .setDescription(str);
     if (message.channel.nsfw) {
       message.channel.send({embed});
     } else {

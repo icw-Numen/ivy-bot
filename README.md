@@ -224,7 +224,8 @@ Just want to add her to your server ASAP? Simply follow the steps below:
 [(Back to Table of Contents)](#table-of-contents)
 
 ## Assets
-You can find all the images/artwork used by Ivy [in this link](https://sta.sh/21qy8xqbpkxm). And yes, I've made all of these myself.
+You can find all the icons/art used by Ivy [in this link](https://sta.sh/21qy8xqbpkxm). Unused stuff included. 
+And yes, I made all of that myself.
 
 [(Back to Table of Contents)](#table-of-contents)
 

@@ -3,4 +3,4 @@ const Manager = new Discord.ShardingManager('./app.js', {totalShards: 2, autoSpa
 exports.manager = Manager;
 Manager.spawn();
 
-Manager.on('launch', shard => console.log(`Shard ${shard.id}/${shard.totalShards} loaded`));
+Manager.on('launch', shard => console.log(`Shard ${shard.id}/${shard.manager.totalShards} loaded`));

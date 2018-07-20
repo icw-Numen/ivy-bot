@@ -3,6 +3,16 @@ const reactions = require('../reactions.json');
 const Danbooru = require('danbooru');
 
 exports.run = (client, message, args) => {
+  const arg = args.join(' ');
+  let tag1;
+  let tag2;
+  if (arg.indexOf(',') > -1) {
+    tag1 = arg[0].slice(0, arg[0].length - 1);
+    tag2 = ' ' + args.join(' ').slice(arg.indexOf(',') + 1, args.join(' ').length);
+  } else {
+    tag1 = args.join(' ');
+    tag2 = '';
+  }
   if (args.length === 0) {
     return message.channel.send(`Please give me at least one tag, ${message.author.username}`).catch(console.error);
   }
@@ -11,7 +21,7 @@ exports.run = (client, message, args) => {
   }
 
   const booru = new Danbooru();
-  booru.posts({ tags: args[0] + ' ' + args[1] }).then(posts => {
+  booru.posts({ tags: tag1 + tag2 }).then(posts => {
     const index = Math.floor(Math.random() * posts.length);
     const post = posts[index];
 
@@ -47,7 +57,7 @@ exports.conf = {
 
 exports.help = {
   name: 'danbooru',
-  description: 'Searches a random, totally not lewd image on Danbooru ( ͡° ͜ʖ ͡°)\nYou can search up to two tags at once',
+  description: 'Searches a random, totally not lewd image on Danbooru ( ͡° ͜ʖ ͡°)\nYou can search up to two tags at once, separated with a comma',
   usage: 'danbooru <tag_1> <tag_2>',
   type: 'lewd'
 };

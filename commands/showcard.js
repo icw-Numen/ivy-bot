@@ -135,7 +135,7 @@ exports.conf = {
 
 exports.help = {
   name: 'showcard',
-  description: 'Shows a custom card you\'ve created. Passing nothing shows your first card',
-  usage: 'showcard <card title>',
+  description: 'Shows a custom card you\'ve created. Passing nothing shows your first card. Passing an entry/field title after the card name will show a card with just that entry',
+  usage: 'showcard <card title> <entry>',
   type: 'custom card'
 };

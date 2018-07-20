@@ -23,6 +23,7 @@ _(This is Ivy. She's glad you're here today.)_
   - [Developer Commands](#developer-commands)
   - [Lewd Commands](#lewd-commands)
 - [Adding Ivy to your server](#adding-ivy-to-your-server)
+- [Assets](#assets)
 - [Contributors](#contributors)
 - [If you have any questions/problems](#if-you-have-any-questionsproblems)
 
@@ -219,6 +220,11 @@ Just want to add her to your server ASAP? Simply follow the steps below:
 3. Make sure to give her Administrator permissions
 4. Click on "Authorize"
 5. You're all set! You should be able to see her on your server now
+
+[(Back to Table of Contents)](#table-of-contents)
+
+## Assets
+You can find all the images/artwork used by Ivy [in this link](https://sta.sh/21qy8xqbpkxm). And yes, I've made all of these myself.
 
 [(Back to Table of Contents)](#table-of-contents)
 

@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
 // Helper method
 function showCard(row, message, args) {
   let str;
-  
+
   if (row['cards'].length === 0) {
     return message.channel.send(`Oops, it seems you don\'t have any custom cards, ${message.author.username}`);
   }
@@ -53,7 +53,7 @@ function showCard(row, message, args) {
 
     if (args[1] === 'description') {
       description = args.join(' ').slice(args[0].length + args[1].length, args.length);
-      main.scores.update({ userId: message.author.id }, { $set: { 'cards.description': description } }).catch(error => console.log(error));
+      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.description': description } }).catch(error => console.log(error));
       str = `Updated custom card description successfully, ${message.author.username}`;
     } else
     if (field) {

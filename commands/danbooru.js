@@ -26,7 +26,11 @@ exports.run = (client, message, args) => {
       .setImage(post.large_file_url)
       .setURL(link)
       .setDescription(`Browsing Danbooru for some goodies with tags **${args[0]}** and **${args[0]}**, ${message.author.username}~`);
-    message.channel.send({embed});
+    if (message.channel.nsfw) {
+      message.channel.send({embed});
+    } else {
+      return message.channel.send(`Ah~ We can\'t do lewd things here, ${message.author.username}~`).catch(console.error);
+    }
   });
 };
 

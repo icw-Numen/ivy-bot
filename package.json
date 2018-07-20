@@ -13,8 +13,8 @@
   "author": "Numen#3815",
   "license": "MIT",
   "dependencies": {
-    "booru": "^0.4.0",
     "chalk": "^2.4.1",
+    "danbooru": "^3.0.7",
     "discord.js": "^11.3.2",
     "fs": "0.0.1-security",
     "moment": "^2.22.2",

@@ -27,7 +27,7 @@ exports.run = async (client, message) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['lore', 'characterinfo', 'bio', 'characterprofile', 'whoareyou'],
+  aliases: ['lore', 'characterinfo', 'bio', 'characterprofile', 'whoareyou', 'aboutivy'],
   permLevel: 0
 };
 

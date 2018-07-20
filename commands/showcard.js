@@ -66,7 +66,7 @@ function showCard(row, message, args) {
       m.delete();
     }, 3000);
 
-    if (args.length === 1) {
+    if (args.length === 2) {
       embed = new RichEmbed()
         .setColor(0xF18E8E)
         .setTitle(title)

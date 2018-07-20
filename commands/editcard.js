@@ -34,8 +34,6 @@ function showCard(row, message, args) {
   if (args.length === 0) {
     return message.channel.send(`Please specify a custom card, ${message.author.username}`);
   } else {
-
-    let description;
     let fieldTitle;
     let fieldBody;
 
@@ -52,9 +50,8 @@ function showCard(row, message, args) {
     });
 
     if (args[1] === 'description') {
-      description = args.join(' ').slice(args[0].length + args[1].length, args.length);
+      const description = args.join(' ').slice(args[0].length + args[1].length, args.length);
       console.log(description);
-      console.log(args[0]);
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.description': description } }).catch(error => console.log(error));
       str = `Updated custom card description successfully, ${message.author.username}`;
     } else

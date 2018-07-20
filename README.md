@@ -1,9 +1,9 @@
 # Welcome to ~~demon~~ maid bot Ivy's website!
 <img src="https://orig00.deviantart.net/5574/f/2018/195/d/f/maid_ivy_crop_by_icw_numen-dch83gp.png" width="200">
 
-_(This is Ivy. She's happy to see you here today.)_
+_(This is Ivy. She's glad you're here today.)_
 
-| [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) | [Support/Dev's Discord Server](https://discord.gg/HVh7QcV) |
+| [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) | [Dev's Discord Server](https://discord.gg/HVh7QcV) |
 | :---: | :---: |
 | [Wiki and Guides (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) | [Donate!](http://ko-fi.com/rawsaucenumen) |
 
@@ -23,7 +23,9 @@ _(This is Ivy. She's happy to see you here today.)_
   - [Developer Commands](#developer-commands)
   - [Lewd Commands](#lewd-commands)
 - [Adding Ivy to your server](#adding-ivy-to-your-server)
+- [Assets](#assets)
 - [Contributors](#contributors)
+- [If you have any questions/problems](#if-you-have-any-questionsfeedback)
 
 ## Introduction
 You know that one **_extra thicc_** maid bot on Discord? No? Well, you're looking at her page right now! :P
@@ -43,11 +45,10 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 - Special lines/responses for each command
 - Music, moderation, and useful commands
 - Includes fun and meme commands too
+- Each command has aliases for convenience
 - Can set automatic role for new members
 - Can set welcome/goodbye/log channels
 - Can make custom cards/lists to help you keep track of stuff
-- Each command has aliases for convenience
-
 - User data and server settings are stored on a cloud-based database
 
 [(Back to Table of Contents)](#table-of-contents)
@@ -222,7 +223,22 @@ Just want to add her to your server ASAP? Simply follow the steps below:
 
 [(Back to Table of Contents)](#table-of-contents)
 
+## Assets
+You can find all the icons/art used by Ivy [in this link](https://sta.sh/21qy8xqbpkxm). Unused stuff included. 
+And yes, I made all of that myself.
+
+[(Back to Table of Contents)](#table-of-contents)
+
 ## Contributors
-- icw-Numen
+- icw-Numen (Numen#3815 on Discord)
+
+[(Back to Table of Contents)](#table-of-contents)
+
+## If you have any questions/feedback
+Got any questions? Bugs? Issues? Feedback? No problem! 
+
+You can either join my [development Discord server](https://discord.gg/HVh7QcV) and ask away, or send a PM to me if it's something simple.
+
+Again, [Ivy's wiki](https://github.com/icw-Numen/ivy-bot/wiki) is still WIP, but eventually it'll have more in-depth information about Ivy, including usage guides, which should help answering questions in the long run.
 
 [(Back to Table of Contents)](#table-of-contents)

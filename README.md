@@ -208,7 +208,12 @@ These can only be used by the one hosting the bot.
 [(Back to Table of Contents)](#table-of-contents)
 
 #### Lewd Commands:
-Coming soon!
+Of course, every bot needs at least one of these. ( ͡° ͜ʖ ͡°) 
+Ivy won't allow you to use lewd commands on non-nsfw channels by the way.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| danbooru | Posts a random, totally not lewd image on Danbooru. ( ͡° ͜ʖ ͡°) You can search up to two tags at once | luds, l00ds, lewds, postlewds | ```~setbotactivity with fire``` |
 
 [(Back to Table of Contents)](#table-of-contents)
 

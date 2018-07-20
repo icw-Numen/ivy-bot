@@ -50,7 +50,7 @@ function showCard(row, message, args) {
     });
 
     if (args[1] === 'description') {
-      const description = args.join(' ').slice(args[0].length + args[1].length, args.length);
+      const description = args.slice(2, args.length).join(' ');
       console.log(description);
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.description': description } }).catch(error => console.log(error));
       str = `Updated custom card description successfully, ${message.author.username}`;

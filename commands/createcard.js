@@ -89,7 +89,7 @@ exports.conf = {
 
 exports.help = {
   name: 'createcard',
-  description: 'Allows you to create a custom card that contains a list of anything you can put in it. Each entry in the card has a tile and a description.\nA card can hold 15 entries total.\nYou begin with only one card, but you can unlock more card slots with your earned credits/money (3 max.)',
+  description: 'Allows you to create a custom card that contains a list of anything you can put in it. Each entry in the card has a tile and a description.\nA card can hold 15 entries total.\nYou begin with only one card, but you can unlock more card slots with your earned credits/money (3 max. First one\'s on the house~)',
   usage: 'createcard <card title>',
   type: 'custom card'
 };

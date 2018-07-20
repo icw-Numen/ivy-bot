@@ -213,7 +213,7 @@ Ivy won't allow you to use lewd commands on non-nsfw channels by the way.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
-| danbooru | Posts a random, totally not lewd image on Danbooru. ( ͡° ͜ʖ ͡°) You can search up to two tags at once | luds, l00ds, lewds, postlewds, nsfw, nudes | ```~setbotactivity with fire``` |
+| danbooru | Searches a random, totally not lewd image on Danbooru. ( ͡° ͜ʖ ͡°) You can search up to two tags at once (in the same way you would on Danbooru) | luds, l00ds, lewds, postlewds, nsfw, nudes | ```~setbotactivity with fire``` |
 
 [(Back to Table of Contents)](#table-of-contents)
 

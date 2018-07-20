@@ -35,7 +35,7 @@ exports.run = (client, message, args) => {
       .addField('Level/credits System Commands:', `${pointS}`)
       .addField('Meme Commands:', `${memeS}`)
       .addField('Developer Commands:', `${devS}`)
-      .addField('Lewd Commands:', `${lewdS}`)
+      .addField('Lewd, 🔞 Commands:', `${lewdS}`)
       .setFooter(`Bot and icons/art made with care by ${package.author}`);
     return message.channel.send({embed});
   } else {

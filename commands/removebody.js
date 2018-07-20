@@ -61,7 +61,7 @@ function deleteEntry(row, message, args) {
     if (fieldIndex >= 0) {
       fieldTitle = field.title;
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $pull: { 'cards.$.fields': {title: fieldTitle}} }).catch(error => console.log(error));
-      str = `I\'ve updated your custom card entry with the title **${fieldTitle}**, ${message.author.username}`;
+      str = `I\'ve delete the entry with the title **${fieldTitle}**, ${message.author.username}`;
     } else
     if (fieldIndex < 0) {
       return message.channel.send(`Oops, it appears that there\'s no entry with the title **${args[1]}**, ${message.author.username}`);
@@ -81,13 +81,13 @@ function deleteEntry(row, message, args) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['addfield', 'editfield', 'editentry', 'editlist', 'cardbody'],
+  aliases: ['deletecard', 'deleteentry', 'removecard', 'removeentry'],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'deleteentry',
+  name: 'removebody',
   description: 'Deletes an entry/field of the specified card or the card itself',
-  usage: 'deleteentry <card title> <title/field title>',
+  usage: 'removebody <card title> <card/field title>',
   type: 'custom card'
 };

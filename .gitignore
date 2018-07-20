@@ -27,3 +27,4 @@ node_modules/*
 .Trashes
 ehthumbs.db
 Thumbs.db
+sharding.js

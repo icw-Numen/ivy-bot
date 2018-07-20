@@ -4,7 +4,7 @@
   "description": "your personal extra thicc maid~",
   "main": "sharding.js",
   "scripts": {
-    "test": "node sharding.js"
+    "test": "node app.js"
   },
   "repository": {
     "type": "git",

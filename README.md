@@ -135,7 +135,7 @@ Commands for moderation quality of life improvements.
 | warn | Issues a warning to the mentioned user | warning, alert | ```~warn @Ivy```, ```~warn @Ivy bad girl``` |
 | mute | Mutes or unmutes a mentioned user | unmute | ```~mute @Ivy```, ```~mute @Ivy bad girl``` |
 | lockdown | This will prevent users from sending messages to the channel for the set duration | ld, lock | ```~lockdown 3 hours```, ```~lockdown 1 day``` |
-| purge | Purges the specified amount of messages (default's 100) under 14 days old from a given channel | obliterate, delete, deletemsg, burnwithfire, burn | ```~purge```, ```~purge 20```, ```~purge 10 bot``` |
+| purge | Purges the specified amount of messages (default's 100) under 14 days old from a given channel | obliterate, delete, deletemsg, killwithfire, killitwithfire, burn | ```~purge```, ```~purge 20```, ```~purge 10 bot``` |
 | reason | Sets the reason for a mod action in the mod logs (by its case number) if none was given to it before | setreason | ```~setreason 5 bad girl``` |
 | unban | Revoke a ban on a user for a given reason based on their user ID (which can be found in the mod action's embed) | unhammer | ```~unban 4133543253252 good girl``` |
 

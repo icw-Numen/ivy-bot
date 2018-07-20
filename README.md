@@ -43,11 +43,10 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 - Special lines/responses for each command
 - Music, moderation, and useful commands
 - Includes fun and meme commands too
+- Each command has aliases for convenience
 - Can set automatic role for new members
 - Can set welcome/goodbye/log channels
 - Can make custom cards/lists to help you keep track of stuff
-- Each command has aliases for convenience
-
 - User data and server settings are stored on a cloud-based database
 
 [(Back to Table of Contents)](#table-of-contents)

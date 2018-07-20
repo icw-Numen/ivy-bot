@@ -55,7 +55,7 @@ function deleteEntry(row, message, args) {
 
 
     if (args[1] === 'card') {
-      main.scores.update({ userId: message.author.id }, { $pull: { 'cards.title': args[0] } }).catch(error => console.log(error));
+      main.scores.update({ userId: message.author.id }, { $pull: { 'cards': args[0] } }).catch(error => console.log(error));
       str = `I\'ve deleted your custom card with the title ${args[0]}, ${message.author.username}`;
     } else
     if (fieldIndex >= 0) {

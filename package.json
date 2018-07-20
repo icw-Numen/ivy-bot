@@ -2,7 +2,7 @@
   "name": "ivy",
   "version": "1.0.0",
   "description": "your personal extra thicc maid~",
-  "main": "sharding.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

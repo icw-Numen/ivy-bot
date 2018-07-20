@@ -49,19 +49,13 @@ function showCard(row, message, args) {
       return field.title === args[1];
     });
 
-    let field;
-    if (fieldIndex >= 0) {
-      field = card.fields[fieldIndex];
-    }
-
-
     if (args[1] === 'title') {
       const newTitle = args.slice(2, args.length).join(' ');
-      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.description': newTitle } }).catch(error => console.log(error));
-      str = `I\'ve updated your custom card\'s description, ${message.author.username}`;
+      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.title': newTitle } }).catch(error => console.log(error));
+      str = `I\'ve updated your custom card\'s title, ${message.author.username}`;
     } else
     if (fieldIndex >= 0) {
-      fieldTitle = field.title;
+      fieldTitle = args[1];
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { ['cards.$.fields.' + fieldIndex + '.title']: fieldTitle} }).catch(error => console.log(error));
       str = `I\'ve changed your custom card entry with the new title **${fieldTitle}**, ${message.author.username}`;
     } else

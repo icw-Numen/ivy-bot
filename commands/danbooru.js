@@ -54,7 +54,7 @@ exports.run = (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['luds', 'l00ds', 'lewds', 'postlewds', 'nsfw'],
+  aliases: ['luds', 'l00ds', 'lewds', 'postlewds', 'nsfw', 'nudes'],
   permLevel: 0
 };
 

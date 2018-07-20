@@ -9,11 +9,11 @@ exports.run = async (client, message, args) => {
     if (err) return console.log(err);
     var row = res;
     if (row) {
-      editBody(row, message, args);
+      showCard(row, message, args);
     } else {
       main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
-        editBody(r.ops[0], message, args);
+        showCard(r.ops[0], message, args);
         return;
       });
     }
@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
 
 // Helper method
-function editBody(row, message, args) {
+function showCard(row, message, args) {
   let str;
 
   if (row['cards'].length === 0) {
@@ -35,10 +35,10 @@ function editBody(row, message, args) {
     return message.channel.send(`Please specify a custom card, ${message.author.username}`);
   } else {
     let fieldTitle;
-    let fieldBody;
+    const cardTitle = args[0];
 
     const card = cards.find(function(element) {
-      return element.title === args[0];
+      return element.title === cardTitle;
     });
 
     if (!card) {
@@ -55,21 +55,19 @@ function editBody(row, message, args) {
     }
 
 
-    if (args[1] === 'description') {
-      const description = args.slice(2, args.length).join(' ');
-      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.description': description } }).catch(error => console.log(error));
+    if (args[1] === 'title') {
+      const newTitle = args.slice(2, args.length).join(' ');
+      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.description': newTitle } }).catch(error => console.log(error));
       str = `I\'ve updated your custom card\'s description, ${message.author.username}`;
     } else
     if (fieldIndex >= 0) {
       fieldTitle = field.title;
-      fieldBody =  args.slice(2, args.length).join(' ');
-      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { ['cards.$.fields.' + fieldIndex + '.body']: fieldBody} }).catch(error => console.log(error));
-      str = `I\'ve updated your custom card entry with the title **${fieldTitle}**, ${message.author.username}`;
+      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { ['cards.$.fields.' + fieldIndex + '.title']: fieldTitle} }).catch(error => console.log(error));
+      str = `I\'ve changed your custom card entry with the new title **${fieldTitle}**, ${message.author.username}`;
     } else
     if (fieldIndex < 0) {
       fieldTitle = args[1];
-      fieldBody = args.slice(2, args.length).join(' ');
-      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $push: { 'cards.$.fields': {title: fieldTitle, body: fieldBody} } }).catch(error => console.log(error));
+      main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $push: { 'cards.$.fields': {title: fieldTitle, body: ''} } }).catch(error => console.log(error));
       str = `I\'ve created a new entry with the title **${fieldTitle}** for your custom card, ${message.author.username}`;
     }
   }
@@ -77,7 +75,7 @@ function editBody(row, message, args) {
   var embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle('Custom card update successful~')
-    .setThumbnail(reactions.wink)
+    .setThumbnail(reactions.wink1)
     .setDescription(str);
 
   return message.channel.send({embed});
@@ -87,13 +85,13 @@ function editBody(row, message, args) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['addfield', 'editfield', 'editentry', 'editlist', 'cardbody'],
+  aliases: ['addtitle'],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'editbody',
+  name: 'edittitle',
   description: 'Edits the contents of the specified card. If no description or entries/fields were set, new ones will be created',
-  usage: 'editbody <card title> <description/field title> <new description/new field body>',
+  usage: 'edittitle <card title> <description/field title> <new description/new field body>',
   type: 'custom card'
 };

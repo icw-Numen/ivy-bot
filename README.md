@@ -77,7 +77,7 @@ Bot-related commands.
 | author | Sends an embed with information about the bot's author | authorinfo, lewdbringer, dev, devinfo, botauthor, botdev | ```~author``` |
 | help | Displays all the available commands | h, halp | ```~help```, ```~help bigmoji``` |
 | ping | Ping/Pong command. Responds with ping | ms | ```~ping``` |
-| profile | Sends an embed with information about the Ivy as a character | lore, characterinfo, bio, characterprofile, whoareyou | ```~profile``` |
+| profile | Sends an embed with information about the Ivy as a character | lore, characterinfo, bio, characterprofile, whoareyou, aboutivy | ```~profile``` |
 | goodgirl | Lets you tell Ivy that she's being a good girl | goodbot, goodmaid, goodcow, patpat, pat, pet | ```~goodgirl``` |
 
 [(Back to Table of Contents)](#table-of-contents)
@@ -167,7 +167,7 @@ Commands related to custom cards/lists. These are features to help you keep trac
 | showcard | Shows a custom card you've created. Passing nothing shows your first card | card, list, showlist, customcard | ```~showcard```, ```~showcard Game-IDs``` |
 | editbody | Edits the contents of the specified card. If the entry/field does not exist, a new one will be created | addfield, editfield, editentry, editlist, cardbody | ```~editbody Game-IDs description My game IDs```,  ```~editbody Game-IDs GBF-ID 1234567``` |
 | edittitle | Edits the title of an entry/field of the specified card. If the entry/field title does not exist, a new entry/field will be created | addtitle | ```~edittitle Game-IDs title Game-ID```,  ```~edittitle Game-IDs GBF-ID 7654321``` |
-| removebody |Deletes an entry/field of the specified card or the card itself | deletecard, deleteentry, removecard, removeentry | ```~removebody Game-IDs card```,  ```~removebody Game-IDs GBF-ID``` |
+| removebody | Deletes an entry/field of the specified card or the card itself | deletecard, deleteentry, removecard, removeentry | ```~removebody Game-IDs card```,  ```~removebody Game-IDs GBF-ID``` |
 
 [(Back to Table of Contents)](#table-of-contents)
 

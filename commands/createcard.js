@@ -36,6 +36,10 @@ function makeCard(row, message, args) {
     thumbnail: ''
   };
 
+  if (args.length === 0 || args.length > 1) {
+    return message.channel.send(`Please give a valid title for your card, ${user.username}. Titles must not contain spaces, but other characters are fine`).catch(console.error);
+  }
+
   const count = row['cards'].length;
   let dupe;
 
@@ -43,10 +47,10 @@ function makeCard(row, message, args) {
     dupe = row['cards'].find(function(element) {
       return element.title === args.join(' ');
     });
-  }  
+  }
 
   if (dupe) {
-    message.channel.send(`You\'ve already created a custom card with that title, ${user.username}`).catch(console.error);
+    return message.channel.send(`You\'ve already created a custom card with that title, ${user.username}`).catch(console.error);
   }
 
   if (count === 0) {

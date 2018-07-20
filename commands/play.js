@@ -40,7 +40,7 @@ exports.run = async (client, message) => {
       .setColor(0xF18E8E)
       .setTitle('Let the party begin~')
       .setThumbnail(reactions.wink1)
-      .setDescription(`Now playing music, ${user.username}`);
+      .setDescription(`Music will start playing shortly, ${user.username}`);
     message.channel.send({embed}).then(m => {
       playHelper(server.vc, message);
       if (bot.hasPermission('MANAGE_MESSAGES')) {

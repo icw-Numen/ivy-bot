@@ -45,6 +45,10 @@ function showCard(row, message, args) {
       return element.title === args.join(' ');
     });
 
+    if (!card) {
+      return message.channel.send(`Please specify a valid custom card, ${message.author.username}`);
+    }
+
     title = card.title;
     description = card.description;
     fields =  card.fields;

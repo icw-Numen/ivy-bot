@@ -28,7 +28,7 @@ exports.conf = {
 
 exports.help = {
   name: 'lenny',
-  description: 'Sends a lenny face. Has slight chance to send rare lenny faces too ( ͡° ͜ʖ ͡°)',
+  description: 'Sends a lenny face. Has slight chance of sending rare lenny faces too ( ͡° ͜ʖ ͡°)',
   usage: 'lenny',
   type: 'meme'
 };

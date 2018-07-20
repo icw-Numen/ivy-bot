@@ -64,7 +64,7 @@ function editBody(row, message, args) {
       fieldTitle = field.title;
       fieldBody =  args.slice(2, args.length).join(' ');
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { ['cards.$.fields.' + fieldIndex + '.body']: fieldBody} }).catch(error => console.log(error));
-      str = `I\'ve updated your custom card entry with the title **${fieldTitle}**, ${message.author.username}`;
+      str = `I\'ve updated the entry with the title **${fieldTitle}** in your custom card, ${message.author.username}`;
     } else
     if (fieldIndex < 0) {
       if (card.fields.length === 15) {
@@ -73,7 +73,7 @@ function editBody(row, message, args) {
       fieldTitle = args[1];
       fieldBody = args.slice(2, args.length).join(' ');
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $push: { 'cards.$.fields': {title: fieldTitle, body: fieldBody} } }).catch(error => console.log(error));
-      str = `I\'ve created a new entry with the title **${fieldTitle}** for your custom card, ${message.author.username}`;
+      str = `I\'ve created a new entry with the title **${fieldTitle}** in your custom card, ${message.author.username}`;
     }
   }
 

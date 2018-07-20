@@ -1,6 +1,5 @@
 const main = require('../app.js');
 const {RichEmbed} = require('discord.js');
-const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
   const user = message.author;
@@ -55,74 +54,62 @@ function showCard(row, message, args) {
     thumbnail =  card.thumbnail;
   }
 
-  var embed = new RichEmbed()
-    .setColor(0xF18E8E)
-    .setTitle('Sending card~')
-    .setThumbnail(reactions.closedeyes)
-    .setDescription(`Please wait while I load your card, ${message.author.username}`);
+  if (args.length === 2) {
+    const embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setTitle(title)
+      .setThumbnail(thumbnail)
+      .setAuthor(message.author.username, message.author.avatarURL);
 
-  return message.channel.send({embed}).then(m => {
-    setTimeout(function() {
-      m.delete();
-    }, 3000);
-
-    if (args.length === 2) {
-      embed = new RichEmbed()
-        .setColor(0xF18E8E)
-        .setTitle(title)
-        .setThumbnail(thumbnail)
-        .setAuthor(message.author.username, message.author.avatarURL);
-
-      if (thumbnail.length > 0) {
-        embed.setThumbnail(thumbnail);
-      }
-
-      if (fields.length > 0) {
-        const field = fields.find(function(element) {
-          return element.title = args[1];
-        });
-
-        if (field) {
-          embed.addField(field.title, field.body, true);
-        } else {
-          return message.channel.send(`Looks like there are no entries with the title **${args[1]}** in this custom card, ${message.author.username}`);
-        }
-
-      } else {
-        return message.channel.send(`Oops, there are no entries in this custom card, ${message.author.username}`);
-      }
-
-      message.channel.send({embed});
-    } else {
-      embed = new RichEmbed()
-        .setColor(0xF18E8E)
-        .setTitle(title)
-        .setThumbnail(thumbnail)
-        .setAuthor(message.author.username, message.author.avatarURL);
-
-      if (thumbnail.length > 0) {
-        embed.setThumbnail(thumbnail);
-      }
-
-      if (description.length > 0) {
-        embed.setDescription(description);
-      } else if ((description.length === 0) && (fields.length === 0)) {
-        embed.setDescription('(This card is empty...)');
-      }
-
-      if (fields.length > 0) {
-        fields.forEach(f => {
-          if (f.body.length > 0) {
-            embed.addField(f.title, f.body, true);
-          } else {
-            embed.addField(f.title, '(This field is empty...)', true);
-          }
-        });
-      }
-
-      message.channel.send({embed});
+    if (thumbnail.length > 0) {
+      embed.setThumbnail(thumbnail);
     }
-  });
+
+    if (fields.length > 0) {
+      const field = fields.find(function(element) {
+        return element.title = args[1];
+      });
+
+      if (field) {
+        embed.addField(field.title, field.body, true);
+      } else {
+        return message.channel.send(`Looks like there are no entries with the title **${args[1]}** in this custom card, ${message.author.username}`);
+      }
+
+    } else {
+      return message.channel.send(`Oops, there are no entries in this custom card, ${message.author.username}`);
+    }
+
+    message.channel.send({embed});
+  } else {
+    const embed = new RichEmbed()
+      .setColor(0xF18E8E)
+      .setTitle(title)
+      .setThumbnail(thumbnail)
+      .setAuthor(message.author.username, message.author.avatarURL);
+
+    if (thumbnail.length > 0) {
+      embed.setThumbnail(thumbnail);
+    }
+
+    if (description.length > 0) {
+      embed.setDescription(description);
+    } else if ((description.length === 0) && (fields.length === 0)) {
+      embed.setDescription('(This card is empty...)');
+    }
+
+    if (fields.length > 0) {
+      fields.forEach(f => {
+        if (f.body.length > 0) {
+          embed.addField(f.title, f.body, true);
+        } else {
+          embed.addField(f.title, '(This field is empty...)', true);
+        }
+      });
+    }
+
+    message.channel.send({embed});
+  }
 }
 
 // Command metadata

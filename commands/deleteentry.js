@@ -35,7 +35,6 @@ function deleteEntry(row, message, args) {
     return message.channel.send(`Please specify a custom card, ${message.author.username}`);
   } else {
     let fieldTitle;
-    let fieldBody;
 
     const card = cards.find(function(element) {
       return element.title === args[0];
@@ -61,7 +60,6 @@ function deleteEntry(row, message, args) {
     } else
     if (fieldIndex >= 0) {
       fieldTitle = field.title;
-      fieldBody =  args.slice(2, args.length).join(' ');
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $pull: { 'cards.$.fields': {title: fieldTitle}} }).catch(error => console.log(error));
       str = `I\'ve updated your custom card entry with the title **${fieldTitle}**, ${message.author.username}`;
     } else

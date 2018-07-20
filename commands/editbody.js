@@ -51,7 +51,7 @@ function showCard(row, message, args) {
 
     let field;
     if (fieldIndex >= 0) {
-      field = row['cards'].fields[fieldIndex];
+      field = card.fields[fieldIndex];
     }
 
 

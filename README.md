@@ -3,7 +3,7 @@
 
 _(This is Ivy. She's happy to see you here today.)_
 
-| [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) | [Support/Dev's Discord Server](https://discord.gg/HVh7QcV) |
+| [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) | [Dev's Discord Server](https://discord.gg/HVh7QcV) |
 | :---: | :---: |
 | [Wiki and Guides (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) | [Donate!](http://ko-fi.com/rawsaucenumen) |
 
@@ -24,6 +24,7 @@ _(This is Ivy. She's happy to see you here today.)_
   - [Lewd Commands](#lewd-commands)
 - [Adding Ivy to your server](#adding-ivy-to-your-server)
 - [Contributors](#contributors)
+- [If you have any questions/problems](#if-you-have-any-questionsproblems)
 
 ## Introduction
 You know that one **_extra thicc_** maid bot on Discord? No? Well, you're looking at her page right now! :P
@@ -223,5 +224,12 @@ Just want to add her to your server ASAP? Simply follow the steps below:
 
 ## Contributors
 - icw-Numen
+
+[(Back to Table of Contents)](#table-of-contents)
+
+## If you have any questions/problems
+Got any questions? Bugs? Issues? No problem! 
+
+You can either join my [development Discord server](https://discord.gg/HVh7QcV) and ask away, or send a PM to me if it's something simple.
 
 [(Back to Table of Contents)](#table-of-contents)

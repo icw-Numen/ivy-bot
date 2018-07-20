@@ -6,21 +6,31 @@ exports.run = (client, message, args) => {
   if (args.length === 0) {
     return message.channel.send(`Please give me at least one tag, ${message.author.username}`).catch(console.error);
   }
-  if ((args.join(' ').split(',').length - 1) > 1) {
+  if (args.length > 2) {
     return message.channel.send(`Please give me no more than two tags, ${message.author.username}`).catch(console.error);
   }
-  const arg = args.join(' ');
+
   let tag1;
   let tag2;
   let str;
-  if (arg.indexOf(',') > -1) {
-    tag1 = args[0].slice(0, args[0].length - 1);
-    tag2 = ' ' + arg.slice(arg.indexOf(',') + 1, args.join(' ').length);
-    str = `Browsing Danbooru for some goodies with the tags **${tag1}** and **${tag2}**, ${message.author.username}~`;
-  } else {
-    tag1 = arg;
+  let reaction;
+
+  if (args.length === 2) {
+    tag1 = args[0];
+    tag2 = ' ' + args[1];
+    str = `Browsing Danbooru for some goodies with the tags **${args[0]}** and **${args[1]}**, ${message.author.username}~`;
+    reaction = reactions.smug2;
+  }
+  else {
+    tag1 = args[0];
     tag2 = '';
-    str = `Browsing Danbooru for some goodies with the tag **${tag1}**, ${message.author.username}~`;
+    str = `Browsing Danbooru for some goodies with the tag **${args[0]}**, ${message.author.username}~`;
+    reaction = reactions.smug2;
+  }
+
+  if (args[0] === 'succubus'|| args[1] === 'succubus') {
+    str = `You have good taste, ${message.author.username}~`;
+    reaction = reactions.wink1;
   }
 
   const booru = new Danbooru();
@@ -38,7 +48,7 @@ exports.run = (client, message, args) => {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Bringing the lewds~')
-      .setThumbnail(reactions.smug2)
+      .setThumbnail(reaction)
       .setImage(post.file_url)
       .setURL(link)
       .setDescription(str);
@@ -60,7 +70,7 @@ exports.conf = {
 
 exports.help = {
   name: 'danbooru',
-  description: 'Searches a random, totally not lewd image on Danbooru ( ͡° ͜ʖ ͡°)\nYou can search up to two tags at once, separated with a comma',
+  description: 'Searches a random, totally not lewd image on Danbooru ( ͡° ͜ʖ ͡°)\nYou can search up to two tags at once (in the same way you would on Danbooru)',
   usage: 'danbooru <tag_1> <tag_2>',
   type: 'lewd'
 };

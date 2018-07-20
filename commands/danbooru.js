@@ -32,14 +32,14 @@ exports.run = (client, message, args) => {
       return message.channel.send(`Oops, no lewds to be found here, ${message.author.username}~`).catch(console.error);
     }
 
-    const url = booru.url(post.large_file_url);
+    const url = booru.url(post.file_url);
     const link = url.href;
 
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setTitle('Bringing the lewds~')
       .setThumbnail(reactions.smug2)
-      .setImage(post.large_file_url)
+      .setImage(post.file_url)
       .setURL(link)
       .setDescription(str);
     if (message.channel.nsfw) {

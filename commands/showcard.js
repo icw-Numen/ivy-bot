@@ -82,7 +82,13 @@ function showCard(row, message, args) {
     }
 
     if (fields.length > 0) {
-      fields.forEach(f => {embed.addField(f.title, f.body);});
+      fields.forEach(f => {
+        if (f.body.length > 0) {
+          embed.addField(f.title, f.body);
+        } else {
+          embed.addField(f.title, '(This field is empty...)');
+        }
+      });
     }
 
     message.channel.send({embed});

@@ -49,20 +49,24 @@ function showCard(row, message, args) {
       return field.title === args[1];
     });
 
-    const field = row['cards'].fields[fieldIndex];
+    let field;
+    if (fieldIndex >= 0) {
+      field = row['cards'].fields[fieldIndex];
+    }
+
 
     if (args[1] === 'description') {
       const description = args.slice(2, args.length).join(' ');
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { 'cards.$.description': description } }).catch(error => console.log(error));
       str = `Updated custom card description successfully, ${message.author.username}`;
     } else
-    if (field && fieldIndex >= 0) {
+    if (fieldIndex >= 0) {
       fieldTitle = field.title;
       fieldBody =  args.slice(2, args.length).join(' ');
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $set: { ['cards.$.fields.' + fieldIndex + '.body']: fieldBody} }).catch(error => console.log(error));
       str = `Updated custom card field body successfully, ${message.author.username}`;
     } else
-    if (!field && fieldIndex < 0) {
+    if (fieldIndex < 0) {
       fieldTitle = args[1];
       fieldBody = args.slice(2, args.length).join(' ');
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $push: { 'cards.$.fields': {title: fieldTitle, body: fieldBody} } }).catch(error => console.log(error));

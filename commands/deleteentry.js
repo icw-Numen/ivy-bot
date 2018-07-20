@@ -86,8 +86,8 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'editbody',
-  description: 'Edits the contents of the specified card. If the entry/field does not exist, a new one will be created',
-  usage: 'editbody <card title> <description/field title> <new description/new field body>',
+  name: 'deleteentry',
+  description: 'Deletes an entry/field of the specified card or the card itself',
+  usage: 'deleteentry <card title> <title/field title>',
   type: 'custom card'
 };

@@ -39,13 +39,15 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 - Online 24/7
 - Three prefixes
 - A nice personality~
+- Points/leveling/credits system
 - Special lines/responses for each command
 - Music, moderation, and useful commands
 - Includes fun and meme commands too
 - Can set automatic role for new members
 - Can set welcome/goodbye/log channels
+- Can make custom cards/lists to help you keep track of stuff
 - Each command has aliases for convenience
-- Points/leveling/credits system
+
 - User data and server settings are stored on a cloud-based database
 
 [(Back to Table of Contents)](#table-of-contents)

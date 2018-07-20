@@ -3,9 +3,10 @@
 
 _(This is Ivy. She's glad you're here today.)_
 
-| [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) | [Dev's Discord Server](https://discord.gg/HVh7QcV) |
-| :---: | :---: |
-| [Wiki and Guides (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) | [Donate!](http://ko-fi.com/rawsaucenumen) |
+- [Invite Ivy to your server!](https://discordapp.com/api/oauth2/authorize?client_id=466470213899255818&permissions=1073081591&scope=bot) 
+- [Dev's Discord Server](https://discord.gg/HVh7QcV)
+- [Wiki and Guides (WIP)](https://github.com/icw-Numen/ivy-bot/wiki) 
+- [Donate! ~~I'm poor pls~~](http://ko-fi.com/rawsaucenumen) |
 
 ## Table of Contents
 - [Introduction](#introduction)

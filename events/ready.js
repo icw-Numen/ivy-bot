@@ -9,7 +9,7 @@ module.exports = client => { // eslint-disable-line no-unused-vars
   // this wont appear if you put it outside ready event since the
   // bot doesnt load instantly
   console.log(chalk.bgGreen('I\'m online, master! Maid bot Ivy at your service!'));
-  client.user.setActivity(`with... It's a secret~ | ${settings.prefix}help`);
+  client.user.setActivity(`with herself ( ͡° ͜ʖ ͡°) | ${settings.prefix}help`);
   const avatarLink = reactions.normal2;
   client.user.setAvatar(avatarLink).catch(() => {return;});
 };

@@ -238,6 +238,6 @@ Got any questions? Bugs? Issues? Feedback? No problem!
 
 You can either join my [development Discord server](https://discord.gg/HVh7QcV) and ask away, or send a PM to me if it's something simple.
 
-Again, [Ivy's wiki](https://github.com/icw-Numen/ivy-bot/wiki) is still WIP, but eventually it'll have more in-depth information about Ivy, including usage guides.
+Again, [Ivy's wiki](https://github.com/icw-Numen/ivy-bot/wiki) is still WIP, but eventually it'll have more in-depth information about Ivy, including usage guides, which should help answering questions in the long run.
 
 [(Back to Table of Contents)](#table-of-contents)

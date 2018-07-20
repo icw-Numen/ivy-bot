@@ -16,11 +16,11 @@ exports.run = (client, message, args) => {
   if (arg.indexOf(',') > -1) {
     tag1 = arg[0].slice(0, arg[0].length - 1);
     tag2 = ' ' + args.join(' ').slice(arg.indexOf(',') + 1, args.join(' ').length);
-    str = `Browsing Danbooru for some goodies with tags **${tag1}** and **${tag2}**, ${message.author.username}~`;
+    str = `Browsing Danbooru for some goodies with the tags **${tag1}** and **${tag2}**, ${message.author.username}~`;
   } else {
     tag1 = args.join(' ');
     tag2 = '';
-    str = `Browsing Danbooru for some goodies with tags **${tag1}**, ${message.author.username}~`;
+    str = `Browsing Danbooru for some goodies with the tag **${tag1}**, ${message.author.username}~`;
   }
 
   const booru = new Danbooru();
@@ -54,7 +54,7 @@ exports.run = (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['luds', 'l00ds', 'lewds', 'postlewds'],
+  aliases: ['luds', 'l00ds', 'lewds', 'postlewds', 'nsfw'],
   permLevel: 0
 };
 

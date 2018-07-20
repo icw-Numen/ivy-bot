@@ -156,6 +156,17 @@ Commands specifically related to the server Ivy's in.
 
 [(Back to Table of Contents)](#table-of-contents)
 
+#### Custom Card Commands:
+Commands related to custom cards/lists. These are features to help you keep track of things. You can store any form of text/links, so feel free to experiment.
+
+| Command | Description | Alias(es) | Example |
+| --- | --- | --- | --- |
+| ayy | lmao | ay, ayyy | ```~ayy``` |
+| lenny | Sends a lenny face. Has slight chance of sending rare lenny faces too ( ͡° ͜ʖ ͡°) | lennyface | ```~lenny``` |
+| owo| OwO what's this? | OwO, 0w0 | ```~owo``` |
+
+[(Back to Table of Contents)](#table-of-contents)
+
 #### Level/credits System Commands:
 Commands related to the level/economy system.
 
@@ -175,7 +186,7 @@ Self-explanatory. These are all harmless, so just use them freely.
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
 | ayy | lmao | ay, ayyy | ```~ayy``` |
-| lenny | Sends a lenny face. Has slight chance to send rare lenny faces too ( ͡° ͜ʖ ͡°) | lennyface | ```~lenny``` |
+| lenny | Sends a lenny face. Has slight chance of sending rare lenny faces too ( ͡° ͜ʖ ͡°) | lennyface | ```~lenny``` |
 | owo| OwO what's this? | OwO, 0w0 | ```~owo``` |
 
 [(Back to Table of Contents)](#table-of-contents)

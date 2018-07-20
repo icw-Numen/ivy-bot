@@ -15,6 +15,9 @@ exports.run = (client, message, args) => {
     const index = Math.floor(Math.random() * posts.length);
     const post = posts[index];
 
+    if (!post) {
+      return message.channel.send(`Oops, no lewds to be found here, ${message.author.username}~`).catch(console.error);
+    }
 
     const url = booru.url(post.large_file_url);
     const link = url.href;

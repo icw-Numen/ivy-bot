@@ -25,7 +25,7 @@ _(This is Ivy. She's glad you're here today.)_
 - [Adding Ivy to your server](#adding-ivy-to-your-server)
 - [Assets](#assets)
 - [Contributors](#contributors)
-- [If you have any questions/problems](#if-you-have-any-questionsproblems)
+- [If you have any questions/problems](#if-you-have-any-questionsfeedback)
 
 ## Introduction
 You know that one **_extra thicc_** maid bot on Discord? No? Well, you're looking at her page right now! :P
@@ -233,9 +233,11 @@ You can find all the images/artwork used by Ivy [in this link](https://sta.sh/21
 
 [(Back to Table of Contents)](#table-of-contents)
 
-## If you have any questions/problems
-Got any questions? Bugs? Issues? No problem! 
+## If you have any questions/feedback
+Got any questions? Bugs? Issues? Feedback? No problem! 
 
 You can either join my [development Discord server](https://discord.gg/HVh7QcV) and ask away, or send a PM to me if it's something simple.
+
+Again, [Ivy's wiki](https://github.com/icw-Numen/ivy-bot/wiki) is still WIP, but eventually it'll have more in-depth information about Ivy, including usage guides.
 
 [(Back to Table of Contents)](#table-of-contents)

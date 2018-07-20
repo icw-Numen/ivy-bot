@@ -82,7 +82,7 @@ function showCard(row, message, args) {
     }
 
     if (fields.length > 0) {
-      fields.forEach(f => {embed.addField(f.split(' ')[0], f.slice(f.split(' ')[0].length - 1, f.length));});
+      fields.forEach(f => {embed.addField(f.title, f.body);});
     }
 
     message.channel.send({embed});

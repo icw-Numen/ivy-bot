@@ -9,11 +9,11 @@ exports.run = async (client, message, args) => {
     if (err) return console.log(err);
     var row = res;
     if (row) {
-      showCard(row, message, args);
+      editTile(row, message, args);
     } else {
       main.scores.insertOne({userId: message.author.id, exp: 1, level: 0, credits: 0, claimed: null, lewd: '', cards: []}, function (error, r) {
         if (error) return console.log(error);
-        showCard(r.ops[0], message, args);
+        editTile(r.ops[0], message, args);
         return;
       });
     }
@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
 
 // Helper method
-function showCard(row, message, args) {
+function editTile(row, message, args) {
   let str;
 
   if (row['cards'].length === 0) {
@@ -64,6 +64,10 @@ function showCard(row, message, args) {
       str = `I\'ve updated your custom card entry with the new title **${fieldTitle}**, ${message.author.username}`;
     } else
     if (fieldIndex < 0) {
+      if (card.fields.length > 15) {
+        return message.channel.send(`Oops, looks like you can\'t create any more entries, ${message.author.username}`);
+      }
+
       fieldTitle = args[1];
       main.scores.update({ userId: message.author.id, 'cards.title': args[0] }, { $push: { 'cards.$.fields': {title: fieldTitle, body: ''} } }).catch(error => console.log(error));
       str = `I\'ve created a new entry with the title **${fieldTitle}** for your custom card, ${message.author.username}`;

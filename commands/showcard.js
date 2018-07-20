@@ -57,7 +57,6 @@ function showCard(row, message, args) {
   if (args.length === 2) {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
-      .setTitle(title)
       .setThumbnail(thumbnail)
       .setAuthor(message.author.username, message.author.avatarURL);
 

@@ -67,7 +67,7 @@ function editBody(row, message, args) {
       str = `I\'ve updated your custom card entry with the title **${fieldTitle}**, ${message.author.username}`;
     } else
     if (fieldIndex < 0) {
-      if (card.fields.length > 15) {
+      if (card.fields.length === 15) {
         return message.channel.send(`Oops, looks like you can\'t create any more entries, ${message.author.username}`);
       }
       fieldTitle = args[1];

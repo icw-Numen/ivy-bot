@@ -1,8 +1,10 @@
 const {RichEmbed} = require('discord.js');
 
 exports.run = (client, message, args) => {
+  const regex = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?)*/;
+
   if (args.length === 0 || ((!(/^<a:/.test(args[0]) || args[0].substring(args[0].length - 1) == '>')) &&
-  (!(/^<:/.test(args[0]) || args[0].substring(args[0].length - 1) == '>')))) {
+  (!(/^<:/.test(args[0]) || args[0].substring(args[0].length - 1) == '>')) && !(args[0].match(regex)))) {
     return message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(console.error);
   }
 
@@ -13,8 +15,6 @@ exports.run = (client, message, args) => {
   } else {
     extn = '.png';
   }
-
-  var regex = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?(?:\u200d(?:[^\ud800-\udfff]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff])[\ufe0e\ufe0f]?(?:[\u0300-\u036f\ufe20-\ufe23\u20d0-\u20f0]|\ud83c[\udffb-\udfff])?)*/;
 
   let mojiid;
 

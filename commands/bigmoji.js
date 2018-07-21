@@ -1,7 +1,8 @@
 const {RichEmbed} = require('discord.js');
 
 exports.run = (client, message, args) => {
-  if (args.length === 0) {
+  if (args.length === 0 || (!/^<a:/.test(args[0]) || !args[0].substring(args[0].length - 1) == '>') ||
+  (!/^<:/.test(args[0]) || !args[0].substring(args[0].length - 1) == '>')) {
     return message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(console.error);
   }
 
@@ -13,18 +14,18 @@ exports.run = (client, message, args) => {
     extn = '.png';
   }
 
-  // removes all non-digits from args
-  const moji = args[0].replace(/\D/g, '');
+  //pulls part with ID
+  const mojiid = args[0].split(':')[2].replace(/\D/g, '');
 
-  if (!moji) {
+  if (!mojiid) {
     return message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(console.error);
   }
 
   const embed = new RichEmbed()
       .setColor(0x36393E)
       .setAuthor(`${message.author.username}`, `${message.author.avatarURL}`)
-      .setImage(`https://discordapp.com/api/emojis/${moji}${extn}`);
-  message.channel.send({embed}).catch(error => {message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(error);});
+      .setImage(`https://discordapp.com/api/emojis/${mojiid}${extn}`);
+  message.channel.send({embed}).catch(error => {return message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(error);});
 };
 
 exports.conf = {
@@ -36,7 +37,7 @@ exports.conf = {
 
 exports.help = {
   name: 'bigmoji',
-  description: 'Sends a bigger version of the given emoji',
+  description: 'Sends the given emoji at its original resolution',
   usage: 'bigmoji <emoji>',
   type: 'utilities'
 };

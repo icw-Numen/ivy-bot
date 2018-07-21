@@ -79,7 +79,7 @@ exports.conf = {
 
 exports.help = {
   name: 'avatar',
-  description: 'Sends a bigger version of someone\'s avatar. You can specify the user by giving their user name or by pinging them. Not specifying any users gives a link to your own avatar. Typing "server" instead of specifying a user gives the server icon',
+  description: 'Sends someone\'s avatar at its original resolution. You can specify the user by giving their user name or by pinging them. Not specifying any users gives a link to your own avatar. Typing "server" instead of specifying a user gives the server icon',
   usage: 'avatar <mention/user>',
   type: 'utilities'
 };

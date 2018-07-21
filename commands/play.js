@@ -64,6 +64,6 @@ exports.conf = {
 exports.help = {
   name: 'play',
   description: 'Starts playing the tracks in the music queue. Unpauses if something was paused before',
-  usage: 'play <youtube link>',
+  usage: 'play',
   type: 'music'
 };

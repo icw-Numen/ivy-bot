@@ -15,7 +15,7 @@ exports.run = (client, message, args) => {
   const embed = new RichEmbed()
       .setColor(0x36393E)
       .setAuthor(`${message.author.username}`, `${message.author.avatarURL}`)
-      .setImage(`https://discordapp.com/api/emojis/${moji}.png`);
+      .setImage(`https://discordapp.com/api/emojis/${moji}`);
   message.channel.send({embed}).catch(error => {message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(error);});
 };
 

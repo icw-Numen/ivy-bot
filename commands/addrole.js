@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
 
   const bot = message.guild.member(client.user);
 
-  if (!bot.hasPermission('MANAGE_ROLES')) {
+  if (!bot.hasPermission('MANAGE_ROLES') || !bot.hasPermission('ADMINISTRAOR')) {
     return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}`).catch(console.error);
   }
 
@@ -28,7 +28,9 @@ exports.run = async (client, message, args) => {
           .setDescription(`${message.author.username}, role **${role.name}** has been assigned to you sucessfully`);
         message.channel.send({embed});
       }
-    }).catch(console.error);
+    }).catch(error => {
+      return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}`).catch(error);
+    });
   }
 };
 

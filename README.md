@@ -50,7 +50,7 @@ Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provi
 - Can set automatic role for new members
 - Can set welcome/goodbye/log channels
 - Can make custom cards/lists to help you keep track of stuff
-- User data and server settings are stored on a cloud-based database
+- Cloud-based database
 
 [(Back to Table of Contents)](#table-of-contents)
 

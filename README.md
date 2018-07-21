@@ -182,7 +182,7 @@ Commands related to the level/economy system.
 | exp | Shows how many experience points you currently have | xp | ```~exp``` |
 | level | Shows your current level | lv, lvl | ```~level``` |
 | money | Shows how much money you currently have | monies, moolah, moola, credits, wallet, bank, piggybank | ```~money``` |
-| mystats | Shows the level, exp, and money you currently have | stats | ```~mystats``` |
+| mystats | Shows the level, exp, money, and custom cards you currently have | stats | ```~mystats``` |
 
 [(Back to Table of Contents)](#table-of-contents)
 

@@ -89,8 +89,8 @@ Handy commands with handy functions.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
-| avatar | Sends a bigger version of someone's avatar | icon, avy | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
-| bigmoji | Sends a bigger version of the given emoji | bigemoji, bmoji, bmj |```~bigmoji :PogChamp:``` |
+| avatar | Sends someone's avatar at its original resolution | icon, avy | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
+| bigmoji | Sends the given emoji at its original resolution | bigemoji, bmoji, bmj |```~bigmoji :PogChamp:``` |
 | nickname | Changes the user's nickname. Ivy has special lines for some names when you change her name | setnick, setnickname, setname, newnick, newname, newnickname | ```~nickname @Ivy cow``` |
 
 [(Back to Table of Contents)](#table-of-contents)

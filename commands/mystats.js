@@ -50,7 +50,7 @@ function getStats(row, message, user, reaction, str, lv, xp, monies) {
     str2 = 'Available';
   }
 
-  const cards = row['card'].map(a => `${a.title} (**${a.fields.length}** entries total, 15 max.)`).join(', ');
+  const cards = row['cards'].map(a => `${a.title} (**${a.fields.length}** entries total, 15 max.)`).join(', ');
 
   const embed = new RichEmbed()
     .setColor(0xF18E8E)

@@ -1,8 +1,8 @@
 const {RichEmbed} = require('discord.js');
 
 exports.run = (client, message, args) => {
-  if (args.length === 0 || (!/^<a:/.test(args[0]) || !args[0].substring(args[0].length - 1) == '>') ||
-  (!/^<:/.test(args[0]) || !args[0].substring(args[0].length - 1) == '>')) {
+  if (args.length === 0 || ((!(/^<a:/.test(args[0]) || args[0].substring(args[0].length - 1) == '>')) &&
+  (!(/^<:/.test(args[0]) || args[0].substring(args[0].length - 1) == '>')))) {
     return message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(console.error);
   }
 

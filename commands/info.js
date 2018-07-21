@@ -1,7 +1,7 @@
 const {RichEmbed} = require('discord.js');
 const settings = require('../settings.json');
 const package = require('../package.json');
-const sharding = require('../sharding.js');
+//const sharding = require('../sharding.js');
 //const imgs = require('../imgs.json');
 
 exports.run = async (client, message) => {
@@ -18,22 +18,14 @@ exports.run = async (client, message) => {
     .addField('Engine:', 'Node.js', true)
     .addField('Database:', 'mLab MongoDB', true)
     .addField('Deployed on:', 'Heroku', true)
-    .setFooter(`Bot and icons/art made with care by ${package.author}`);
-
-  sharding.manager.fetchClientValues('guilds.size').then(results => {
-    embed.addField('# of servers joined:', `${results.reduce((prev, val) => prev + val, 0)} total`, true);
-  }).catch(console.error);
-
-  sharding.manager.fetchClientValues('users.size').then(results => {
-    embed.addField('# of users:', `${results.reduce((prev, val) => prev + val, 0)} total`, true)
+    .addField('# of servers joined:', `${client.guilds.size}`, true)
+    .addField('# of users:', `${client.users.size}`, true)
     .addField('Support server:', 'https://discord.gg/HVh7QcV', true)
     .addField('Ivy\'s website:', 'https://github.com/icw-Numen/ivy-bot/blob/master/README.md')
-    .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm');
-  }).catch(console.error);
-
-  return message.channel.send({embed});
+    .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
+    .setFooter(`Bot and icons/art made with care by ${package.author}`);
+  message.channel.send({embed});
 };
-
 exports.conf = {
   enabled: true,
   guildOnly: false,

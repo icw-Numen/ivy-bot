@@ -61,7 +61,7 @@ function getStats(row, message, user, reaction, str, lv, xp, monies) {
     .addField('Exp:', `${xp} exp`, true)
     .addField('Balance:', `\$${monies}`, true)
     .addField('Dailies:', `${str2}`, true)
-    .addField('Custom Cards:', `${cards}\n**${row['cards'].length}** cards total (3 max.)`, true);
+    .addField('Custom Cards:', `${cards}\n(**${row['cards'].length}** cards total, 3 max.)`, true);
   message.channel.send({embed});
 }
 

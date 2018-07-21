@@ -90,7 +90,7 @@ Handy commands with handy functions.
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
 | avatar | Sends a bigger version of someone's avatar | icon, avy | ```~avatar```, ```~avatar @Ivy```, ```~avatar Ivy``` |
-| bigmoji | Sends a bigger version of the given emoji | bigemoji, bmoji, bmj |```~help```, ```~help bigmoji``` |
+| bigmoji | Sends a bigger version of the given emoji | bigemoji, bmoji, bmj |```~bigmoji :PogChamp:``` |
 | nickname | Changes the user's nickname. Ivy has special lines for some names when you change her name | setnick, setnickname, setname, newnick, newname, newnickname | ```~nickname @Ivy cow``` |
 
 [(Back to Table of Contents)](#table-of-contents)
@@ -116,9 +116,9 @@ Commands related to playing music in a voice channel.
 | join | Joins the voice channel you are in | joinvc | ```~join``` |
 | leave | Leaves the voice channel. Also stops playing music | stop, end | ```~leave``` |
 | queue | Shows the first ten entries in the music queue. Typing "full" after the command gives the whole queue instead | musiclist, songlist, tracklist, playlist, q, showqueue | ```~queue```, ```~queue full``` |
-| enqueue | Adds a Youtube video to the queue. Queue can hold 25 tracks max | addqueue, addsong, addmusic, enqueue, playthis, enq | ```~enqueue```, ```~enqueue <youtube_link_here>```, ```~enqueue ayy lmao macarena``` |
+| enqueue | Adds a Youtube video to the queue. Queue can hold 25 tracks max | addqueue, addsong, addmusic, enqueue, playthis, enq | ```~enqueue```, ```~enqueue <youtube_link_here>```, ```~enqueue purupuru pururin 4k``` |
 | removetrack | Removes the specified track from the queue | removemusic, removesong | ```~removetrack 12``` |
-| play | Starts playing the tracks in the music queue. Unpauses if something was paused before | start | ```~play```, ```~play <youtube_ling_here>```, ```~play ayy lmao macarena``` |
+| play | Starts playing the tracks in the music queue. Unpauses if something was paused before | start | ```~play``` |
 | playing | Shows the current track being played from the music queue | nowplaying, playingnow, cursong, curmusic, curtrack | ```~playing``` |
 | pause | Pauses the currently playing music | pausemusic, pausesong, pausetrack | ```~pause``` |
 | skip | Skips the current music in the queue | next | ```~skip``` |
@@ -169,7 +169,7 @@ Commands related to custom cards/lists. These are features to help you keep trac
 | showcard | Shows a custom card you've created. Passing nothing shows your first card. Passing an entry/field title after the card name will show a card with just that entry | card, list, showlist, customcard | ```~showcard```, ```~showcard Game-IDs```, ```~showcard Game-IDs GBF-ID``` |
 | editbody | Edits the contents of the specified card. If the entry/field does not exist, a new one will be created | addfield, editfield, editentry, editlist, cardbody | ```~editbody Game-IDs description My game IDs```,  ```~editbody Game-IDs GBF-ID 1234567``` |
 | edittitle | Edits the title of an entry/field of the specified card. If the entry/field title does not exist, a new entry/field will be created | addtitle | ```~edittitle Game-IDs title Game-ID```,  ```~edittitle Game-IDs GBF-ID 7654321``` |
-| removebody | Deletes an entry/field of the specified card or the card itself | deletecard, deleteentry, removecard, removeentry | ```~removebody Game-IDs card```,  ```~removebody Game-IDs GBF-ID``` |
+| removebody | Deletes an entry/field of the specified card. Typing "card" after the card title deletes the card, and typing "purge" deletes all entries in the card | deletecard, deleteentry, removecard, removeentry | ```~removebody Game-IDs card```, ```~removebody Game-IDs purge```, ```~removebody Game-IDs GBF-ID``` |
 
 [(Back to Table of Contents)](#table-of-contents)
 
@@ -214,7 +214,7 @@ Ivy won't allow you to use lewd commands on non-nsfw channels by the way.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
-| danbooru | Searches a random, totally not lewd image on Danbooru. ( ͡° ͜ʖ ͡°) You can search up to two tags at once (in the same way you would on Danbooru) | luds, l00ds, lewds, postlewds, nsfw, nudes | ```~setbotactivity with fire``` |
+| danbooru | Searches a random, totally not lewd image on Danbooru. ( ͡° ͜ʖ ͡°) You can search up to two tags at once (in the same way you would on Danbooru) | luds, l00ds, lewds, postlewds, nsfw, nudes | ```~danbooru maid demon_girl``` |
 
 [(Back to Table of Contents)](#table-of-contents)
 

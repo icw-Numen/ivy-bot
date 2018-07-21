@@ -14,8 +14,15 @@ exports.run = (client, message, args) => {
     extn = '.png';
   }
 
-  //pulls part with ID
-  const mojiid = args[0].split(':')[2].replace(/\D/g, '');
+  var regex = /\ud83d[\ude00-\ude4f]/g;
+  let mojiid;
+
+  if (args[0].match(regex)) {
+    mojiid = args[0];
+  } else {
+    //pulls part with ID
+    mojiid = args[0].split(':')[2].replace(/\D/g, '');
+  }
 
   if (!mojiid) {
     return message.channel.send(`Please type a valid emoji, ${message.author.username}`).catch(console.error);

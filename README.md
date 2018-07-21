@@ -178,7 +178,7 @@ Commands related to the level/economy system.
 
 | Command | Description | Alias(es) | Example |
 | --- | --- | --- | --- |
-| dailies | Gives you $100. You can claim it again the next day as soon as the date changes | hollahollagetdolla | ```~dailies``` |
+| dailies | Gives you $100. You can claim it again the next day as soon as the date changes | hollahollagetdolla, getdaily, daily | ```~dailies``` |
 | exp | Shows how many experience points you currently have | xp | ```~exp``` |
 | level | Shows your current level | lv, lvl | ```~level``` |
 | money | Shows how much money you currently have | monies, moolah, moola, credits, wallet, bank, piggybank | ```~money``` |

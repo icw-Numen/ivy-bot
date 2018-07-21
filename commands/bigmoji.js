@@ -20,6 +20,7 @@ exports.run = (client, message, args) => {
 
   if (args[0].match(regex)) {
     mojiid = args[0];
+    extn = '.svg';
   } else {
     //pulls part with ID
     mojiid = args[0].split(':')[2].replace(/\D/g, '');

@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
 
   const bot = message.guild.member(client.user);
 
-  if (!bot.hasPermission('MANAGE_ROLES') ||(bot.highestRole.comparePositionTo(role) < 0) || bot.permissions < user.permissions) {
+  if (!bot.hasPermission('MANAGE_ROLES') || bot.permissions < user.permissions) {
     return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}`).catch(console.error);
   }
 

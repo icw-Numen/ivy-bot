@@ -32,7 +32,8 @@ function m00te(row, message, args, guild, client, user) {
   const modlog = guild.channels.find('name', row['modlog']);
 
   caseNumber(client, modlog).then(num => {
-    if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES') || message.guild.member(client.user).permissions < user.permissions) {
+    if ((!message.guild.member(client.user).hasPermission('MANAGE_ROLES') && !message.guild.member(client.user).hasPermission('ADMINISTRATOR')) || 
+    message.guild.member(client.user).permissions < user.permissions) {
       return message.channel.send(`Oops, it seems I don\'t have the correct permissions, ${message.author.username}`).catch(console.error);
     }
 

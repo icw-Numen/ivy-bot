@@ -14,7 +14,12 @@ exports.run = async (client, message, args) => {
     return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}\nTry giving me a higher role`).catch(console.error);
   }
 
-  if (message.member.highestRole.comparePositionTo(role) < 0) return message.channel.send(`Hm I can\'t add roles higher than your highest role, ${message.author.username}`).catch(console.error);
+  if (role.hasPermission('MANAGE_ROLES') || role.hasPermission('ADMINISTRATOR') || role.hasPermission('KICK_MEMBERS') || role.hasPermission('BAN_MEMBERS') ||
+  role.hasPermission('MANAGE_CHANNELS') || role.hasPermission('MANAGE_GUILD') || role.hasPermission('MANAGE_MESSAGES') || role.hasPermission('MUTE_MEMBERS') ||
+role.hasPermission('DEAFEN_MEMBERS') || role.hasPermission('MOVE_MEMBERS') || role.hasPermission('USE_VAD') || role.hasPermission('MANAGE_NICKNAMES') ||
+role.hasPermission('MANAGE_ROLES_OR_PERMISSIONS') || role.hasPermission('MANAGE_WEBHOOKS') || role.hasPermission('MANAGE_EMOJIS')) {
+    return message.channel.send(`Hm looks like I can\'t add this role, ${message.author.username}`).catch(console.error);
+  }
 
   if (message.guild.member(user).roles.has(role.id)) {
     if (!user.bot) message.channel.send(`It seems you already have the role ${role.name}, ${message.author.username}`).catch(console.error);

@@ -46,7 +46,7 @@ function runDailies(row, message) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['hollahollagetdolla'],
+  aliases: ['hollahollagetdolla', 'getdaily', 'daily'],
   permLevel: 0
 };
 

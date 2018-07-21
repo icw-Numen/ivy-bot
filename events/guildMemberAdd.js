@@ -36,7 +36,7 @@ function welcome(row, member) {
   const channel = guild.channels.find('name', row['welcome']);
   if (!channel) return;
   const role = guild.roles.find('name', row['autorole']);
-  if (role && bot.hasPermission('MANAGE_ROLES')) member.addRole(role).catch(console.error);
+  if (role && (bot.hasPermission(['MANAGE_ROLES']) || bot.hasPermission(['ADMINISTRATOR']))) member.addRole(role).catch(console.error);
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setThumbnail(reactions.closedeyes)

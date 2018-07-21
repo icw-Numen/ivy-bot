@@ -3,10 +3,9 @@ const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
   const user = message.author;
-  const role = message.guild.roles.find('name', `${args[0]}`);
+  const role = message.guild.roles.find('name', `${args.join(' ')}`);
 
-  if (args.length != 1) return message.channel.send(`${message.author.username}, please specify only one role, no more no less!`).catch(console.error);
-  if (!role) return message.channel.send(`Oops, I couldn\'t find the role ${args[0]}`).catch(console.error);
+  if (!role) return message.channel.send(`Oops, I couldn\'t find the role ${args.join(' ')}`).catch(console.error);
 
   const bot = message.guild.member(client.user);
 

@@ -1,6 +1,7 @@
 const main = require('../app.js');
 const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
+const settings = require('../settings.json');
 
 exports.run = async (client, message, args) => {
   const user = message.author;
@@ -59,7 +60,7 @@ function makeCard(row, message, args) {
       .setColor(0xF18E8E)
       .setTitle('Custom card creation successful~')
       .setThumbnail(reactions.closedeyes)
-      .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}.\nThis one\'s on the house, but keep in mind that next ones will cost **\$${cost}**`);
+      .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}.\nThis one\'s on the house, but keep in mind that next ones will cost **\$${cost}**\n\nYou can check how many lists you have with \`${settings.prefix}mystats\``);
     return message.channel.send({embed});
   } else
   if (count !== 0 && row['credits'] < cost && count < 3) {
@@ -71,7 +72,7 @@ function makeCard(row, message, args) {
       .setColor(0xF18E8E)
       .setTitle('Custom card creation successful~')
       .setThumbnail(reactions.closedeyes)
-      .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}. That would be **\$${cost}**~`);
+      .setDescription(`Alright! I\'ve created a card titled **${args.join(' ')}** for you, ${user.username}. That would be **\$${cost}**~\n\nYou can check how many lists you have with \`${settings.prefix}mystats\``);
     return message.channel.send({embed});
   } else
   if (count === 3) {

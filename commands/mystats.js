@@ -49,6 +49,9 @@ function getStats(row, message, user, reaction, str, lv, xp, monies) {
   } else {
     str2 = 'Available';
   }
+
+  const cards = row['card'].map(a => `${a.title} (**${a.fields.length}** entries total, 15 max.)`).join(', ');
+
   const embed = new RichEmbed()
     .setColor(0xF18E8E)
     .setTitle(`${user.username}\'s Stats~`)
@@ -57,7 +60,8 @@ function getStats(row, message, user, reaction, str, lv, xp, monies) {
     .addField('Level:', `lv. ${lv}`, true)
     .addField('Exp:', `${xp} exp`, true)
     .addField('Balance:', `\$${monies}`, true)
-    .addField('Dailies:', `${str2}`, true);
+    .addField('Dailies:', `${str2}`, true)
+    .addField('Custom Cards:', `${cards}\n**${row['cards'].length}** cards total (3 max.)`, true);
   message.channel.send({embed});
 }
 
@@ -72,7 +76,7 @@ exports.conf = {
 
 exports.help = {
   name: 'mystats',
-  description: 'Shows the level, exp, and money you currently have',
+  description: 'Shows the level, exp, money, and custom cards you currently have',
   usage: 'mystats',
   type: 'level/credits system'
 };

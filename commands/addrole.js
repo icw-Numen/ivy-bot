@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
   const bot = message.guild.member(client.user);
 
   if (!bot.hasPermission('MANAGE_ROLES') || !bot.hasPermission('ADMINISTRAOR')) {
-    return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}`).catch(console.error);
+    return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}\nTry giving me a higher role`).catch(console.error);
   }
 
   if (message.member.highestRole.comparePositionTo(role) < 0) return message.channel.send(`Hm I can\'t add roles higher than your highest role, ${message.author.username}`).catch(console.error);
@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
         message.channel.send({embed});
       }
     }).catch(error => {
-      return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}`).catch(error);
+      return message.channel.send(`It seems I don\'t have the correct permissions to add that role, ${message.author.username}\nTry giving me a higher role`).catch(error);
     });
   }
 };

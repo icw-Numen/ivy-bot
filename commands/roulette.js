@@ -4,12 +4,12 @@ const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
-  if ((args[0] && !parseInt(args[0]) && !args[0].match(/off/i)) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 5 ||
+  if ((args[0] && !parseInt(args[0]) && !args.join(' ').match(/off/i)) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 5 ||
   args.length > 3) {
     return message.channel.send(`Please give me a valid number of bullets (1 ~ 5), ${player}`).catch(console.error);
   }
 
-  if ((args[1] && !parseInt(args[1]) && !args[0].match(/off/i)) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 5 ||
+  if ((args[1] && !parseInt(args[1]) && !args.join(' ').match(/off/i)) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 5 ||
   args.length > 3) {
     return message.channel.send(`Please give me a valid number of trigger pulls (1 ~ 5), ${player}`).catch(console.error);
   }
@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
   }
 
   var safe;
-  if (args[0].match(/off/i)) {
+  if (args.join(' ').match(/off/i)) {
     safe = 0;
   } else {
     safe = 1;

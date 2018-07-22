@@ -123,7 +123,7 @@ function getDolla(row, message, user, player, pulls, bullets) {
     .setColor(0xF18E8E)
     .setTitle('Oh and by the way~')
     .setThumbnail(reactions.wink)
-    .setDescription(`${message.author.username}, **\$${20*pulls + 20*bullets}** has been awarded to your account as reward for playing with safe mode off, ${player}! You now have **\$${money + 100}** in your account 💰`);
+    .setDescription(`${message.author.username}, **\$${20 * pulls * bullets}** has been awarded to your account as reward for playing with safe mode off, ${player}! You now have **\$${money + 100}** in your account 💰`);
   message.channel.send({embed});
 }
 
@@ -131,14 +131,14 @@ function getDolla(row, message, user, player, pulls, bullets) {
 // Helper method
 function ripScore(row, message, user, player) {
   const money = row['credits'];
-  if (money < 10) {
+  if (money < 30) {
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setThumbnail(reactions.smug2)
       .setDescription(`**_\\*BANG\\*_** 🔫  |\n\nOh no! ${player} got badly wounded and has to leave immediately!`);
     message.channel.send({embed});
   } else {
-    main.scores.update({ userId: message.author.id }, { $inc: { credits: (-10) } }).catch(error => console.log(error));
+    main.scores.update({ userId: message.author.id }, { $inc: { credits: (-30) } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)
       .setThumbnail(reactions.smug2)

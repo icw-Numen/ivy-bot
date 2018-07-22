@@ -4,8 +4,19 @@ const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 
 exports.run = async (client, message, args) => {
+  if ((args[0] && !parseInt(args[0]) && !args[0].match(/off/i)) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 5 ||
+  args.length > 3) {
+    return message.channel.send(`Please give me a valid number of bullets (1 ~ 5), ${player}`).catch(console.error);
+  }
+
+  if ((args[1] && !parseInt(args[1]) && !args[0].match(/off/i)) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 5 ||
+  args.length > 3) {
+    return message.channel.send(`Please give me a valid number of trigger pulls (1 ~ 5), ${player}`).catch(console.error);
+  }
+
   let bullets;
   let pulls;
+
   const player = message.author.username;
   const guild = message.guild;
   const user = message.author;
@@ -22,14 +33,11 @@ exports.run = async (client, message, args) => {
     pulls = parseInt(args[1]);
   }
 
-  if ((args[0] && !parseInt(args[0]) && !args[0].match(/safe/i)) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 5 ||
-  args.length > 3) {
-    return message.channel.send(`Please give me a valid number of bullets (1 ~ 5), ${player}`).catch(console.error);
-  }
-
-  if ((args[1] && !parseInt(args[1]) && !args[0].match(/safe/i)) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 5 ||
-  args.length > 3) {
-    return message.channel.send(`Please give me a valid number of trigger pulls (1 ~ 5), ${player}`).catch(console.error);
+  var safe;
+  if (args[0].match(/off/i)) {
+    safe = 0;
+  } else {
+    safe = 1;
   }
 
   var fired = 0;
@@ -46,7 +54,7 @@ exports.run = async (client, message, args) => {
             .setDescription(`Huzzah! 🎉  |  ${player} has loaded **${bullets}** bullet(s) and pulled the trigger **${pulls}** time(s) without getting shot!`);
           message.channel.send({embed});
 
-          if (!(args.join(' ').includes('safe') && args.join(' ').includes('Safe')) && message.guild.member(message.author).kickable) {
+          if ((safe === 0) && message.guild.member(message.author).kickable) {
             main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
               if (err) return console.log(err);
               var row = res;
@@ -64,7 +72,7 @@ exports.run = async (client, message, args) => {
         }
         if (shot <= bullets && fired === 0) {
           fired = 1;
-          if (!(args.join(' ').match(/safe/i)) && message.guild.member(message.author).kickable) {
+          if ((safe === 0) && message.guild.member(message.author).kickable) {
             main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
               if (err) return console.log(err);
               var row = res;
@@ -177,7 +185,7 @@ exports.conf = {
 
 exports.help = {
   name: 'roulette',
-  description: 'Play russian roulette against yourself! You can play with up to 5 bullets (default: 1) and pull the trigger up to 5 times (default: 1).\n\n**Playing with safe mode off means losing will get you kicked out and lose credits, but winning nets you a lot of credits based on the number of bullets and pulls.**\n\nType "safe" to play with no penalties.\nCredits can only be obtained with safe mode off (you also have to be kickable).',
-  usage: 'roulette <bullets> <pulls> <safe>',
+  description: 'Play russian roulette against yourself! You can play with up to 5 bullets (default: 1) and pull the trigger up to 5 times (default: 1).\n\n**Playing with safe mode off means losing will get you kicked out and lose credits, but winning nets you a lot of credits based on the number of bullets and pulls.**\n\nType "off" to play with safe mode off.\nCredits can only be obtained with safe mode off (you also have to be kickable).',
+  usage: 'roulette <bullets> <pulls> <off>',
   type: 'fun'
 };

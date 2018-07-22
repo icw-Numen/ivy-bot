@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (!parseInt(args[1])) {
-    pulls = 5;
+    pulls = 1;
   } else {
     pulls = parseInt(args[1]);
   }
@@ -177,7 +177,7 @@ exports.conf = {
 
 exports.help = {
   name: 'roulette',
-  description: 'Play russian roulette against yourself! You can play with up to 5 bullets (default: 1) and pull the trigger up to 5 times (default: 5).\n\n**Playing with safe mode off means losing will get you kicked out and lose credits, but winning nets you a lot of credits based on the number of bullets and pulls.**\n\nType "safe" to play with no penalties.\nCredits can only be obtained with safe mode off (you also have to be kickable).',
+  description: 'Play russian roulette against yourself! You can play with up to 5 bullets (default: 1) and pull the trigger up to 5 times (default: 1).\n\n**Playing with safe mode off means losing will get you kicked out and lose credits, but winning nets you a lot of credits based on the number of bullets and pulls.**\n\nType "safe" to play with no penalties.\nCredits can only be obtained with safe mode off (you also have to be kickable).',
   usage: 'roulette <bullets> <pulls> <safe>',
   type: 'fun'
 };

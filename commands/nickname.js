@@ -46,7 +46,12 @@ exports.run = async (client, message, args) => {
   }
   else {
     message.guild.member(user).setNickname(newNick);
-    str = `${oldNick}'s nickname's now ${newNick}, ${message.author.username}!`;
+    if (newNick.length === 0) {
+      str = `${oldNick}'s nickname has been reset, ${message.author.username}!`;
+    } else {
+      str = `${oldNick}'s nickname's now ${newNick}, ${message.author.username}!`;
+    }
+
     str2 = 'New nickname set~';
     thumb = reactions.wink;
   }

@@ -40,7 +40,7 @@ exports.run = (client, message, args) => {
   }
 
   const booru = new Danbooru();
-  booru.posts({ tags: tag1 + tag2 }).then(posts => {
+  booru.posts({ tags: tag1 + tag2 + ' rating:questionable'}).then(posts => {
     const index = Math.floor(Math.random() * posts.length);
     const post = posts[index];
 

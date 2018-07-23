@@ -51,7 +51,7 @@ exports.run = (client, message, args) => {
         if (!lood) {
           return message.channel.send(`Oops, no lewds to be found here, ${message.author.username}~`).catch(console.error);
         }
-        postLuds(message, booru, post, reaction, str);
+        postLuds(message, booru, lood, reaction, str);
         return;
       });
     }

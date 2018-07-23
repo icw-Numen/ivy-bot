@@ -10,10 +10,10 @@ exports.run = (client, message, args) => {
     return message.channel.send(`Please give me no more than two tags, ${message.author.username}`).catch(console.error);
   }
 
-  let tag1;
-  let tag2;
-  let str;
-  let reaction;
+  var tag1;
+  var tag2;
+  var str;
+  var reaction;
 
   if (args.length === 2) {
     tag1 = args[0];

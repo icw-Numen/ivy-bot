@@ -19,7 +19,7 @@ _(This is Ivy. She's glad you're here today.)_
   - [Music Commands](#music-commands)
   - [Moderation Commands](#moderation-commands)
   - [Server Commands](#server-commands)
-  - [Level/credits System Commands](#levelcredits-system-commands)
+  - [Level/Credits System Commands](#levelcredits-system-commands)
   - [Meme Commands](#meme-commands)
   - [Developer Commands](#developer-commands)
   - [Lewd Commands](#lewd-commands)
@@ -175,7 +175,7 @@ Commands related to custom cards/lists. These are features to help you keep trac
 
 [(Back to Table of Contents)](#table-of-contents)
 
-#### Level/credits System Commands:
+#### Level/Credits System Commands:
 Commands related to the level/economy system.
 
 | Command | Description | Alias(es) | Example |

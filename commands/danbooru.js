@@ -50,7 +50,7 @@ exports.run = (client, message, args) => {
 
     const url = booru.url(post.file_url);
     const link = url.href;
-    const lonk = post.large_file_url;
+    const lonk = booru.url(post.large_file_url).href;
 
     const embed = new RichEmbed()
       .setColor(0xF18E8E)

@@ -56,11 +56,12 @@ exports.run = (client, message, args) => {
       .setColor(0xF18E8E)
       .setTitle('Bringing the lewds~')
       .setThumbnail(reaction)
-      .setImage(`${lonk}`)
       .setURL(link)
       .setDescription(str);
     if (message.channel.nsfw) {
-      message.channel.send({embed});
+      message.channel.send({embed}).then(() => {
+        message.channel.send(`${lonk}`);
+      });
     } else {
       return message.channel.send(`Ah~ We can\'t do lewd things here, ${message.author.username}~`).catch(console.error);
     }

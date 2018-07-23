@@ -171,7 +171,7 @@ Commands related to custom cards/lists. These are features to help you keep trac
 | showcard | Shows a custom card you've created. Passing nothing shows your first card. Passing an entry/field title after the card name will show a card with just that entry | card, list, showlist, customcard | ```~showcard```, ```~showcard Game-IDs```, ```~showcard Game-IDs GBF-ID``` |
 | editbody | Edits the contents of the specified card. If the entry/field does not exist, a new one will be created | addfield, editfield, editentry, editlist, cardbody | ```~editbody Game-IDs description My game IDs```,  ```~editbody Game-IDs GBF-ID 1234567``` |
 | edittitle | Edits the title of an entry/field of the specified card. If the entry/field title does not exist, a new entry/field will be created | addtitle | ```~edittitle Game-IDs title Game-ID```,  ```~edittitle Game-IDs GBF-ID 7654321``` |
-| removebody | Deletes an entry/field of the specified card. Typing "card" after the card title deletes the card, and typing "purge" deletes all entries in the card | deletecard, deleteentry, removecard, removeentry | ```~removebody Game-IDs card```, ```~removebody Game-IDs purge```, ```~removebody Game-IDs GBF-ID``` |
+| removebody | Deletes an entry/field of the specified card. Typing just the card title deletes the card, and typing "purge" deletes all entries in the card | deletecard, deleteentry, removecard, removeentry | ```~removebody Game-IDs```, ```~removebody Game-IDs purge```, ```~removebody Game-IDs GBF-ID``` |
 
 [(Back to Table of Contents)](#table-of-contents)
 

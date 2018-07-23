@@ -56,7 +56,7 @@ exports.run = (client, message, args) => {
       .setColor(0xF18E8E)
       .setTitle('Bringing the lewds~')
       .setThumbnail(reaction)
-      .setImage(lonk)
+      .setImage(`${lonk}`)
       .setURL(link)
       .setDescription(str);
     if (message.channel.nsfw) {

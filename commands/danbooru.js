@@ -45,30 +45,41 @@ exports.run = (client, message, args) => {
     const post = posts[index];
 
     if (!post) {
-      return message.channel.send(`Oops, no lewds to be found here, ${message.author.username}~`).catch(console.error);
-    }
-
-    const url = booru.url(post.file_url);
-    const link = url.href;
-    const lonk = booru.url(post.large_file_url).href;
-
-    const embed = new RichEmbed()
-      .setColor(0xF18E8E)
-      .setTitle('Bringing the lewds~')
-      .setThumbnail(reaction)
-      .setURL(link)
-      .setDescription(str);
-    if (message.channel.nsfw) {
-      message.channel.send({embed}).then(() => {
-        message.channel.send(`${lonk}`);
+      booru.posts({ tags: tag1 + tag2 + ' rating:explicit'}).then(loods => {
+        const index = Math.floor(Math.random() * posts.length);
+        const lood = loods[index];
+        if (!lood) {
+          return message.channel.send(`Oops, no lewds to be found here, ${message.author.username}~`).catch(console.error);
+        }
+        postLuds(message, booru, post, reaction, str);
       });
-    } else {
-      return message.channel.send(`Ah~ We can\'t do lewd things here, ${message.author.username}~`).catch(console.error);
     }
+
+    postLuds(message, booru, post, reaction, str);
   });
 };
 
 
+// Helper method
+function postLuds(message, booru, post, reaction, str) {
+  const url = booru.url(post.file_url);
+  const link = url.href;
+  const lonk = booru.url(post.large_file_url).href;
+
+  const embed = new RichEmbed()
+    .setColor(0xF18E8E)
+    .setTitle('Bringing the lewds~')
+    .setThumbnail(reaction)
+    .setURL(link)
+    .setDescription(str);
+  if (message.channel.nsfw) {
+    message.channel.send({embed}).then(() => {
+      message.channel.send(`${lonk}`);
+    });
+  } else {
+    return message.channel.send(`Ah~ We can\'t do lewd things here, ${message.author.username}~`).catch(console.error);
+  }
+}
 exports.conf = {
   enabled: true,
   guildOnly: false,

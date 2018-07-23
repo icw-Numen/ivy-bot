@@ -2,7 +2,7 @@ const {RichEmbed} = require('discord.js');
 const reactions = require('../reactions.json');
 
 exports.run = (client, message, args) => {
-  if (!args.join(' ').match(/rock/i) && !args.join(' ').match(/paper/i) && !args.join(' ').mtach(/scissors/i)) {
+  if (!args.join(' ').match(/rock/i) && !args.join(' ').match(/paper/i) && !args.join(' ').match(/scissors/i)) {
     return message.channel.send(`Please make a valid move, ${message.author.username}`).catch(console.error);
   }
   const rand = Math.floor(Math.random() * 3) + 1;

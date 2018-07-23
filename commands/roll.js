@@ -5,11 +5,11 @@ exports.run = (client, message, args) => {
   const user = message.author.username;
 
   if ((args[0] && !parseInt(args[0])) || parseInt(args[0]) <= 0 || parseInt(args[0]) > 100) {
-    return message.channel.send(`Please give me a valid number of dice (0 ~ 100), ${user}`).catch(console.error);
+    return message.channel.send(`Please give me a valid number of dice (1 ~ 100), ${user}`).catch(console.error);
   }
 
   if ((args[1] && !parseInt(args[1])) || parseInt(args[1]) <= 0 || parseInt(args[1]) > 200) {
-    return message.channel.send(`Please give me a valid number of faces (0 ~ 200), ${user}`).catch(console.error);
+    return message.channel.send(`Please give me a valid number of faces (1 ~ 200), ${user}`).catch(console.error);
   }
 
   let dice;

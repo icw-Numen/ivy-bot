@@ -54,7 +54,7 @@ function deleteEntry(row, message, args) {
     }
 
 
-    if (args[1] === 'card') {
+    if (args.length === 1) {
       main.scores.update({ userId: message.author.id }, { $pull: { 'cards': {title: args[0]} } }).catch(error => console.log(error));
       str = `I\'ve deleted your custom card with the title **${args[0]}**, ${message.author.username}`;
     } else
@@ -91,7 +91,7 @@ exports.conf = {
 
 exports.help = {
   name: 'removebody',
-  description: 'Deletes an entry/field of the specified card. Typing "card" after the card title deletes the card, and typing "purge" deletes all entries in the card',
-  usage: 'removebody <card title> <card/purge/field title>',
+  description: 'Deletes an entry/field of the specified card. Typing the card title (and nothing else) will delete the card. Typing "purge" after the card title deletes all entries in the card',
+  usage: 'removebody <card title> <purge/field title>',
   type: 'custom card'
 };

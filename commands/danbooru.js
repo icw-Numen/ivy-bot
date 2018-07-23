@@ -46,8 +46,8 @@ exports.run = (client, message, args) => {
 
     if (!post) {
       booru.posts({ tags: tag1 + tag2 + ' rating:explicit'}).then(loods => {
-        const index = Math.floor(Math.random() * loods.length);
-        const lood = loods[index];
+        const indexx = Math.floor(Math.random() * loods.length);
+        const lood = loods[indexx];
         if (!lood) {
           return message.channel.send(`Oops, no lewds to be found here, ${message.author.username}~`).catch(console.error);
         }

@@ -33,7 +33,7 @@ You know that one **_extra thicc_** maid bot on Discord? No? Well, you're lookin
 
 Ivy's a totally ordinary maid who has ~~been summoned~~ come to Discord to provide userful services for all.
 
-**This page is essentially a quick reference manual on how to use maid bot Ivy. For more complete, in-depth information, the GitHub repository also has a wiki page [(link here)](https://github.com/icw-Numen/ivy-bot/wiki) where you can find neat things like more step-by-step guides, Ivy's bio, author comments, and author information.**
+**This page is essentially a quick reference manual on how to use maid bot Ivy. For more complete, in-depth information, the GitHub repository also has a wiki page (work in progress) [(link here)](https://github.com/icw-Numen/ivy-bot/wiki) where you can find neat things like more step-by-step guides, Ivy's bio, author comments, and author information.**
 
 As of now, the page might not look like the prettiest thing in the world, but I'm working hard to learn HTML/CSS/Other front-end stuff, so expect an overhaul soon.
 

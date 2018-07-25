@@ -5,7 +5,7 @@ const reactions = require('../reactions.json');
 exports.run = async (client, message) => {
   const user = message.author;
   const guild = message.guild;
-  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+  main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     let str;

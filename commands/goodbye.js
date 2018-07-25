@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
   if (args.length > 1 || (args.length === 1 && !channel)) return message.channel.send(`${message.author.username}, please enter a valid channel`).catch(console.error);
 
   const guild = message.guild;
-  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+  main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
     var row = res;
     if (err) return console.log(err);
     if (row) {

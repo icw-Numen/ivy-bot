@@ -4,7 +4,7 @@ const reactions = require('../reactions.json');
 
 module.exports = member => {
   const guild = member.guild;
-  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+  main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {

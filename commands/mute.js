@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
   if (!parseUser(message, user)) return;
 
   const guild = message.guild;
-  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+  main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {
@@ -32,7 +32,7 @@ function m00te(row, message, args, guild, client, user) {
   const modlog = guild.channels.find('name', row['modlog']);
 
   caseNumber(client, modlog).then(num => {
-    if ((!message.guild.member(client.user).hasPermission('MANAGE_ROLES') && !message.guild.member(client.user).hasPermission('ADMINISTRATOR')) || 
+    if ((!message.guild.member(client.user).hasPermission('MANAGE_ROLES') && !message.guild.member(client.user).hasPermission('ADMINISTRATOR')) ||
     message.guild.member(client.user).permissions < user.permissions) {
       return message.channel.send(`Oops, it seems I don\'t have the correct permissions, ${message.author.username}`).catch(console.error);
     }

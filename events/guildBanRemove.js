@@ -3,7 +3,7 @@ const main = require('../app.js');
 
 // when someone gets unhammered
 module.exports = (guild, user) => {
-  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+  main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {

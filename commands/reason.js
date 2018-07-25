@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
   const newReason = args.join(' ');
 
   const guild = message.guild;
-  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+  main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
     var row = res;
     if (err) return console.log(err);
     if (row) {

@@ -4,14 +4,14 @@ const {RichEmbed} = require('discord.js');
 
 module.exports = member => {
   const guild = member.guild;
-  main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+  main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {
       welcome(row, member);
     } else {
       main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [] }, function (error, r) {
-        main.scores.findOne({ userId : { $gte: member.id }}, function (err, res) {
+        main.scores.findOne({ userId : { $eq: member.id }}, function (err, res) {
           if (err) return console.log(err);
           var row = res;
           if (row) {

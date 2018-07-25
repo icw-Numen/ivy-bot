@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     return message.channel.send(`Please give me a title for your custom card, ${user.username}`).catch(console.error);
   }
 
-  main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+  main.scores.findOne({ userId : { $eq: user.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {

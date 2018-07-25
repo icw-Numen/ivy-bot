@@ -91,7 +91,7 @@ function checkLevel(message, user) {
     });
   }
 
-  main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+  main.scores.findOne({ userId : { $eq: user.id }}, function (err, res) {
     if (err) return console.log(err);
     var row = res;
     if (row) {

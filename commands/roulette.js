@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
           message.channel.send({embed});
 
           if ((safe === 0) && message.guild.member(message.author).kickable) {
-            main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+            main.scores.findOne({ userId : { $eq: user.id }}, function (err, res) {
               if (err) return console.log(err);
               var row = res;
               if (row) {
@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
         if (shot <= bullets && fired === 0) {
           fired = 1;
           if ((safe === 0) && message.guild.member(message.author).kickable) {
-            main.scores.findOne({ userId : { $gte: user.id }}, function (err, res) {
+            main.scores.findOne({ userId : { $eq: user.id }}, function (err, res) {
               if (err) return console.log(err);
               var row = res;
               if (row) {
@@ -86,7 +86,7 @@ exports.run = async (client, message, args) => {
               }
             });
 
-            main.guildsettings.findOne({ guildId : { $gte: guild.id }}, function (err, res) {
+            main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
               if (err) return console.log(err);
               var row = res;
               if (row) {

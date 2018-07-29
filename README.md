@@ -104,6 +104,8 @@ Fun stuff and games.
 | --- | --- | --- | --- |
 | coinflip | Flips a coin | flip | ```~coinflip``` |
 | 8ball | The magic 8-ball answers any questions you might have about the future | 8-ball, 8b | ```~8ball Half Life 3 confirmed?``` |
+| choose | Chooses one out of two or more choices (up to n choices) | erabe | ```~choose thick | thin```, ```~choose thick | thin | none``` |
+| rps | Plays Rock 
 | roll | Rolls one or more dice. You can specify the number of faces too (default's 6) | dice, diceroll | ```~roll```, ```~roll 2```, ```~roll 3 20``` |
 | rps | Plays Rock Paper Scissors against the bot | jankenpon | ```~rps rock```, ```~rps Rock``` |
 | roulette | Play russian roulette against yourself! You can play with up to 5 bullets (default's 1) and pull the trigger up to 5 times (default's 1). Safe mode's on by default. **Losing without safe mode gets you kicked from the server and causes you to lose points/credits** | russianroulette, playroulette, rlt | ```~roulette```, ```~roulette 1 5```, ```~roulette 1 5 off``` |

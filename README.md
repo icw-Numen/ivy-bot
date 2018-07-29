@@ -43,7 +43,7 @@ As of now, the page might not look like the prettiest thing in the world, but I'
 
 - Online 24/7
 - Three prefixes
-- A nice personality~
+- A lovely personality~
 - Points/leveling/credits system
 - Special lines/responses for each command
 - Music, moderation, and useful commands

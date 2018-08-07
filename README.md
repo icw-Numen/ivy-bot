@@ -155,6 +155,8 @@ Commands specifically related to the server Ivy's in.
 | autorole | Sets the server's default role for new members. Passing nothing resets it to none | defaultrole | ```~autorole```, ```~autorole lewd``` |
 | welcome | Sets the server's default channel for welcoming new members. Passing nothing resets it to none | setwelcome | ```~welcome```, ```~welcome welcome``` |
 | goodbye | Sets the server's default channel for sending goodbyes to members who just left the guild. Passing nothing resets it to none | setgoodbye | ```~goodbye```, ```~goodbye goodbye``` |
+| modlog | Sets the server's default channel for storing mod logs. Making the mod log channel visible to mods/admins only is recommended | setlogs, setmodlog, botlog, defaultmodlog, defaultbotlog, defaultlogs, setlog | ```~modlog mod-logs``` |
+| lvupmessages | Toggles level up messages from Ivy on/off. Default: Off | levelupmsgs, lvnotifs, togglelvupmsgs | ```~lvupmessages``` |
 | listmoji | Sends a list of the server's emojis | listemojis, listmojis, listemoji, emojilist, emojislist, emojis, le, el, emojis | ```~listmoji``` |
 | listroles | Sends a list of the server's roles | listrole, rolelist, roleslist, lr, rl, roles | ```~listroles``` |
 | removerole | Removes a role from the user | roleremove | ```~removerole lewd``` |

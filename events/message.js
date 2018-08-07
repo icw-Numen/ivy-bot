@@ -8,6 +8,7 @@ const reactions = require('../reactions.json');
 module.exports = message => {
   const user = message.author;
   const ping = message.mentions.users.first();
+
   //ignores its own messages
   if (user.bot) return;
 
@@ -54,9 +55,11 @@ module.exports = message => {
     !(message.content.startsWith('@'))) {
     if (ping) {
       if (!(ping.tag === `${settings.bottag}`)) {
+        checkLevel(message, user);
         return;
       }
     } else {
+      checkLevel(message, user);
       return;
     }
   }
@@ -72,11 +75,9 @@ module.exports = message => {
     if (perms < cmd.conf.permLevel) return message.channed.send(`Ah, it seems you don\'t have the required permissions to use this command, ${user.username}`);
     cmd.run(client, message, args, perms);
   }
-  if (!main.talkedRecently.has(user.id)) {
-    checkLevel(message, user);
-  }
-};
 
+  checkLevel(message, user);
+};
 
 // Helper method
 function checkLevel(message, user) {
@@ -102,6 +103,7 @@ function checkLevel(message, user) {
 
 // Helper method
 function lvUp(row, message, user) {
+  const guild = message.guild;
   const expNextLv = row['level'] * 5 + 10;
   const curLv = row['level'];
   const bonus = row['level'] + 10;
@@ -115,6 +117,16 @@ function lvUp(row, message, user) {
       .setDescription(`${user.username} is now **lv. ${curLv + 1}**! 🎉\n\n**\$${bonus}** has been awarded as a bonus reward`)
       .addField('Level:', `lv. ${curLv + 1}`, true)
       .addField('Balance:', `\$${row['credits'] + row['level'] + 10}`, true);
-    message.channel.send({embed});
+
+    main.guildsettings.findOne({ guildId : { $eq: guild.id }}, function (err, res) {
+      if (err) return console.log(err);
+      var row = res;
+      if (row) {
+        if (row['lvnotifs'] === 'on') message.channel.send({embed});
+      } else {
+        main.guildsettings.insertOne({ guildId: guild.id, welcome: '', goodbye: '', modlog: '', autorole: '', nsfw: [], queue: [], lvnotifs: '' }, function () {
+        });
+      }
+    });
   }
 }

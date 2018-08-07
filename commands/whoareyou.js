@@ -27,13 +27,13 @@ exports.run = async (client, message) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['lore', 'characterinfo', 'bio', 'characterprofile', 'whoareyou', 'aboutivy'],
+  aliases: ['lore', 'characterinfo', 'bio', 'characterprofile', 'aboutivy'],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'profile',
+  name: 'whoareyou',
   description: 'Sends an embed with information about the Ivy as a character',
-  usage: 'profile',
+  usage: 'whoareyou',
   type: 'bot'
 };

@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
 
 // Helper method
 function setNotifs(row, message, args, guild) {
-  if (row['lvnotifs'] === '') {
+  if (row['lvnotifs'] === '' || !row['lvnotifs']) {
     main.guildsettings.update({ guildId: guild.id }, { $set: { lvnotifs: 'on' } }).catch(error => console.log(error));
     const embed = new RichEmbed()
       .setColor(0xF18E8E)

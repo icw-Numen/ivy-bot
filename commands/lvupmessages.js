@@ -55,7 +55,7 @@ exports.conf = {
 
 exports.help = {
   name: 'lvupmessages',
-  description: 'Toggles level up messages from Ivy on/off',
+  description: 'Toggles level up messages from Ivy on/off. Level up messages are off by default',
   usage: 'lvupmessages',
   type: 'server'
 };

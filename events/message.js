@@ -87,7 +87,7 @@ function checkLevel(message, user) {
     setTimeout(() => {
       main.talkedRecently.delete(user.id);
     }, ms(time));
-    main.scores.findOneAndUpdate({ userId : { $eq: user.id }}, {$inc: {exp: 1}}, {upsert: false}, function (err) {
+    main.scores.findOneAndUpdate({ userId : { $eq: user.id }}, {$inc: {exp: 1}}, {upsert: true}, function (err) {
       if (err) return console.log(err);
     });
   }

@@ -21,7 +21,7 @@ exports.run = async (client, message) => {
     .addField('# of servers joined:', `${client.guilds.size}`, true)
     .addField('# of users:', `${client.users.size}`, true)
     .addField('Support server:', 'https://discord.gg/HVh7QcV', true)
-    .addField('Ivy\'s website:', 'https://github.com/icw-Numen/ivy-bot/blob/master/README.md')
+    .addField('Ivy\'s website:', 'https://icw-numen.github.io/ivy-bot/')
     .addField('Ivy icons/art:', 'https://sta.sh/21qy8xqbpkxm')
     .setFooter(`Bot and icons/art made with care by ${package.author}`);
   message.channel.send({embed});

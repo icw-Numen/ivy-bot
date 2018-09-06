@@ -74,7 +74,7 @@ exports.conf = {
 
 exports.help = {
   name: 'nickname',
-  description: 'Changes the user\'s nickname. You can change the my nickname too (I have special lines for when you give me certain nicknames). Typing nothing resets the nickname',
+  description: 'Changes the user\'s nickname. You can change my nickname too (I have special lines for when you give me certain nicknames). Typing nothing resets the nickname',
   usage: 'nickname <mention> <nickname>',
   type: 'utilities'
 };

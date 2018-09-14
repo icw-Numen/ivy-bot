@@ -30,12 +30,12 @@ exports.run = async (client, message, args) => {
     str2 = 'New nickname set~';
     thumb = reactions.wink1;
   } else
-  if (user.bot && user.tag === `${settings.bottag}` && newNick.match(/cow/i)) {
+  if (user.bot && user.tag === `${settings.bottag}` && newNick.match(/cow/i) && newNick.length === 3) {
     str = `I ain\'t no cow, ${message.author.username}! >:T`;
     str2 = 'New nickname-- Hey, wait a minute!';
     thumb = reactions.pout;
   }
-  if (user.bot && user.tag === `${settings.bottag}` && newNick.match(/slut/i)) {
+  if (user.bot && user.tag === `${settings.bottag}` && newNick.match(/slut/i) && newNick.length === 4) {
     str = `I ain\'t no slut, ${message.author.username}! >:T`;
     str2 = 'New nickname-- Hey, wait a minute!';
     thumb = reactions.pout;

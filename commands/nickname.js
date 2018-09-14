@@ -6,8 +6,8 @@ exports.run = async (client, message, args) => {
   if (message.mentions.users.size < 1) return message.channel.send(`Please ping someone so I can change their nickname for you, ${message.author.username}`).catch(console.error);
 
   const user = message.mentions.users.first();
-  const oldNick = user.username.slice();
-  const newNick = args.splice(1, args.length).join(' ');
+  const oldNick = user.username.slice(0);
+  const newNick = args.splice(0, 1).join(' ');
 
   if ((!message.member.hasPermission('MANAGE_NICKNAMES') ||
   !message.member.hasPermission('CHANGE_NICKNAME')) && user.username !== message.author.username) {
@@ -30,8 +30,13 @@ exports.run = async (client, message, args) => {
     str2 = 'New nickname set~';
     thumb = reactions.wink1;
   } else
-  if (user.bot && user.tag === `${settings.bottag}` && newNick.match(/cow/i) && newNick.length === 3) {
+  if (user.bot && user.tag === `${settings.bottag}` && newNick.match(/cow/i)) {
     str = `I ain\'t no cow, ${message.author.username}! >:T`;
+    str2 = 'New nickname-- Hey, wait a minute!';
+    thumb = reactions.pout;
+  }
+  if (user.bot && user.tag === `${settings.bottag}` && newNick.match(/slut/i)) {
+    str = `I ain\'t no slut, ${message.author.username}! >:T`;
     str2 = 'New nickname-- Hey, wait a minute!';
     thumb = reactions.pout;
   } else

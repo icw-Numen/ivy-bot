@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
 
   const user = message.mentions.users.first();
   const oldNick = user.username.slice(0);
-  const newNick = args.splice(0, 1).join(' ');
+  const newNick = args.slice(1).join(' ');
 
   if ((!message.member.hasPermission('MANAGE_NICKNAMES') ||
   !message.member.hasPermission('CHANGE_NICKNAME')) && user.username !== message.author.username) {

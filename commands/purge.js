@@ -17,7 +17,9 @@ exports.run = (client, message, args) => {
   if (arg.match(/bot/i)) {
     return message.channel.fetchMessages({limit: messageCount}).then(messages => {
       messages = messages.filter(message => message.author.bot);
-      message.channel.bulkDelete(messages);
+      message.channel.bulkDelete(messages).catch(error => function() {
+        return message.channel.send(`${error}`).catch(console.error);
+      });
     });
   }
 
@@ -26,7 +28,9 @@ exports.run = (client, message, args) => {
       if (arg.match(/bot/i)) {
         messages = messages.filter(message => message.author.bot);
       }
-      message.channel.bulkDelete(messages);
+      message.channel.bulkDelete(messages).catch(error => function() {
+        return message.channel.send(`${error}`).catch(console.error);
+      });
     });
 };
 

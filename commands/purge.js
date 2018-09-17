@@ -1,4 +1,8 @@
 exports.run = (client, message, args) => {
+  if (!(message.author.hasPermission('ADMINISTRATOR') || message.author.hasPermission('MANAGE_MESSAGES'))) {
+    return message.channel.send(`No deleting without permission, ${message.author.username} >:T`).catch(console.error);
+  }
+
   const messageCount = parseInt(args.join(' '));
   const arg = args.join(' ');
   if (!arg.match(/bot/i) && args.length !== 0

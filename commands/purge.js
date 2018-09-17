@@ -1,9 +1,15 @@
 exports.run = (client, message, args) => {
-  if (!(message.author.hasPermission('ADMINISTRATOR') || message.author.hasPermission('MANAGE_MESSAGES'))) {
-    return message.channel.send(`No deleting without permission, ${message.author.username} >:T`).catch(console.error);
+  const author = message.guild.member(message.author);
+  if (!(author.hasPermission('ADMINISTRATOR') || author.hasPermission('MANAGE_MESSAGES'))) {
+    return message.channel.send(`No purging without permission, ${message.author.username} >:T`).catch(console.error);
   }
 
-  const messageCount = parseInt(args.join(' '));
+  var messageCount = parseInt(args.join(' '));
+
+  if (isNaN(messageCount)) {
+    messageCount = 100;
+  }
+
   const arg = args.join(' ');
   if (!arg.match(/bot/i) && args.length !== 0
   && !parseInt(args.join(' '))) return message.channel.send(`Please give me a valid input, ${message.author.username}`).catch(console.error);
@@ -18,7 +24,7 @@ exports.run = (client, message, args) => {
     return message.channel.fetchMessages({limit: messageCount}).then(messages => {
       messages = messages.filter(message => message.author.bot);
       message.channel.bulkDelete(messages).catch(error => function() {
-        return message.channel.send(`${error}`).catch(console.error);
+        return message.channel.send(`An error has occurred, please try again, ${message.author.username}`).catch(error);
       });
     });
   }
@@ -29,7 +35,7 @@ exports.run = (client, message, args) => {
         messages = messages.filter(message => message.author.bot);
       }
       message.channel.bulkDelete(messages).catch(error => function() {
-        return message.channel.send(`${error}`).catch(console.error);
+        return message.channel.send(`An error has occurred, please try again, ${message.author.username}`).catch(error);
       });
     });
 };

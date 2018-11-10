@@ -10,7 +10,7 @@ exports.run = async (client, message) => {
     .setImage(imgs.splash)
     .setThumbnail(`${reactions.normal}`)
     .setDescription(`Thanks for asking, ${message.author.username}!\n\nAgain, I'm just a totally ordinary maid, but here's my profile:`)
-    .addField('Height:', '185 cm', true)
+    .addField('Height:', '210 cm', true)
     .addField('Weight:', '[censored]', true)
     .addField('Age:', '[unknown]', true)
     .addField('Race:', '[unknown]', true)
